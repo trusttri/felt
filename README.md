@@ -22,7 +22,7 @@ npm run build
 node build
 ```
 
-# :turtle: <sub>:turtle:</sub><sub><sub>:turtle:</sub></sub>
+# :turtle:<sub>:turtle:</sub><sub><sub>:turtle:</sub></sub>
 
 [Svelte](https://github.com/sveltejs/svelte) ∙
 [SvelteKit](https://github.com/sveltejs/kit) ∙
