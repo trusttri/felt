@@ -1,11 +1,10 @@
-<script lang="ts">
-	import Counter from '$lib/Counter.svelte';
+<script lang="ts">	
+	import Icons from '$lib/Icons.svelte';
+	import * as icons from '$lib/icons.ts';
 </script>
 
-<main>
-	<h1>Hello world!</h1>
-
-	<Counter />
+<main>					    
+	<Icons {icons} />
 
 	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
 </main>
