@@ -17,7 +17,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@sveltejs/adapter-node": "next",
+    "@sveltejs/adapter-static": "^1.0.0-next.4",
     "@sveltejs/kit": "next",
     "prettier": "~2.2.1",
     "prettier-plugin-svelte": "^2.2.0",
