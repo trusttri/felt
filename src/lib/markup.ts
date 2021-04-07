@@ -33,8 +33,6 @@ export const forEachNode = (node: MarkupNode, cb: (node: MarkupNode) => void): v
 	}
 };
 
-// export const assignNodeIds = (t: any): any => t;
-
 export const assignNodeIds = <T extends MarkupNode>(node: T): T => {
 	let id = 0;
 	forEachNode(node, (node) => {
