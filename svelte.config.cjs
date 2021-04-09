@@ -8,6 +8,9 @@ module.exports = {
 	kit: {
 		adapter: staticAdapter(),
 
+		// because the default '_app' is ignored by GitHub pages by default
+		appDir: 'app',
+
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte',
 
