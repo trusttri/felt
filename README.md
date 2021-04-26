@@ -1,6 +1,11 @@
 # felt
 
-> work in progress 💚 [Svelte](https://github.com/sveltejs/svelte) UI that feels good
+[<img src="src/static/felt.png" align="right" width="192" height="178">](https://felt.dev)
+
+> [Svelte](https://github.com/sveltejs/svelte) UI that feels good 💚
+> [www.felt.dev](https://www.felt.dev)
+
+> **work in progress**
 
 ## usage
 
@@ -29,7 +34,7 @@ npm start
 [Vite](https://github.com/vitejs/vite) ∙
 [Rollup](https://github.com/rollup/rollup) ∙
 [TypeScript](https://github.com/microsoft/TypeScript) ∙
-[Prettier](https://github.com/prettier/prettier) ∙
+[Prettier](https://github.com/prettier/prettier)
 & [more](package.json)
 
 ## license 🐦

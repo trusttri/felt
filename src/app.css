@@ -1,8 +1,41 @@
 :root {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 		'Open Sans', 'Helvetica Neue', sans-serif;
+	--nav_height: 32px;
+	--link_color_hue: 278;
+	--link_color: hsl(var(--link_color_hue), 61%, 35%);
+	--text_color: #333;
+}
+
+html,
+body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/*  TODO import standard stylesheet */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+#svelte {
+	height: 100%;
+}
+
+a {
+	color: var(--link_color);
 }
 
 li {
 	list-style: none;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 300;
+	margin: 0;
 }

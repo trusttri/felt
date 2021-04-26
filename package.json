@@ -9,14 +9,14 @@
     "url": "https://felt.social"
   },
   "scripts": {
-    "dev": "svelte-kit dev",
-    "build": "svelte-kit build",
-    "start": "svelte-kit start",
-    "lint": "prettier --check .",
-    "format": "prettier --write ."
+    "dev": "gro dev",
+    "build": "gro build",
+    "test": "gro test",
+    "start": "gro start",
+    "deploy": "gro deploy"
   },
   "devDependencies": {
-    "@feltcoop/gro": "^0.17.0",
+    "@feltcoop/gro": "^0.21.3",
     "@sveltejs/adapter-static": "^1.0.0-next.4",
     "@sveltejs/kit": "next",
     "prettier": "~2.2.1",

@@ -1,37 +1,22 @@
 <script lang="ts">
-	import Icons from '$lib/Icons.svelte';
-	import * as iconsByName from '$lib/icons';
-
-	$: icons = Object.entries(iconsByName)
-		.map(([name, icon]) => ({name, icon}))
-		.sort((a, b) => a.name.localeCompare(b.name));
+	import FeltHeart from '$lib/FeltHeart.svelte';
 </script>
 
-<main>
-	<h1>
-		here's the <a href="https://github.com/feltcoop/felt-mockup">Felt mockup</a> we made last year. more
-		soon
-	</h1>
-
-	<Icons {icons} />
-</main>
+<h1>@feltcoop/felt</h1>
+<!-- TODO publish and link the above to npm -->
+<a href="https://github.com/feltcoop/felt"
+	><h2>source code on GitHub</h2>
+	<FeltHeart /></a
+>
+<h2>
+	@feltcoop on
+	<a href="https://github.com/feltcoop">GitHub</a> and
+	<a href="https://twitter.com/feltcoop">Twitter</a>
+</h2>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		margin: 0 auto;
-	}
-
-	p {
-		max-width: 14rem;
-		margin: 2rem auto;
-		line-height: 1.35;
-	}
-
-	@media (min-width: 480px) {
-		p {
-			max-width: none;
-		}
+	h1,
+	h2 {
+		margin: 20px 0;
 	}
 </style>
