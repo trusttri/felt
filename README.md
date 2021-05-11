@@ -1,6 +1,6 @@
-# felt
-
 [<img src="src/static/felt.png" align="right" width="192" height="178">](https://felt.dev)
+
+# felt
 
 > web tech that feels good 💚
 > [www.felt.dev](https://www.felt.dev)
