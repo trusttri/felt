@@ -7,4 +7,5 @@
 
 ## 0.1.0
 
-- gogo
+- publish
+  ([#19](https://github.com/feltcoop/felt/pull/19))
