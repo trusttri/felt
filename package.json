@@ -11,37 +11,6 @@
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
-  "exports": {
-    ".": "./index.js",
-    "./package.json": "./package.json",
-    "./utils/array.js": "./utils/array.js",
-    "./utils/async.js": "./utils/async.js",
-    "./utils/env.js": "./utils/env.js",
-    "./utils/equal.js": "./utils/equal.js",
-    "./utils/error.js": "./utils/error.js",
-    "./utils/function.js": "./utils/function.js",
-    "./utils/json.js": "./utils/json.js",
-    "./utils/lock.js": "./utils/lock.js",
-    "./utils/log.js": "./utils/log.js",
-    "./utils/map.js": "./utils/map.js",
-    "./utils/math.js": "./utils/math.js",
-    "./utils/object.js": "./utils/object.js",
-    "./utils/obtainable.js": "./utils/obtainable.js",
-    "./utils/path.js": "./utils/path.js",
-    "./utils/print.js": "./utils/print.js",
-    "./utils/process.js": "./utils/process.js",
-    "./utils/random.js": "./utils/random.js",
-    "./utils/string.js": "./utils/string.js",
-    "./utils/terminal.js": "./utils/terminal.js",
-    "./utils/time.js": "./utils/time.js",
-    "./utils/uuid.js": "./utils/uuid.js"
-  },
-  "files": [
-    "index.js",
-    "src",
-    "lib",
-    "utils"
-  ],
   "scripts": {
     "dev": "gro dev",
     "build": "gro build",
@@ -49,7 +18,7 @@
     "test": "gro test"
   },
   "devDependencies": {
-    "@feltcoop/gro": "^0.25.2",
+    "@feltcoop/gro": "^0.26.2",
     "@sveltejs/adapter-static": "^1.0.0-next.11",
     "@sveltejs/kit": "^1.0.0-next.109",
     "prettier": "~2.2.1",
@@ -58,6 +27,7 @@
     "svelte-preprocess-esbuild": "^2.0.0",
     "tslib": "^2.1.0",
     "typescript": "^4.0.0",
+    "uvu": "^0.5.1",
     "vite": "^2.1.0"
   },
   "engines": {

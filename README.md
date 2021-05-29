@@ -3,26 +3,33 @@
 # felt
 
 > web tech that feels good 💚
-> [www.felt.dev](https://www.felt.dev)
+> [felt.dev](https://www.felt.dev)
 
 > **work in progress**
 
 ## usage
 
-### in your projects
-
-> TODO publish to npm
-
-### develop
-
 ```bash
-npm i
-npm run dev
+npm i @feltcoop/felt
 ```
 
-### build
+```ts
+// the top-level API is a work in progress:
+import type {Result} from '@feltcoop/felt';
+
+// for now, you'll typically use deep imports to specific modules:
+import {randomInt} from '@feltcoop/felt/utils/random.js';
+```
+
+## develop
 
 ```bash
+npm i # node >= 14.16
+
+# development
+npm run dev
+
+# production
 npm run build
 npm start
 ```
@@ -32,6 +39,7 @@ npm start
 [Svelte](https://github.com/sveltejs/svelte) ∙
 [SvelteKit](https://github.com/sveltejs/kit) ∙
 [Vite](https://github.com/vitejs/vite) ∙
+[Gro](https://github.com/feltcoop/gro) ∙
 [Rollup](https://github.com/rollup/rollup) ∙
 [TypeScript](https://github.com/microsoft/TypeScript) ∙
 [Prettier](https://github.com/prettier/prettier)
