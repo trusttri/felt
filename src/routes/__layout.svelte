@@ -14,18 +14,15 @@
 
 <style>
 	#nav {
-		position: absolute;
-		left: 0;
-		top: 0;
 		width: 100%;
 		height: var(--nav_height);
 		display: flex;
 		justify-content: center;
+		flex-shrink: 0;
 	}
 	main {
-		height: 100%;
-		padding-top: var(--nav_height);
-		text-align: center;
+		flex: 1;
+		width: 100%;
 		margin: 0 auto;
 	}
 </style>

@@ -31,8 +31,11 @@ const files = [
 export const config: GroConfigCreator = async () => {
 	const partial: GroConfigPartial = {
 		builds: [{name: 'library', platform: 'node', input: files}],
-		adapt: async () =>
-			(await import('@feltcoop/gro/dist/adapt/gro-adapter-node-library.js')).createAdapter(),
+		adapt: async () => [
+			// TODO this is bugged in Gro, could be hackfixed with a simple in-between adapter but w/e
+			(await import('@feltcoop/gro/dist/adapt/gro-adapter-sveltekit-frontend.js')).createAdapter(),
+			// (await import('@feltcoop/gro/dist/adapt/gro-adapter-node-library.js')).createAdapter(),
+		],
 	};
 	return partial;
 };

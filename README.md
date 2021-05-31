@@ -13,8 +13,9 @@
 npm i @feltcoop/felt
 ```
 
+The top-level API ([see src/index.ts](src/index.ts)) is a work in progress:
+
 ```ts
-// the top-level API is a work in progress:
 import type {Result} from '@feltcoop/felt';
 
 // for now, you'll typically use deep imports to specific modules:
@@ -36,13 +37,15 @@ npm start
 
 # :turtle:<sub>:turtle:</sub><sub><sub>:turtle:</sub></sub>
 
+[TypeScript](https://github.com/microsoft/TypeScript) ∙
 [Svelte](https://github.com/sveltejs/svelte) ∙
 [SvelteKit](https://github.com/sveltejs/kit) ∙
 [Vite](https://github.com/vitejs/vite) ∙
 [Gro](https://github.com/feltcoop/gro) ∙
+[esbuild](https://github.com/evanw/esbuild) ∙
 [Rollup](https://github.com/rollup/rollup) ∙
-[TypeScript](https://github.com/microsoft/TypeScript) ∙
-[Prettier](https://github.com/prettier/prettier)
+[Prettier](https://github.com/prettier/prettier) ∙
+[@lukeed\/\*](https://github.com/lukeed)
 & [more](package.json)
 
 ## license 🐦

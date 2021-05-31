@@ -6,26 +6,46 @@
 <!-- TODO publish and link the above to npm -->
 
 <section>
-	<div>
+	<div class="learn">
 		<a href="https://www.felt.social/about">
-			<h2>learn → about ← Felt</h2>
-			<FeltHeart /></a
-		>
+			<div>learn → about ← Felt</div>
+			<FeltHeart />
+		</a>
 	</div>
 </section>
-
 <section>
-	<a href="https://github.com/feltcoop/felt"><h2>source code on GitHub</h2> </a>
-	<h2>
+	<a href="https://github.com/feltcoop/felt">source code on GitHub</a>
+</section>
+<section>
+	<div class="links">
 		@feltcoop on
 		<a href="https://github.com/feltcoop">GitHub</a> and
 		<a href="https://twitter.com/feltcoop">Twitter</a>
-	</h2>
+	</div>
 </section>
 
 <style>
 	h1,
 	h2 {
 		margin: 20px 0;
+		text-align: center;
+	}
+	section {
+		text-align: center;
+		padding: var(--spacing_lg) 0;
+	}
+	.learn {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		font-size: var(--font_size_lg);
+	}
+	a {
+		font-size: var(--font_size_lg);
+		font-weight: var(--font_weight_lt);
+	}
+	.links {
+		font-size: var(--font_size_lg);
+		font-weight: var(--font_weight_lt);
 	}
 </style>
