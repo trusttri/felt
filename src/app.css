@@ -1,19 +1,26 @@
+/* TODO some is haphazard & inconsistent */
 :root {
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
 		'Open Sans', 'Helvetica Neue', sans-serif;
 	--nav_height: 32px;
-	--red_hue: 0;
+	--red_hue: 0; /* TODO this is too "red", but not sure which direction to go */
+	--orange_hue: 24; /* TODO this is too "red", but not sure which direction to go */
 	--green_hue: 120;
 	--blue_hue: 210;
 	--bg_color: #fff;
-	--plain_color: #ccc;
 	--blue_color: hsl(var(--blue_hue), 50%, 50%);
 	--green_color: hsl(var(--green_hue), 45%, 55%);
+	--orange_color: hsl(var(--orange_hue), 55%, 50%);
+	--red_color: hsl(var(--red_hue), 50%, 50%);
 	--green_text_color: hsl(var(--green_hue), 40%, 40%);
-	--interactive_color: #ddd;
-	--interactive_hover_color: #eee;
-	--interactive_disabled_color: #f7f7f7;
-	--interactive_active_color: #fff;
+	--blue_light_alpha_color: hsla(var(--blue_hue), 70%, 80%, 0.5);
+	--tint_hue: var(--orange_hue);
+	--tint_saturation: 11%;
+	--plain_color: hsl(var(--tint_hue), var(--tint_saturation), 80%);
+	--interactive_color: hsl(var(--tint_hue), var(--tint_saturation), 87%);
+	--interactive_hover_color: hsl(var(--tint_hue), var(--tint_saturation), 93%);
+	--interactive_disabled_color: hsl(var(--tint_hue), var(--tint_saturation), 95%);
+	--interactive_active_color: hsl(var(--tint_hue), var(--tint_saturation), 100%);
 	--font_weight_dk: 900;
 	--font_weight_md: 700;
 	--font_weight_rg: 500;
@@ -21,11 +28,19 @@
 	--font_weight_xlt: 100;
 	--selected_color: var(--blue_color);
 	--active_color: var(--green_color);
-	--color_help: var(--green_color);
+	--help_color: var(--green_color);
+	--error_color: var(--red_color);
 	--link_color_hue: var(--blue_hue);
 	--link_color: hsl(var(--link_color_hue), 61%, 35%);
+	--link_text_decoration: none;
+	--link_accent_text_decoration: underline;
+	--link_font_weight: var(--font_weight_md);
+	/* --selected_text_decoration: underline; */
 	--text_color: hsl(0, 10%, 16%);
-	--text_disabled_color: hsl(0, 10%, 38%);
+	--text_light_color: hsl(0, 10%, 38%);
+	--text_lighter_color: hsl(0, 10%, 62%);
+	--text_disabled_color: var(--text_lighter_color);
+	--line_height: 1.2;
 	--font_size_xxxxxl: 128px;
 	--font_size_xxxxl: 96px;
 	--font_size_xxxl: 64px;
@@ -47,35 +62,49 @@
 	--spacing_xxs: 2px;
 	--spacing_xxxs: 1px;
 	--column_width: 600px;
-	--input_width_rg: 400px;
+	--input_height: var(--spacing_xxl);
+	--input_width_max: 400px;
+	--input_width_min: 100px;
 	--faded_rg: 62%;
 	--faded_md: 38%;
 	--faded_sm: 24%;
 	--faded_xs: 15%;
-	--border_plain_color: rgba(0, 0, 0, var(--faded_md));
+	--border_color: hsla(var(--tint_hue), var(--tint_saturation), 45%, var(--faded_md));
 	--border_light_color: rgba(0, 0, 0, var(--faded_sm));
 	--border_lighter_color: rgba(0, 0, 0, var(--faded_xs));
 	--border_active_color: var(--active_color);
+	--border_width_xxxl: 14px;
+	--border_width_xxl: var(--spacing_md);
+	--border_width_xl: var(--spacing_rg);
 	--border_width_lg: var(--spacing_sm);
 	--border_width_md: var(--spacing_xs);
 	--border_width_rg: var(--spacing_xxs);
 	--border_width_sm: var(--spacing_xxxs);
 	--border_style: solid;
-	--border_accent_width: var(--spacing_sm);
+	--border_accent_width: var(--spacing_xs);
 	--border_accent_style: double;
 	--border_accent2_style: dotted;
-	--button_border_width: var(--border_width_rg);
-	--button_border_style: solid;
+	--border_accent3_style: dashed;
+	--border: var(--border_width_rg) var(--border_style) var(--plain_color);
+	--outline_width: var(--spacing_md);
+	--outline_width2: calc(var(--outline_width) + 2px);
+	--outline_style: var(--border_accent_style);
+	--outline_color: var(--interactive_hover_color);
+	--button_border_width: var(--border_width_lg);
+	--button_border_style: double;
+	--button_border_selected_style: solid;
 	--button_border_disabled_style: dashed;
+	--button_font_weight: var(--font_weight_md);
+	--button_text_color: var(--text_light_color);
 	--input_border_width: var(--button_border_width);
 	--input_border_style: solid;
 	--border_alert: var(--border_accent_width) var(--border_accent_style)
 		hsla(var(--red_hue), 100%, 50%, var(--faded_md));
 	--border_help: var(--border_accent_width) var(--border_accent_style)
 		hsla(var(--green_hue), 100%, 25%, var(--faded_md));
-	--border_plain: var(--border_accent_width) var(--border_accent_style)
-		hsla(0, 0%, 80%, var(--border_plain_color));
-	--button_border_color: var(--border_plain_color);
+	/* --border: var(--border_accent_width) var(--border_accent_style) hsla(0, 0%, 80%, var(--faded_md)); */
+	--button_border_color: var(--border_color);
+	--input_border_color: var(--button_border_color);
 }
 
 html,
@@ -90,7 +119,11 @@ body {
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
-	line-height: 1.2;
+	line-height: var(--line_height);
+}
+
+::selection {
+	background: var(--blue_light_alpha_color);
 }
 
 #svelte {
@@ -101,20 +134,25 @@ body {
 
 a {
 	color: var(--link_color);
-	font-weight: bold;
+	font-weight: var(--link_font_weight);
+	text-decoration: var(--link_text_decoration);
 }
 a:hover {
-	text-decoration: underline;
-	z-index: 2;
+	text-decoration: var(--link_accent_text_decoration);
+	z-index: 3;
 	outline: var(--spacing_rg) var(--border_accent2_style) var(--interactive_hover_color);
 }
 a:focus,
 a:focus:not(:disabled) {
-	z-index: 1;
+	z-index: 2;
 	outline: var(--spacing_rg) var(--border_accent2_style) var(--selected_color);
+	text-decoration: var(--link_accent_text_decoration);
 }
 a:active:not(:disabled) {
 	outline: var(--spacing_rg) var(--border_accent2_style) var(--active_color);
+}
+a.selected {
+	text-decoration: var(--link_accent_text_decoration);
 }
 
 ul {
@@ -129,7 +167,7 @@ li {
 h1,
 h2,
 h3 {
-	font-weight: 300;
+	font-weight: var(--font_weight_lt);
 }
 
 form {
@@ -139,18 +177,53 @@ form {
 }
 
 button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 	font-size: var(--font_size_md);
+	font-weight: var(--button_font_weight);
+	min-height: var(--input_height);
 	padding: var(--spacing_sm) var(--spacing_md);
 	background: var(--interactive_color);
 	border-width: var(--button_border_width);
 	border-color: var(--button_border_color);
 	border-style: var(--button_border_style);
+	color: var(--button_text_color);
+	--outline_width: 0;
+	outline-width: var(--outline_width);
+	outline-style: var(--outline_style);
+	outline-color: var(--outline_color);
+}
+button::before {
+	content: '';
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-width: var(--border_width_rg) 0;
+	border-style: var(--border_style);
+	border-color: var(--border_color);
+	outline-width: var(--border_width_sm);
+	outline-style: var(--border_accent3_style);
+	outline-color: var(--outline_color);
+}
+button:disabled::before {
+	outline-width: 0;
+}
+button.selected::before {
+	--outline_width: var(--border_width_sm);
+	--border_color: var(--selected_color);
 }
 button:hover {
 	background: var(--interactive_hover_color);
 }
 button:active {
 	background: var(--interactive_active_color);
+}
+button.inline {
+	display: inline-block;
 }
 button:disabled,
 input:disabled,
@@ -164,11 +237,10 @@ textarea:disabled {
 button.selected {
 	z-index: 1;
 	border-color: var(--selected_color);
-	border-left-style: var(--button_border_style);
-	border-right-style: var(--button_border_style);
+	border-left-style: var(--button_border_selected_style);
+	border-right-style: var(--button_border_selected_style);
 	color: var(--selected_color);
 	outline: var(--spacing_rg) var(--border_accent_style) var(--interactive_hover_color);
-	text-decoration: underline;
 }
 
 input,
@@ -177,19 +249,36 @@ textarea {
 	appearance: none;
 	font-size: var(--font_size_md);
 	padding: var(--input_padding_v, var(--spacing_sm)) var(--input_padding_h, var(--spacing_md));
-	border-color: var(--button_border_color);
+	border-color: var(--input_border_color);
 	border-style: var(--input_border_style);
 	border-width: var(--input_border_width);
-	width: var(--input_width_rg);
+	width: 100%;
+	max-width: var(--input_width_max);
+	min-width: var(--input_width_min);
+	min-height: var(--input_height);
+	--outline_width: var(--border_width_sm);
+	--outline_style: var(--border_accent3_style);
+	outline-width: var(--outline_width);
+	outline-style: var(--outline_style);
+	outline-color: var(--outline_color);
 }
 
 input[type='checkbox'] {
 	position: relative;
-	width: var(--spacing_xxl);
-	height: var(--spacing_xxl);
+	width: var(--input_height);
+	height: var(--input_height);
+	max-width: var(--input_height);
+	min-width: var(--input_height);
 	--input_padding_v: 0;
 	--input_padding_h: 0;
-	--outline_style: dotted;
+	--outline_style: var(--border_accent2_style);
+}
+input[type='checkbox']:checked {
+	--input_border_color: var(--selected_color);
+}
+input[type='checkbox']:active {
+	/* TODO this isn't applying when focused */
+	--input_border_color: var(--active_color);
 }
 input[type='checkbox']::before {
 	content: var(--content, '•');
@@ -203,7 +292,7 @@ input[type='checkbox']::before {
 	align-items: center;
 	justify-content: center;
 	overflow: var(--overflow, visible);
-	font-size: var(--font_size, var(--font_size_xxxl));
+	font-size: var(--font_size, var(--font_size_xxxxl));
 	color: var(--selected_color);
 	line-height: 1;
 }
@@ -212,18 +301,25 @@ input[type='checkbox']:checked::before {
 }
 
 hr {
-	border-top-width: var(--border_width_rg);
-	border-bottom-width: var(--border_width_rg);
+	border: var(--border_width_md) var(--border_accent_style) var(--border_light_color);
+}
+
+.buttonlike {
+	outline-width: var(--outline_width);
+	outline-style: var(--outline_style);
+	outline-color: var(--outline_color);
 }
 
 .buttonlike:hover:not(:disabled),
 input:hover:not(:disabled),
 textarea:hover:not(:disabled),
 button:hover:not(:disabled) {
-	z-index: 2;
-	/* TODO refactor */
-	outline: var(--outline_width, var(--spacing_rg)) var(--outline_style, var(--border_accent_style))
-		var(--outline_color, var(--interactive_hover_color));
+	z-index: 3;
+	--outline_width: var(--spacing_md);
+	--outline_style: var(--border_accent_style);
+}
+input[type='checkbox']:hover:not(:disabled) {
+	--outline_style: var(--border_accent2_style);
 }
 
 .buttonlike:focus,
@@ -236,10 +332,15 @@ textarea:focus,
 textarea:focus:not(:disabled),
 button:focus,
 button:focus:not(:disabled) {
-	z-index: 1;
-	/* TODO refactor */
-	outline: var(--outline_width, var(--spacing_rg)) var(--outline_style, var(--border_accent_style))
-		var(--outline_color, var(--selected_color));
+	z-index: 2;
+	--input_border_color: var(--selected_color);
+	--outline_color: var(--selected_color);
+	--outline_width: var(--spacing_md);
+	--outline_style: var(--border_accent_style);
+}
+input[type='checkbox']:focus,
+input[type='checkbox']:focus:not(:disabled) {
+	--outline_style: var(--border_accent2_style);
 }
 
 /* TODO I'm failing to get this selector to apply to make it so
@@ -253,9 +354,13 @@ when the user hits spacebar it turns the outline to the active color, like on a 
 input:active:not(:disabled),
 textarea:active:not(:disabled),
 button:active:not(:disabled) {
-	z-index: 2;
-	--outline_width: var(--spacing_md);
+	z-index: 3;
+	--outline_width: calc(var(--spacing_md) + 2px);
 	--outline_color: var(--active_color);
+}
+
+input[type='checkbox']:active:not(:disabled) {
+	--outline_style: var(--border_accent2_style);
 }
 
 label {
@@ -265,7 +370,31 @@ label {
 	padding: var(--spacing_sm) var(--spacing_md);
 }
 
+nav {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+nav button {
+	flex: 1;
+}
+nav a {
+	height: 100%;
+}
+
+.column {
+	max-width: var(--column_width);
+}
+
 blockquote {
 	padding: var(--spacing_lg);
 	border-left: var(--spacing_sm) solid var(--plain_color);
+	color: var(--text_light_color);
+}
+
+code,
+pre {
+	color: var(--text_light_color);
 }

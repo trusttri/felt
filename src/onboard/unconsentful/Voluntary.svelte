@@ -2,7 +2,8 @@
 	import type {Onboard_Data} from '../onboard';
 	import Error_Message from '$lib/Error_Message.svelte';
 	import Help_Message from '$lib/Help_Message.svelte';
-	import Plain_Message from '$lib/Plain_Message.svelte';
+	import Message from '$lib/Message.svelte';
+	import Markup from '$lib/Markup.svelte';
 
 	import {UnreachableError} from '../../utils/error';
 
@@ -15,6 +16,7 @@
 	let signup_error_message: string | null = null;
 	let signup_helper_message: string | null = null;
 
+	// TODO extract to `src/providers` or `src/services` or something?
 	type Service_Provider = 'SOCIAL_CO' | 'TRACKER_CO' | 'TRUSTED_CO';
 	interface Service_Provider_Data {
 		id: Service_Provider;
@@ -29,9 +31,9 @@
 
 	const create = (username: string, _password: string) => {
 		selected_provider = null;
-		create_error_message = `We apologize for the inconvenience${
+		create_error_message = `Whoopsies, our robots can be so clumsy! Sorry${
 			username ? `, ${username}` : ''
-		}! Our systems are acting up. Please click one of the buttons below. :-)`;
+		}! Systems're broken. Please click the buttons below. :-)`;
 	};
 	const signup_with = (provider: Service_Provider_Data) => {
 		console.log('signup_with name', provider, data);
@@ -39,13 +41,13 @@
 			case 'SOCIAL_CO': {
 				selected_provider = providers.SOCIAL_CO;
 				signup_error_message = '';
-				signup_helper_message = `Great! Let's sign you up with TRACKER_CO!`;
+				signup_helper_message = `Great! Let's sign you up with TRACKER_CO`;
 				break;
 			}
 			case 'TRACKER_CO': {
 				selected_provider = providers.TRACKER_CO;
 				signup_error_message = '';
-				signup_helper_message = `Great! Let's sign you up with SOCIAL_CO!`;
+				signup_helper_message = `Great! Let's sign you up with SOCIAL_CO`;
 				break;
 			}
 			case 'TRUSTED_CO': {
@@ -78,26 +80,35 @@
 	let anything_else = '';
 	let anything_else_el: HTMLInputElement;
 
+	$: enable_create_button = !create_error_message;
 	$: enable_signup_button = phone_number && home_address && anything_else;
 </script>
 
 <form>
-	<input bind:value={username} placeholder="username" on:keydown={handle_keydown_create} />
-	<input bind:value={password} placeholder="password" on:keydown={handle_keydown_create} />
-	<button
-		type="button"
-		on:click={() => create(username, password)}
-		disabled={!!create_error_message}>create account</button
+	<input
+		bind:value={username}
+		placeholder="username"
+		on:keydown={handle_keydown_create}
+		disabled={!enable_create_button}
+	/>
+	<input
+		bind:value={password}
+		placeholder="password"
+		on:keydown={handle_keydown_create}
+		disabled={!enable_create_button}
+	/>
+	<button type="button" on:click={() => create(username, password)} disabled={!enable_create_button}
+		>create account</button
 	>
 
 	<div class="message" style="--message_min_height: 100px;">
 		{#if !selected_provider}
 			<Error_Message text={create_error_message} />
 		{:else if create_error_message}
-			<Plain_Message text=":-)" />
+			<Message text=":-)" />
 		{/if}
 		{#if !create_error_message}
-			<Plain_Message text="or" />
+			<Message text="or ↷" />
 		{/if}
 	</div>
 
@@ -108,8 +119,14 @@
 			disabled={!!selected_provider && selected_provider === provider}
 			class:selected={!!selected_provider && selected_provider === provider}
 		>
-			signup with {provider.id}</button
-		>
+			{#if provider.id === 'TRUSTED_CO'}
+				signup with {provider.id}
+			{:else}
+				<Markup>
+					signup with {provider.id}
+				</Markup>
+			{/if}
+		</button>
 	{/each}
 
 	{#if selected_provider === providers.SOCIAL_CO || selected_provider === providers.TRACKER_CO}
@@ -147,13 +164,10 @@
 				type="button"
 				on:click={() => signup(data, selected_provider)}
 				disabled={!enable_signup_button}
-			>
-				<div>call my phone</div>
-				<div>
-					to finish signup with {selected_provider === providers.SOCIAL_CO
-						? providers.TRACKER_CO.id
-						: providers.SOCIAL_CO.id}
-				</div>
+				>call my phone<br />
+				to finish signup<br />with {selected_provider === providers.SOCIAL_CO
+					? providers.TRACKER_CO.id
+					: providers.SOCIAL_CO.id}
 			</button>
 		{/if}
 	{:else if selected_provider}

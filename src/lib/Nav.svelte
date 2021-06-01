@@ -18,19 +18,11 @@
 </nav>
 
 <style>
-	nav {
-		display: flex;
-		justify-content: stretch;
-	}
 	a {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		text-decoration: none;
 		padding: 0 10px;
-	}
-	a:hover {
-		text-decoration: underline;
 	}
 	.selected {
 		opacity: 1;

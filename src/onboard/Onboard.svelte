@@ -15,6 +15,7 @@
 	const {state, send} = onboard;
 	// $: console.log('$state', $state);
 
+	// TODO types
 	$: principle =
 		($state.value as string) in principles
 			? principles[$state.value as Consent_Principle_Type]
@@ -25,8 +26,10 @@
 	<header>
 		{#if principle}
 			<Consent_Principle_View {principle} />
-		{:else}
-			<h2>—</h2>
+		{:else if $state.value === 'begin'}
+			<h2>onboard—</h2>
+		{:else if $state.value === 'end'}
+			<h2>→</h2>
 		{/if}
 	</header>
 	<Nav {state} {send} />
@@ -34,10 +37,10 @@
 		<!-- TODO add a dev mode or smth <section>
 			<Machine_State {state} />
 		</section> -->
-		<section>
+		<section class="column">
 			<Onboard_State consent_type="unconsentful" {state} {send} />
 		</section>
-		<section>
+		<section class="column">
 			<Onboard_State consent_type="consentful" {state} {send} />
 		</section>
 	</div>
@@ -57,19 +60,18 @@
 	.content {
 		height: 100%;
 		display: flex;
+		justify-content: center;
 	}
 	section {
 		height: 100%;
 		flex: 1;
+		flex-shrink: 0; /* keep equal size regardless of content */
 		padding-top: var(--spacing_lg);
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-	}
-	section:first-child {
-		border-right: 1px solid var(--plain_color);
-	}
-	section:nth-child(2) {
-		border-left: 1px solid var(--plain_color);
+		/* TODO should this be on `.column` ? */
+		border-left: var(--border);
+		border-right: var(--border);
 	}
 </style>
