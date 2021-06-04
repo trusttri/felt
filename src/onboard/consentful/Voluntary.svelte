@@ -18,6 +18,6 @@
 
 <form>
 	<input bind:value={username} placeholder="username" />
-	<input bind:value={password} placeholder="password" />
+	<input type="password" bind:value={password} placeholder="password" />
 	<button type="button" on:click={create}>create account</button>
 </form>
