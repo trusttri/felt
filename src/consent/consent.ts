@@ -2,11 +2,13 @@
 
 copied from: https://consentful.systems/
 
-TODO add or rewrite descriptions
+TODO add descriptions
+
+TODO should "affirmative consent" instead of "consent" in some places?
 
 */
 
-export type Consent_Type = 'consentful' | 'unconsentful'; // TODO expand?
+export type Consent_Type = 'consentful' | 'unconsentful';
 
 export type Consent_Principle_Type =
 	| 'voluntary'
@@ -25,21 +27,20 @@ export const consent_principle_types: Consent_Principle_Type[] = [
 
 export interface Consent_Principle {
 	type: Consent_Principle_Type;
-	name: string;
-	description: string; // TODO licensing/copyright/etc
+	description: string;
 }
 
-export const principles_data: Consent_Principle[] = [
-	{type: 'voluntary', name: 'Affirmative consent is voluntary.', description: 'TODO'},
-	{type: 'informed', name: 'Affirmative consent is informed.', description: 'TODO'},
-	{type: 'revertible', name: 'Affirmative consent is revertible.', description: 'TODO'},
-	{type: 'specific', name: 'Affirmative consent is specific.', description: 'TODO'},
-	{type: 'unburdensome', name: 'Affirmative consent is unburdensome.', description: 'TODO'},
+export const consent_principles_data: Consent_Principle[] = [
+	{type: 'voluntary', description: 'TODO'},
+	{type: 'informed', description: 'TODO'},
+	{type: 'revertible', description: 'TODO'},
+	{type: 'specific', description: 'TODO'},
+	{type: 'unburdensome', description: 'TODO'},
 ];
 
-const [voluntary, informed, revertible, specific, unburdensome] = principles_data;
+const [voluntary, informed, revertible, specific, unburdensome] = consent_principles_data;
 
-export const principles: Record<Consent_Principle_Type, Consent_Principle> = {
+export const consent_principles: Record<Consent_Principle_Type, Consent_Principle> = {
 	voluntary,
 	informed,
 	revertible,
