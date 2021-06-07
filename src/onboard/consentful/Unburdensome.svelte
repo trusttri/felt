@@ -22,5 +22,5 @@
 </blockquote>
 
 <button on:click={() => done()}>
-	<Markup>let's go →</Markup>
+	<Markup>let's get started →</Markup>
 </button>
