@@ -19,6 +19,7 @@ const files = [
 	'util/object.ts',
 	'util/obtainable.ts',
 	'util/path.ts',
+	'util/path_parsing.ts',
 	'util/print.ts',
 	'util/process.ts',
 	'util/random.ts',
@@ -34,8 +35,8 @@ export const config: GroConfigCreator = async () => {
 		adapt: async () => [
 			// TODO this is bugged in Gro, could be hackfixed with a simple in-between adapter but w/e --
 			// for now to publish Felt to npm, these two lines need to be swapped
-			(await import('@feltcoop/gro/dist/adapt/gro-adapter-sveltekit-frontend.js')).createAdapter(),
-			// (await import('@feltcoop/gro/dist/adapt/gro-adapter-node-library.js')).createAdapter(),
+			// (await import('@feltcoop/gro/dist/adapt/gro-adapter-sveltekit-frontend.js')).createAdapter(),
+			(await import('@feltcoop/gro/dist/adapt/gro-adapter-node-library.js')).createAdapter(),
 		],
 	};
 	return partial;
