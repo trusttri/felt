@@ -6,9 +6,6 @@
   ([#50](https://github.com/feltcoop/felt/pull/50))
 - **break**: rename `src/util` from `src/utils`
   ([#56](https://github.com/feltcoop/felt/pull/56))
-
-## 0.1.5
-
 - add first pass at onboarding sketch
   ([#32](https://github.com/feltcoop/felt/pull/32))
 
