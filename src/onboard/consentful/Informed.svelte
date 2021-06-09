@@ -8,6 +8,21 @@
 </script>
 
 <Markup>
-	<p>well this is awkward</p>
+	<h1>Here are the terms of use and privacy policy for this sketch:</h1>
+	<ol>
+		<li>this is fake</li>
+		<li>we are not collecting any data, big or little</li>
+		<li>you will not have an account at the end of all this</li>
+	</ol>
 </Markup>
-<button on:click={() => done()}> I agree </button>
+
+<button on:click={() => done()}> I accept ✓ </button>
+
+<style>
+	li {
+		font-size: var(--font_size_lg);
+	}
+	ol {
+		list-style-position: inside;
+	}
+</style>
