@@ -27,7 +27,7 @@
 		{id: 'your bank', selected: true},
 		{id: 'who is this?', selected: true},
 		{id: '1000 spammers', selected: true},
-		{id: 'a friend with whom i will talk about this irl with', selected: true},
+		{id: 'a friend with whom i will talk about this irl', selected: true},
 		{id: 'the friend who invited me in the first place', selected: true},
 		{id: "random stranger who typo'd my address", selected: true}, // TODO reward
 		{id: 'that guy from the thing last week', selected: true},
@@ -60,6 +60,7 @@
 <Checkbox
 	bind:checked={consenting}
 	--content="'☻'"
+	--content_empty="'☹'"
 	--overflow="hidden"
 	--font_size="var(--font_size_xl3)"
 >
@@ -67,8 +68,8 @@
 		<div>Invite your friends</div>
 		<small>and everyone you've ever emailed</small>
 		<div>so they can join the fun!</div>
+		<small>or click the smiley face to choose who to invite</small>
 		<div>We already made an account for them!</div>
-		<small>Or click the smiley face to choose who to invite</small>
 	</Markup>
 </Checkbox>
 
@@ -91,6 +92,7 @@
 				checked={email_contact.selected}
 				on_change={(checked) => toggle_selected(checked, email_contact)}
 				--content="'☻'"
+				--content_empty="'☹'"
 				--overflow="hidden"
 				--font_size="var(--font_size_xl3)"
 			>

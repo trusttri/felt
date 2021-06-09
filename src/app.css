@@ -350,14 +350,26 @@ button:active {
 button.inline {
 	display: inline-block;
 }
-button.selected,
 button:disabled.selected {
 	z-index: 1;
-	border-color: var(--active_color);
 	border-left-style: var(--button_border_selected_style);
 	border-right-style: var(--button_border_selected_style);
 	color: var(--active_color);
-	outline: var(--spacing_rg) var(--border2_style) var(--interactive_hover_color);
+	/* TODO experimental, not sure about these patterns */
+	--button_border_color: var(--active_color);
+	--border_color: var(--active_color);
+	--outline_width: var(--outline2_width);
+	--outline_style: var(--border2_style);
+	--outline_color: var(--interactive_hover_color);
+}
+button.selected:active {
+	--outline_width: var(--outline3_width);
+}
+/* TODO simplify this selector? */
+button:disabled:not(.selected):active {
+	/* TODO hmm maybe delete `button_border_color`? */
+	--border_color: var(--error_color);
+	--button_border_color: var(--error_color);
 }
 
 input,
@@ -390,11 +402,10 @@ input[type='checkbox'] {
 	outline-style: var(--border3_style);
 }
 input[type='checkbox']::before {
-	content: var(--content, '•');
+	content: var(--content_empty, '');
 	position: absolute;
 	left: 0;
 	top: 0;
-	visibility: hidden;
 	width: 100%;
 	height: 100%;
 	display: flex;
@@ -406,7 +417,7 @@ input[type='checkbox']::before {
 	line-height: 1;
 }
 input[type='checkbox']:checked::before {
-	visibility: visible;
+	content: var(--content, '•');
 }
 
 hr {
@@ -489,6 +500,10 @@ textarea:disabled {
 	color: var(--text_disabled_color);
 	border-left-style: var(--button_border_disabled_style);
 	border-right-style: var(--button_border_disabled_style);
+}
+input:disabled:active,
+textarea:disabled:active {
+	--border_color: var(--error_color);
 }
 
 label {
