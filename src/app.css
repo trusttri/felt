@@ -50,16 +50,23 @@
 	--tint_saturation: 11%;
 	--tint_lightness1: 80%;
 	--tint_lightness2: 87%;
-	--tint_lightness3: 93%;
-	--tint_lightness4: 95%;
+	--tint_lightness3: 90%;
+	--tint_lightness4: 94%;
 	--tint_lightness5: 100%;
+	--tint_lightness: var(--tint_lightness1);
 	--tint_dark_lightness: 45%;
 	--tint_alpha: 1;
-	--tint: hsla(var(--tint_hue), var(--tint_saturation), var(--tint_lightness1), var(--tint_alpha));
+	--tint: hsla(var(--tint_hue), var(--tint_saturation), var(--tint_lightness), var(--tint_alpha));
 	--tint_overlay: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness1),
+		var(--faded_rg)
+	);
+	--tint_highlight: hsla(
+		var(--tint_hue),
+		var(--tint_saturation),
+		var(--tint_lightness3),
 		var(--faded_rg)
 	);
 	--interactive_color: hsla(
@@ -71,7 +78,7 @@
 	--interactive_hover_color: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness3),
+		var(--tint_lightness4),
 		var(--alpha)
 	);
 	--interactive_disabled_color: hsla(
@@ -159,8 +166,9 @@
 	--spacing_rg: 8px;
 	--spacing_sm: 6px;
 	--spacing_xs: 4px;
-	--spacing_xxs: 2px;
-	--spacing_xxxs: 1px;
+	--spacing_xs2: 3px;
+	--spacing_xs3: 2px;
+	--spacing_xs4: 1px;
 	--column_width: 600px;
 	--nav_height: var(--spacing_xl);
 	--avatar_height: var(--spacing_xl2);
@@ -175,13 +183,14 @@
 	);
 	--border_light_color: rgba(0, 0, 0, var(--faded_sm));
 	--border_lighter_color: rgba(0, 0, 0, var(--faded_xs));
+	--border_radius_md: 25px;
 	--border_width_xxxl: 14px;
 	--border_width_xxl: var(--spacing_md);
 	--border_width_xl: var(--spacing_rg);
 	--border_width_lg: var(--spacing_sm);
 	--border_width_md: var(--spacing_xs);
-	--border_width_rg: var(--spacing_xxs);
-	--border_width_sm: var(--spacing_xxxs);
+	--border_width_rg: var(--spacing_xs3);
+	--border_width_sm: var(--spacing_xs4);
 	--border2_width: var(--spacing_xs);
 	--border_style: solid;
 	--border2_style: double;
@@ -284,6 +293,9 @@ ul {
 	display: flex;
 	flex-direction: column;
 	list-style: none;
+}
+li {
+	display: flex;
 }
 
 h1,
