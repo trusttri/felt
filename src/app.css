@@ -108,7 +108,7 @@
 	--active_light_bg_lightness: 80%;
 	--active_light_bg_alpha: 0.5;
 	--active_light_bg: hsla(
-		var(--selected_hue),
+		var(--active_hue),
 		var(--active_light_bg_saturation),
 		var(--active_light_bg_lightness),
 		var(--active_light_bg_alpha)
@@ -548,7 +548,12 @@ blockquote {
 	color: var(--text_light_color);
 }
 
-code,
+code {
+	color: var(--text_light_color);
+	background-color: var(--tint_highlight);
+	padding: 0 var(--spacing_sm);
+}
+
 pre {
 	color: var(--text_light_color);
 }

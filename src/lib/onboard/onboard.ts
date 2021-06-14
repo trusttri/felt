@@ -14,6 +14,8 @@ import Unconsentful_Specific from './unconsentful/Specific.svelte';
 import Unconsentful_Unburdensome from './unconsentful/Unburdensome.svelte';
 import type {Consent_Type} from '$lib/consent/consent';
 
+// TODO we're currently using only a fraction of the xstate functionality that we want to
+
 // TODO copypasta with src/xstate/machine.ts
 
 // TODO types
@@ -27,9 +29,20 @@ type Use_Onboard_Machine = typeof to_use_onboard_machine; // TODO this is a hack
 const to_use_onboard_machine = () =>
 	useMachine<Onboard_Context, Onboard_Event, Onboard_Typestate>(null!);
 
+const INITIAL_VALUE = 'begin';
+const STORAGE_KEY = 'felt_onboard_state';
+const load_initial_value = (): string => {
+	if (typeof localStorage === 'undefined') return INITIAL_VALUE;
+	return localStorage.getItem(STORAGE_KEY) || INITIAL_VALUE;
+};
+export const save_state = (value: string): void => {
+	if (typeof localStorage === 'undefined') return;
+	localStorage.setItem(STORAGE_KEY, value);
+};
+
 export const onboard_machine = create_machine({
 	id: 'onboard',
-	initial: 'begin',
+	initial: load_initial_value(),
 	states: {
 		begin: {
 			on: {NEXT: 'voluntary'},
