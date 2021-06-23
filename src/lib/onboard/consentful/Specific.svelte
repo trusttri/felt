@@ -3,6 +3,7 @@
 	import Markup from '$lib/Markup.svelte';
 	import Checkbox from '$lib/Checkbox.svelte';
 	import Tag from '$lib/Tag.svelte';
+	import {arrow_right} from '$lib/icons';
 
 	export let data: Onboard_Data;
 	export let done: () => void;
@@ -47,7 +48,7 @@
 </script>
 
 <Markup>
-	<p>Now it's time to join a place to talk or two!</p>
+	<p>Now it's time to join some communities!</p>
 </Markup>
 
 {#each spaces as space (space.name)}
@@ -68,9 +69,9 @@
 <button on:click={() => done()}>
 	<Markup>
 		{#if selected_count}
-			join these spaces →
+			join these spaces {arrow_right}
 		{:else}
-			maybe later →
+			maybe later {arrow_right}
 		{/if}
 	</Markup>
 </button>
