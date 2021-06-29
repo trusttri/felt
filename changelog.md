@@ -1,5 +1,10 @@
 # changelog
 
+## 0.2.2
+
+- fix another issue with published types
+  ([#86](https://github.com/feltcoop/felt/pull/86))
+
 ## 0.2.1
 
 - fix published types
