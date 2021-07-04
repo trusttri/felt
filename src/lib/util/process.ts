@@ -4,7 +4,6 @@ import type {SpawnOptions, ChildProcess} from 'child_process';
 import {gray, green, red} from './terminal.js';
 import {print_log_label, System_Logger} from './log.js';
 import {print_error, print_key_value} from './print.js';
-import {wait} from './async.js';
 import type {Result} from './types.js';
 
 const log = new System_Logger(print_log_label('process'));
@@ -81,7 +80,7 @@ interface To_Error_Label {
 // Wraps the normal Node `child_process.spawn` with graceful child shutdown behavior.
 // Also returns a convenient `closed` promise.
 // If you only need `closed`, prefer the shorthand function `spawn_process`.
-export const spawn = (
+export const spawn_process = (
 	command: string,
 	args: readonly string[] = [],
 	options?: SpawnOptions,
@@ -97,11 +96,11 @@ export const spawn = (
 	return {closed, child};
 };
 
-// This is just a convenient promise wrapper around `child_process.spawn`
-// that's intended for commands that have an end, not long running-processes.
-// Any more advanced usage should use `spawn` directly to have access to the `child`.
-export const spawn_process = (...args: Parameters<typeof spawn>): Promise<Spawn_Result> =>
-	spawn(...args).closed;
+// This is just a convenient promise wrapper around `spawn_process`
+// that's intended for commands that have an end, not long running-processes like watchers.
+// Any more advanced usage should use `spawn_process` directly for access to the `child` process.
+export const spawn = (...args: Parameters<typeof spawn_process>): Promise<Spawn_Result> =>
+	spawn_process(...args).closed;
 
 export const print_spawn_result = (result: Spawn_Result): string => {
 	if (result.ok) return 'ok';
@@ -113,46 +112,35 @@ export const print_spawn_result = (result: Spawn_Result): string => {
 // TODO might want to expand this API for some use cases - assumes always running
 export interface Restartable_Process {
 	restart: () => void;
+	kill: () => Promise<void>;
 }
 
-const DEFAULT_RESTART_DELAY = 5; // milliseconds
-
-// This handles many concurrent `restart` calls gracefully,
-// and restarts ones after the trailing call, waiting some `delay` in between.
-// It's slightly more complex because `kill` is sync, so we tie things up with promises.
-export const create_restartable_process = (
+// Handles many concurrent `restart` calls gracefully.
+export const spawn_restartable_process = (
 	command: string,
 	args: readonly string[] = [],
 	options?: SpawnOptions,
-	delay = DEFAULT_RESTART_DELAY, // milliseconds to wait after killing a process before restarting
 ): Restartable_Process => {
-	let child: ChildProcess | null = null;
-	let restarting: Promise<void> | null = null;
-	let restarted: (() => void) | null = null;
-	let queuedRestart = false; // do we have a queued trailing restart?
+	let spawned: Spawned_Process | null = null;
+	let restarting: Promise<any> | null = null;
+	const close = async (): Promise<void> => {
+		if (!spawned) return;
+		restarting = spawned.closed;
+		spawned.child.kill();
+		spawned = null;
+		await restarting;
+		restarting = null;
+	};
 	const restart = async (): Promise<void> => {
-		if (restarting) {
-			queuedRestart = true;
-			return restarting;
-		}
-		if (child) {
-			restarting = new Promise<void>((resolve) => (restarted = resolve)).then(() => wait(delay));
-			child.kill();
-			child = null;
-			await restarting;
-		}
-		child = spawn_child_process(command, args, {stdio: 'inherit', ...options});
-		const unregister = register_global_spawn(child);
-		child.once('close', () => {
-			unregister();
-			restarting = null;
-			if (restarted) restarted();
-		});
-		if (queuedRestart) {
-			queuedRestart = false;
-			await restart();
-		}
+		if (restarting) return restarting;
+		await close();
+		spawned = spawn_process(command, args, {stdio: 'inherit', ...options});
+	};
+	const kill = async (): Promise<void> => {
+		if (restarting) await restarting;
+		if (!spawned) return;
+		await close();
 	};
 	restart(); // start on init
-	return {restart};
+	return {restart, kill};
 };
