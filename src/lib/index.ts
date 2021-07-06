@@ -1,8 +1,6 @@
 // public API for `@feltcoop/felt`:
 
 export * as icons from './icons.js';
-
-// types
 export * from './util/types.js';
 
 // TODO consider what top-level public API makes sense -

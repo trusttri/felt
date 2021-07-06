@@ -1,4 +1,4 @@
-import {red, yellow, gray, black, magenta, bgYellow, bgRed} from './terminal.js';
+import {red, yellow, gray, black, magenta, yellow_bg, red_bg} from './terminal.js';
 import {EMPTY_ARRAY, to_array} from './array.js';
 import {to_env_number} from './env.js';
 
@@ -154,12 +154,12 @@ export class Logger extends Dev_Logger {
 	static level: Log_Level = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
 	static error: Log_Level_Defaults = {
-		prefixes: [red('➤'), black(bgRed(' 🞩 error 🞩 ')), red('\n➤')],
-		suffixes: ['\n ', black(bgRed(' 🞩🞩 '))],
+		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
+		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
 	};
 	static warn: Log_Level_Defaults = {
-		prefixes: [yellow('➤'), black(bgYellow(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
-		suffixes: ['\n ', black(bgYellow(' ⚑ '))],
+		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
+		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
 	};
 	static info: Log_Level_Defaults = {
 		prefixes: [gray('➤')],
@@ -196,12 +196,12 @@ export class System_Logger extends Dev_Logger {
 	static level: Log_Level = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
 	static error: Log_Level_Defaults = {
-		prefixes: [red('➤'), black(bgRed(' 🞩 error 🞩 ')), red('\n➤')],
-		suffixes: ['\n ', black(bgRed(' 🞩🞩 '))],
+		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
+		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
 	};
 	static warn: Log_Level_Defaults = {
-		prefixes: [yellow('➤'), black(bgYellow(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
-		suffixes: ['\n ', black(bgYellow(' ⚑ '))],
+		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
+		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
 	};
 	static info: Log_Level_Defaults = {
 		prefixes: [gray('➤')],
