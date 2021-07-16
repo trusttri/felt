@@ -1,5 +1,10 @@
 # changelog
 
+## 0.4.5
+
+- update `ui/style.css`
+  ([#94](https://github.com/feltcoop/felt/pull/94))
+
 ## 0.4.4
 
 - publish `ui/style.css` and `ui/Markup.svelte`
