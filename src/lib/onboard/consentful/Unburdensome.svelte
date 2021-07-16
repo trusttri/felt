@@ -10,17 +10,16 @@
 
 <Markup>
 	<h2>Welcome to Felt.dev!</h2>
+	<blockquote>
+		need help? <a
+			href="/help"
+			on:click|preventDefault={() =>
+				alert(
+					"We're still working on this, but if you actually want help you can email us at team@felt.social",
+				)}>felt.dev/help</a
+		>
+	</blockquote>
 </Markup>
-
-<blockquote>
-	need help? <a
-		href="/help"
-		on:click|preventDefault={() =>
-			alert(
-				"We're still working on this, but if you actually want help you can email us at team@felt.social",
-			)}>felt.dev/help</a
-	>
-</blockquote>
 
 <button on:click={() => done()}>
 	<Markup>let's get started {arrow_right}</Markup>

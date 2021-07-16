@@ -126,5 +126,6 @@
 		/* TODO should this be on `.column` ? */
 		border-left: var(--border);
 		border-right: var(--border);
+		border-bottom: var(--border);
 	}
 </style>

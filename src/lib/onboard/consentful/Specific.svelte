@@ -19,22 +19,22 @@
 		{
 			name: 'Open Source Web Devs',
 			selected: false,
-			tags: ['programming', 'example-code', 'javascript', 'front-end', '1000+ users'],
+			tags: ['programming', 'example code', 'javascript', 'frontend', '1000+ users'],
 		},
 		{
 			name: 'Local Developers',
 			selected: false,
-			tags: ['<1000 users', 'local-politics', 'job-postings', 'dogs', 'beer'],
+			tags: ['<1000 users', 'local politics', 'job postings', 'dogs', 'beer'],
 		},
 		{
 			name: 'Online Academics',
 			selected: false,
-			tags: ['flowers', 'animation', 'dance', '1000+ users', 'computer-human-interaction'],
+			tags: ['flowers', 'animation', 'dance', '1000+ users', 'design'],
 		},
 		{
 			name: 'Gamer Group',
 			selected: false,
-			tags: ['indie-dev', 'social', 'off-topic', '<50 users', 'fanart'],
+			tags: ['indie dev', 'social', 'off topic', '<50 users', 'fanart'],
 		},
 	];
 

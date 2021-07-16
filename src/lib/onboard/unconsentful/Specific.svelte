@@ -2,6 +2,7 @@
 	import type {Onboard_Data} from '$lib/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
+	import {arrow_right} from '$lib/ui/icons';
 
 	export let data: Onboard_Data;
 	export let done: () => void;
@@ -35,5 +36,5 @@
 {/each}
 
 <button on:click={() => done()}>
-	<Markup>let's start posting...</Markup>
+	<Markup>let's start posting {arrow_right}</Markup>
 </button>

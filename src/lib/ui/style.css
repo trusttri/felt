@@ -34,6 +34,11 @@
 		var(--violet_lightness),
 		var(--violet_alpha)
 	);
+	--pink_hue: 335;
+	--pink_saturation: 74%;
+	--pink_lightness: 71%;
+	--pink_alpha: var(--alpha);
+	--pink: hsla(var(--pink_hue), var(--pink_saturation), var(--pink_lightness), var(--pink_alpha));
 	--orange_hue: 24; /* TODO this is too "red", but not sure which direction to go */
 	--orange_saturation: 55%;
 	--orange_lightness: 50%;
@@ -51,55 +56,55 @@
 	--red: hsla(var(--red_hue), var(--red_saturation), var(--red_lightness), var(--red_alpha));
 	--tint_hue: var(--orange_hue);
 	--tint_saturation: 11%;
-	--tint_lightness1: 80%;
-	--tint_lightness2: 87%;
-	--tint_lightness3: 90%;
-	--tint_lightness4: 94%;
-	--tint_lightness5: 100%;
-	--tint_lightness: var(--tint_lightness1);
+	--tint_lightness_1: 80%;
+	--tint_lightness_2: 87%;
+	--tint_lightness_3: 90%;
+	--tint_lightness_4: 94%;
+	--tint_lightness_5: 100%;
+	--tint_lightness: var(--tint_lightness_1);
 	--tint_lightness_dark: 45%;
 	--tint_alpha: 1;
 	--tint: hsla(var(--tint_hue), var(--tint_saturation), var(--tint_lightness), var(--tint_alpha));
 	--tint_overlay: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness1),
+		var(--tint_lightness_1),
 		var(--faded_lg)
 	);
 	--tint_highlight: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness3),
+		var(--tint_lightness_3),
 		var(--faded_md)
 	);
 	--interactive_color: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness2),
+		var(--tint_lightness_2),
 		var(--alpha)
 	);
 	--interactive_color_hover: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness4),
+		var(--tint_lightness_4),
 		var(--alpha)
 	);
 	--interactive_color_disabled: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness4),
+		var(--tint_lightness_4),
 		var(--alpha)
 	);
 	--interactive_color_active: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness5),
+		var(--tint_lightness_5),
 		var(--alpha)
 	);
 	--active_hue: var(--blue_hue);
 	--active_saturation: var(--blue_saturation);
 	--active_lightness: var(--blue_lightness);
-	--active_alpha: var(--alpha); /* TODO maybe add a base alpha/transparency var? */
+	--active_alpha: var(--alpha);
 	/* --active_text_decoration: underline; */
 	--active_color: hsla(
 		var(--active_hue),
@@ -175,7 +180,8 @@
 	--spacing_xs2: 3px;
 	--spacing_xs3: 2px;
 	--spacing_xs4: 1px;
-	--column_width: 600px;
+	--column_width: 640px;
+	--column_width_min: 320px;
 	--nav_height: var(--spacing_xl);
 	--avatar_height: var(--spacing_xl2);
 	--border_color: hsla(
@@ -220,27 +226,17 @@
 	--button_border_style_disabled: dashed;
 	--button_font_weight: var(--font_weight_4);
 	--button_text_color: var(--text_color_light);
-	--input_height: var(--spacing_xl2);
-	--input_width_max: 400px;
-	--input_width_min: 100px;
 	--input_border_color: var(--border_color);
 	--input_border_width: var(--border_width_lg);
 	--input_border_style: solid;
-}
-
-html {
-	height: 100%;
-	width: 100%;
-}
-
-body {
-	height: 100%;
-	width: 100%;
-	font-family: var(--font_family);
-	font-size: var(--font_size_rg);
-	text-rendering: optimizeSpeed;
-	background-color: var(--bg);
-	line-height: var(--line_height);
+	--input_padding_v: var(--spacing_sm);
+	--input_padding_h: var(--spacing_md);
+	--input_width_max: 400px;
+	--input_width_min: 100px;
+	--input_height: var(--spacing_xl2);
+	--input_height_inner: calc(
+		var(--input_height) - 2 * var(--input_border_width) - 2 * var(--input_padding_v)
+	);
 }
 
 *,
@@ -255,10 +251,25 @@ body {
 	background: var(--active_color_bg_light);
 }
 
-#svelte {
+html {
 	height: 100%;
+	width: 100%;
+}
+
+body {
+	min-height: 100%;
+	min-width: 100%;
+	font-family: var(--font_family);
+	font-size: var(--font_size_rg);
+	text-rendering: optimizeSpeed;
+	background-color: var(--bg);
+	line-height: var(--line_height);
+}
+
+#root {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 }
 
 a {
@@ -401,7 +412,7 @@ select {
 	appearance: none;
 	font: inherit;
 	font-size: var(--font_size_md);
-	padding: var(--input_padding_v, var(--spacing_sm)) var(--input_padding_h, var(--spacing_md));
+	padding: var(--input_padding_v) var(--input_padding_h);
 	border-color: var(--input_border_color);
 	border-style: var(--input_border_style);
 	border-width: var(--input_border_width);
@@ -443,6 +454,38 @@ input[type='checkbox']:checked::before {
 	content: var(--content, '•');
 }
 
+input[type='range']::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	height: var(--input_height_inner);
+	width: var(--input_height_inner);
+	border-radius: 50%;
+	background-color: var(--input_border_color);
+	border: 0;
+	/* TODO hack to center the thumb vertically, breaks when input height var changes */
+	margin-top: -9px;
+}
+
+input[type='range']::-moz-range-thumb {
+	appearance: none;
+	height: var(--input_height_inner);
+	width: var(--input_height_inner);
+	border-radius: 50%;
+	background-color: var(--input_border_color);
+	border: 0;
+}
+
+input[type='range']::-webkit-slider-runnable-track {
+	width: 100%;
+	height: var(--input_border_width);
+	background: var(--input_border_color);
+}
+
+input[type='range']::-moz-range-track {
+	width: 100%;
+	height: var(--input_border_width);
+	background: var(--input_border_color);
+}
+
 hr {
 	border: var(--border_width_md) var(--border_style_2) var(--border_color_light);
 }
@@ -469,6 +512,7 @@ textarea:focus,
 button:focus {
 	z-index: 2;
 	--input_border_color: var(--active_color);
+	--button_border_color: var(--active_color);
 	--outline_color: var(--active_color);
 	--outline_style: var(--border_style_2);
 	--outline_width: var(--outline_width_2);
@@ -490,7 +534,7 @@ button:active {
 	z-index: 3;
 	/* TODO do we want these two vars at all? or should we use selectors+vars? */
 	--input_border_color: var(--active_color);
-	--button_border_color: var(--active_color);
+	--button_border_color: var(--active_color_2);
 	--outline_color: var(--active_color);
 	/* TODO ? */
 	/* --outline_width: var(--outline_width_2); */
@@ -534,7 +578,6 @@ label {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: var(--spacing_sm) var(--spacing_md);
 }
 
 nav {
@@ -551,6 +594,7 @@ nav button {
 
 .column {
 	max-width: var(--column_width);
+	min-width: var(--column_width_min);
 }
 
 blockquote {

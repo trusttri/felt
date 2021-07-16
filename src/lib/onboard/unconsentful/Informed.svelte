@@ -17,13 +17,13 @@
 <Markup>
 	<p>
 		<small>
-			Here is our <a href="/privacy" on:click|preventDefault={() => alert('lol')}>
+			Here is our <a href="/privacy" on:click|preventDefault={() => alert('lol "privacy"')}>
 				privacy policy
 			</a>
 			and
 			<a
 				href="/terms"
-				on:click|preventDefault={() => alert('We The Company do whatever we want. Deal?')}
+				on:click|preventDefault={() => alert("Just don't be unprofitable and we're good.")}
 			>
 				terms of service
 			</a>
