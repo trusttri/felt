@@ -33,11 +33,11 @@
 		align-items: stretch;
 	}
 	.icon {
-		padding-right: var(--spacing_rg);
+		padding-right: var(--spacing_sm);
 	}
 	.wrapper {
 		width: 100%;
-		padding: var(--spacing_md) var(--spacing_sm);
+		padding: var(--spacing_nm) var(--spacing_xs);
 		display: flex;
 		border-width: 0 var(--border_width_lg);
 		border-style: var(--border_style_2);
@@ -45,7 +45,7 @@
 	}
 	.wrapper2 {
 		width: 100%;
-		padding: var(--spacing_md) var(--spacing_sm);
+		padding: var(--spacing_nm) var(--spacing_xs);
 		display: flex;
 		align-items: center;
 		justify-content: center;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/onboard/onboard';
+	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Help_Message from '$lib/ui/Help_Message.svelte';
@@ -17,7 +17,10 @@
 <Markup>
 	<p>
 		<small>
-			Here is our <a href="/privacy" on:click|preventDefault={() => alert('lol "privacy"')}>
+			Here is our <a
+				href="/privacy"
+				on:click|preventDefault={() => alert('We "respect" your "privacy".')}
+			>
 				privacy policy
 			</a>
 			and

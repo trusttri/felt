@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/onboard/onboard';
+	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 
 	export let data: Onboard_Data;
@@ -8,7 +8,7 @@
 </script>
 
 <Markup>
-	<p>Here is the privacy policy and terms of service for this sketch:</p>
+	<p>Here's the deal:</p>
 	<ol>
 		<li>this is fake</li>
 		<li>we are not collecting any data, big or little</li>

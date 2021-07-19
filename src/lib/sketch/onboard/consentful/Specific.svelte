@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/onboard/onboard';
+	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
@@ -82,7 +82,7 @@
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: row;
-		padding-left: var(--spacing_rg);
+		padding-left: var(--spacing_sm);
 	}
 	.tag {
 		display: flex;

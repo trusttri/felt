@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/onboard/onboard';
+	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import {arrow_left, arrow_right} from '$lib/ui/icons';
 
@@ -11,19 +11,9 @@
 </script>
 
 <Markup>
-	<p>
-		Before we create your (fake) account, are you sure you understand the deal?
-		<!-- TODO maybe have this button quiz the user? -->
-		<!-- <button
-			disabled
-			title="TODO"
-			class="inline"
-		>
-			test my knowledge!
-		</button> -->
-	</p>
+	<p>Before we create your (fake) account, are you sure you understand the deal?</p>
 	<button on:click={() => back()}> <Markup>{arrow_left} go back and learn</Markup> </button>
-	<blockquote>🌈✨ if you don't know the deal, it's not consentful✨✨</blockquote>
+	<blockquote>🌈✨ if you don't know the deal, it's not consentful</blockquote>
 	<button on:click={() => (understood = true)} disabled={understood}>
 		<Markup>yes I understand {arrow_right}</Markup>
 	</button>

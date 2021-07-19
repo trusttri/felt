@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Consent_Principle} from '$lib/consent/consent';
+	import type {Consent_Principle} from '$lib/sketch/onboard/consent';
 
 	export let principle: Consent_Principle;
 </script>

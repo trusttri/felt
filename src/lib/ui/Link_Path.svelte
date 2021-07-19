@@ -62,8 +62,8 @@
 	/* TODO how to improve this? is global to select slots */
 	.path :global(a) {
 		z-index: 1;
-		padding-right: var(--spacing_sm);
-		padding-left: var(--spacing_sm);
+		padding-right: var(--spacing_xs);
+		padding-left: var(--spacing_xs);
 		display: flex;
 		align-items: center;
 	}

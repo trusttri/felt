@@ -1,18 +1,19 @@
 import {createMachine as create_machine} from 'xstate';
+import type {StateValue} from 'xstate';
 import {useMachine} from '@xstate/svelte'; // TODO should be a type import
 import type {SvelteComponent} from 'svelte';
 
-import Consentful_Voluntary from '$lib/onboard/consentful/Voluntary.svelte';
-import Consentful_Informed from '$lib/onboard/consentful/Informed.svelte';
-import Consentful_Revertible from '$lib/onboard/consentful/Revertible.svelte';
-import Consentful_Specific from '$lib/onboard/consentful/Specific.svelte';
-import Consentful_Unburdensome from '$lib/onboard/consentful/Unburdensome.svelte';
-import Unconsentful_Voluntary from '$lib/onboard/unconsentful/Voluntary.svelte';
-import Unconsentful_Informed from '$lib/onboard/unconsentful/Informed.svelte';
-import Unconsentful_Revertible from '$lib/onboard/unconsentful/Revertible.svelte';
-import Unconsentful_Specific from '$lib/onboard/unconsentful/Specific.svelte';
-import Unconsentful_Unburdensome from '$lib/onboard/unconsentful/Unburdensome.svelte';
-import type {Consent_Type} from '$lib/consent/consent';
+import Consentful_Voluntary from '$lib/sketch/onboard/consentful/Voluntary.svelte';
+import Consentful_Informed from '$lib/sketch/onboard/consentful/Informed.svelte';
+import Consentful_Revertible from '$lib/sketch/onboard/consentful/Revertible.svelte';
+import Consentful_Specific from '$lib/sketch/onboard/consentful/Specific.svelte';
+import Consentful_Unburdensome from '$lib/sketch/onboard/consentful/Unburdensome.svelte';
+import Unconsentful_Voluntary from '$lib/sketch/onboard/unconsentful/Voluntary.svelte';
+import Unconsentful_Informed from '$lib/sketch/onboard/unconsentful/Informed.svelte';
+import Unconsentful_Revertible from '$lib/sketch/onboard/unconsentful/Revertible.svelte';
+import Unconsentful_Specific from '$lib/sketch/onboard/unconsentful/Specific.svelte';
+import Unconsentful_Unburdensome from '$lib/sketch/onboard/unconsentful/Unburdensome.svelte';
+import type {Consent_Type} from '$lib/sketch/onboard/consent';
 
 // TODO we're currently using only a fraction of the xstate functionality that we want to
 
@@ -33,11 +34,18 @@ const INITIAL_VALUE = 'begin';
 const STORAGE_KEY = 'felt_onboard_state';
 const load_initial_value = (): string => {
 	if (typeof localStorage === 'undefined') return INITIAL_VALUE;
-	return localStorage.getItem(STORAGE_KEY) || INITIAL_VALUE;
+	const saved = localStorage.getItem(STORAGE_KEY);
+	try {
+		return saved ? JSON.parse(saved) : INITIAL_VALUE;
+	} catch (err) {
+		// handle bad values in case we change things or have bugs
+		localStorage.removeItem(STORAGE_KEY);
+		return INITIAL_VALUE;
+	}
 };
-export const save_state = (value: string): void => {
+export const save_state = (value: StateValue): void => {
 	if (typeof localStorage === 'undefined') return;
-	localStorage.setItem(STORAGE_KEY, value);
+	localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
 };
 
 export const onboard_machine = create_machine<object>({

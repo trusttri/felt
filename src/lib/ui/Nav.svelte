@@ -5,17 +5,23 @@
 </script>
 
 <!-- TODO probably change to ul/li once styles are right -->
-<Link_Path path={$page.path} selected_path={$page.path}>
-	{#if $page.path === '/'}
-		<a href="/" class="selected">Felt.dev</a>
-	{:else}
-		<a href="/" class="heart">{greenheart}</a>
-	{/if}
-</Link_Path>
+
+<nav>
+	<Link_Path path={$page.path} selected_path={$page.path}>
+		{#if $page.path === '/'}
+			<a href="/" class="selected">Felt.dev</a>
+		{:else}
+			<a href="/" class="heart">{greenheart}</a>
+		{/if}
+	</Link_Path>
+</nav>
 
 <style>
+	nav {
+		font-size: var(--font_size_lg);
+	}
 	.heart {
 		min-width: var(--nav_height);
-		font-size: var(--font_size_rg);
+		font-size: var(--font_size_nm);
 	}
 </style>

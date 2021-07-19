@@ -8,8 +8,8 @@
 
 <style>
 	span {
-		margin: var(--spacing_xs3);
-		padding: 0 var(--spacing_rg);
+		margin: var(--spacing_xs4);
+		padding: 0 var(--spacing_sm);
 		background-color: var(--tint_highlight);
 		white-space: nowrap;
 		border-radius: var(--border_radius_md);

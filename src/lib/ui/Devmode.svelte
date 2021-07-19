@@ -20,8 +20,8 @@
 	button {
 		position: absolute;
 		right: 0;
-		top: 0;
-		opacity: var(--faded_rg);
+		bottom: 0;
+		opacity: var(--faded_3);
 	}
 	button::after {
 		content: 'devmode';

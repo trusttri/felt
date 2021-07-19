@@ -1,13 +1,20 @@
-/* TODO still a work in progress */
+/*
+
+TODO still a work in progress
+
+- probably remove alpha from all of the base colors
+- probably use rem instead of px for everything (except borders?)
+
+*/
 :root {
 	color-scheme: light dark;
 
 	--alpha: 0.89;
-	--faded_lg: 81%;
-	--faded_md: 62%;
-	--faded_rg: 38%;
-	--faded_sm: 24%;
-	--faded_xs: 15%;
+	--faded_1: 81%;
+	--faded_2: 62%;
+	--faded_3: 38%;
+	--faded_4: 24%;
+	--faded_5: 15%;
 	--bg: #fff;
 	--blue_hue: 210;
 	--blue_saturation: 55%;
@@ -39,6 +46,16 @@
 	--pink_lightness: 71%;
 	--pink_alpha: var(--alpha);
 	--pink: hsla(var(--pink_hue), var(--pink_saturation), var(--pink_lightness), var(--pink_alpha));
+	--brown_hue: 32;
+	--brown_saturation: 100%;
+	--brown_lightness: 22%;
+	--brown_alpha: var(--alpha);
+	--brown: hsla(
+		var(--brown_hue),
+		var(--brown_saturation),
+		var(--brown_lightness),
+		var(--brown_alpha)
+	);
 	--orange_hue: 24; /* TODO this is too "red", but not sure which direction to go */
 	--orange_saturation: 55%;
 	--orange_lightness: 50%;
@@ -69,13 +86,13 @@
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness_1),
-		var(--faded_lg)
+		var(--faded_1)
 	);
 	--tint_highlight: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness_3),
-		var(--faded_md)
+		var(--faded_2)
 	);
 	--interactive_color: hsla(
 		var(--tint_hue),
@@ -144,7 +161,7 @@
 	--font_size_xl: 32px;
 	--font_size_lg: 24px;
 	--font_size_md: 20px;
-	--font_size_rg: 16px;
+	--font_size_nm: 16px;
 	--font_size_sm: 13px;
 	--font_size_xs: 10px;
 	--font_weight_5: 900;
@@ -162,7 +179,7 @@
 	--link_text_decoration_selected: underline;
 	--link_color_active: var(--text_color);
 	--link_cursor: default; /* because we have other visual affordances */
-	/* TODO maybe spacing 1-N ? */
+	/* TODO maybe instead of these round 2^N values, use a formula */
 	--spacing_xl9: 512px;
 	--spacing_xl8: 384px;
 	--spacing_xl7: 256px;
@@ -173,13 +190,14 @@
 	--spacing_xl2: 48px;
 	--spacing_xl: 32px;
 	--spacing_lg: 20px;
-	--spacing_md: 10px;
-	--spacing_rg: 8px;
-	--spacing_sm: 6px;
-	--spacing_xs: 4px;
-	--spacing_xs2: 3px;
-	--spacing_xs3: 2px;
-	--spacing_xs4: 1px;
+	--spacing_md: 14px;
+	--spacing_nm: 10px;
+	--spacing_sm: 8px;
+	--spacing_xs: 6px;
+	--spacing_xs2: 4px;
+	--spacing_xs3: 3px;
+	--spacing_xs4: 2px;
+	--spacing_xs5: 1px;
 	--column_width: 640px;
 	--column_width_min: 320px;
 	--nav_height: var(--spacing_xl);
@@ -188,32 +206,31 @@
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness_dark),
-		var(--faded_rg)
+		var(--faded_3)
 	);
-	--border_color_light: rgba(0, 0, 0, var(--faded_sm));
-	--border_color_lighter: rgba(0, 0, 0, var(--faded_xs));
+	--border_color_light: rgba(0, 0, 0, var(--faded_4));
+	--border_color_lighter: rgba(0, 0, 0, var(--faded_5));
 	--border_radius_md: 25px;
 	--border_width_xxxl: 14px;
-	--border_width_xxl: var(--spacing_md);
-	--border_width_xl: var(--spacing_rg);
-	--border_width_lg: var(--spacing_sm);
-	--border_width_md: var(--spacing_xs);
-	--border_width_rg: var(--spacing_xs3);
-	--border_width_sm: var(--spacing_xs4);
-	--border_width_2: var(--spacing_xs);
+	--border_width_xxl: var(--spacing_nm);
+	--border_width_xl: var(--spacing_sm);
+	--border_width_lg: var(--spacing_xs);
+	--border_width_md: var(--spacing_xs2);
+	--border_width_nm: var(--spacing_xs4);
+	--border_width_sm: var(--spacing_xs5);
 	--border_style: solid;
 	--border_style_2: double;
 	--border_style_3: dotted;
 	--border_style_4: dashed;
-	--border: var(--border_width_rg) var(--border_style) var(--tint);
-	--border_alert: var(--border_width_2) var(--border_style_2)
-		hsla(var(--red_hue), 100%, 50%, var(--faded_rg));
-	--border_help: var(--border_width_2) var(--border_style_2)
-		hsla(var(--green_hue), 100%, 25%, var(--faded_rg));
-	/* --border: var(--border_width_2) var(--border_style_2) hsla(0, 0%, 80%, var(--faded_rg)); */
+	--border: var(--border_width_nm) var(--border_style) var(--tint);
+	--border_alert: var(--border_width_md) var(--border_style_2)
+		hsla(var(--red_hue), 100%, 50%, var(--faded_3));
+	--border_help: var(--border_width_md) var(--border_style_2)
+		hsla(var(--green_hue), 100%, 25%, var(--faded_3));
+	/* --border: var(--border_width_md) var(--border_style_2) hsla(0, 0%, 80%, var(--faded_3)); */
 	--outline_width: 0;
-	--outline_width_2: var(--spacing_rg);
-	--outline_width_3: var(--spacing_md);
+	--outline_width_2: var(--spacing_sm);
+	--outline_width_3: var(--spacing_nm);
 	--outline_style: var(--border_style_2);
 	--outline_style_2: var(--border_style_3);
 	--outline_color: var(--interactive_color_hover);
@@ -229,8 +246,8 @@
 	--input_border_color: var(--border_color);
 	--input_border_width: var(--border_width_lg);
 	--input_border_style: solid;
-	--input_padding_v: var(--spacing_sm);
-	--input_padding_h: var(--spacing_md);
+	--input_padding_v: var(--spacing_xs);
+	--input_padding_h: var(--spacing_nm);
 	--input_width_max: 400px;
 	--input_width_min: 100px;
 	--input_height: var(--spacing_xl2);
@@ -260,7 +277,7 @@ body {
 	min-height: 100%;
 	min-width: 100%;
 	font-family: var(--font_family);
-	font-size: var(--font_size_rg);
+	font-size: var(--font_size_nm);
 	text-rendering: optimizeSpeed;
 	background-color: var(--bg);
 	line-height: var(--line_height);
@@ -346,10 +363,11 @@ button {
 	align-items: center;
 	justify-content: center;
 	font: inherit;
+	/* TODO should `font-size` inherit? */
 	font-size: var(--font_size_md);
 	font-weight: var(--button_font_weight);
 	min-height: var(--input_height);
-	padding: var(--spacing_sm) var(--spacing_md);
+	padding: var(--spacing_xs) var(--spacing_nm);
 	background: var(--interactive_color);
 	border-width: var(--button_border_width);
 	border-color: var(--button_border_color);
@@ -387,6 +405,7 @@ button.inline {
 button:disabled.selected {
 	border-left-style: var(--button_border_style_selected);
 	border-right-style: var(--button_border_style_selected);
+	z-index: 1;
 	color: var(--active_color);
 	/* TODO experimental, not sure about these patterns */
 	--button_border_color: var(--active_color);
@@ -560,7 +579,7 @@ input:active {
 button:disabled,
 input:disabled,
 textarea:disabled {
-	z-index: 0;
+	z-index: 1;
 	--outline_width: 0;
 	--input_border_color: var(--border_color);
 	opacity: 1; /* for some browsers */
@@ -593,13 +612,16 @@ nav button {
 }
 
 .column {
+	width: 100%;
 	max-width: var(--column_width);
 	min-width: var(--column_width_min);
 }
 
+/* TODO does this belong in `Markup.svelte` ? */
 blockquote {
-	padding: var(--spacing_lg);
-	border-left: var(--spacing_sm) solid var(--tint);
+	padding: var(--spacing_xs) 0 var(--spacing_xs) var(--spacing_lg);
+	margin-bottom: var(--spacing_nm);
+	border-left: var(--border_width_md) solid var(--tint);
 	color: var(--text_color_light);
 }
 
@@ -607,7 +629,7 @@ code {
 	font-family: var(--font_family_mono);
 	color: var(--text_color_light);
 	background-color: var(--tint_highlight);
-	padding: 0 var(--spacing_sm);
+	padding: 0 var(--spacing_xs);
 }
 
 pre {

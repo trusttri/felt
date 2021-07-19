@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/onboard/onboard';
+	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Help_Message from '$lib/ui/Help_Message.svelte';
@@ -65,10 +65,8 @@
 	--font_size="var(--font_size_xl3)"
 >
 	<Markup>
-		<div>Invite your friends</div>
-		<small>and everyone you've ever emailed</small>
+		<div>Invite your friends <small>and everyone you've ever emailed</small></div>
 		<div>so they can join the fun!</div>
-		<small>or click the smiley face to choose who to invite</small>
 		<div>We already made an account for them!</div>
 	</Markup>
 </Checkbox>

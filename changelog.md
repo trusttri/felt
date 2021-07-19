@@ -1,5 +1,10 @@
 # changelog
 
+## 0.4.6
+
+- update `ui/style.css`
+  ([#95](https://github.com/feltcoop/felt/pull/95))
+
 ## 0.4.5
 
 - update `ui/style.css`

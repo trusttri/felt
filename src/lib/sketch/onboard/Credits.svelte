@@ -9,6 +9,6 @@
 	(research by <a href="https://imjane.net"> Jane Im </a> and colleagues) ✨
 </p>
 <p>
-	Open source permissive code at
-	<a href="https://github.com/feltcoop/felt"> github.com/feltcoop/felt </a> 💚
+	Free and open source 💚
+	<a href="https://github.com/feltcoop/felt"> github.com/feltcoop/felt </a>
 </p>

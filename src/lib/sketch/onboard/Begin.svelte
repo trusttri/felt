@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {Onboard_Send} from '$lib/onboard/onboard';
+	import type {Onboard_Send} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
-	import Credits from '$lib/onboard/Credits.svelte';
+	import Credits from '$lib/sketch/onboard/Credits.svelte';
 	import {arrow_right} from '$lib/ui/icons';
 
 	export let send: Onboard_Send;
@@ -13,19 +13,17 @@
 	</h1>
 	<p>This sketch is a proof of concept, side-by-side comparsion between two onboarding flows:</p>
 	<ul>
-		<li>The left column uses dark design patterns that create an unconsentful experience.</li>
+		<li>one column uses dark design patterns that create an unconsentful experience</li>
 		<li>
-			The one on the right uses the affirmative consent design framework described by
-			<a href="https://consentful.systems">consentful.systems</a>
+			the other column is designed with the affirmative consent framework described by <a
+				href="https://consentful.systems">consentful.systems</a
+			>
 		</li>
 	</ul>
 	<p>
-		The goal here is to compare and contrast the two design patterns. During the experience, ask
-		yourself: which would you prefer?
+		The goal here is to compare and contrast the two perspectives. We hope you feel the difference!
 	</p>
-
 	<button on:click={() => send('NEXT')}> click here to start {arrow_right} </button>
-
 	<Credits />
 </Markup>
 

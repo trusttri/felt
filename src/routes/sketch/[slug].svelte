@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Onboard from '$lib/onboard/Onboard.svelte';
+	import Onboard from '$lib/sketch/onboard/Onboard.svelte';
 </script>
 
 <Onboard />
