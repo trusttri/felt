@@ -14,10 +14,12 @@ const files = [
 	// utils
 	'lib/util/array.ts',
 	'lib/util/async.ts',
+	'lib/util/counter.ts',
 	'lib/util/env.ts',
 	'lib/util/equal.ts',
 	'lib/util/error.ts',
 	'lib/util/function.ts',
+	'lib/util/id.ts',
 	'lib/util/json.ts',
 	'lib/util/lock.ts',
 	'lib/util/log.ts',
@@ -34,7 +36,6 @@ const files = [
 	'lib/util/terminal.ts',
 	'lib/util/timings.ts',
 	'lib/util/types.ts',
-	'lib/util/uuid.ts',
 ];
 
 export const config: Gro_Config_Creator = async () => {

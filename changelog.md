@@ -1,7 +1,11 @@
 # changelog
 
-## 0.4.6
+## 0.5.0
 
+- **break**: merge `util/uuid.ts` into `util/id.ts`
+  ([#96](https://github.com/feltcoop/felt/pull/96))
+- add `util/id.ts` and `util/counter.ts`
+  ([#96](https://github.com/feltcoop/felt/pull/96))
 - update `ui/style.css`
   ([#95](https://github.com/feltcoop/felt/pull/95))
 
