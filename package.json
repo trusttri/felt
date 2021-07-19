@@ -21,9 +21,9 @@
     "kleur": "^4.1.4"
   },
   "devDependencies": {
-    "@feltcoop/gro": "^0.34.2",
+    "@feltcoop/gro": "^0.34.3",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
-    "@sveltejs/kit": "^1.0.0-next.120",
+    "@sveltejs/kit": "^1.0.0-next.131",
     "@xstate/svelte": "^0.1.0",
     "prettier": "^2.3.2",
     "prettier-plugin-svelte": "^2.3.1",
