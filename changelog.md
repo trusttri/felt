@@ -1,5 +1,10 @@
 # changelog
 
+## 0.5.1
+
+- publish `util/dom.ts` and `util/regexp.ts`
+  ([#99](https://github.com/feltcoop/felt/pull/99))
+
 ## 0.5.0
 
 - **break**: merge `util/uuid.ts` into `util/id.ts`
