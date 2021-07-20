@@ -1,6 +1,9 @@
 <script lang="ts">
 	import Felt_Heart from '$lib/ui/Felt_Heart.svelte';
 	import {arrow_left, arrow_right} from '$lib/ui/icons';
+
+	import {to_uuid} from '$lib/util/id';
+	console.log('to_uuid()', to_uuid());
 </script>
 
 <h1>@feltcoop/felt</h1>

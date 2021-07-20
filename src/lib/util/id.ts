@@ -1,4 +1,6 @@
-import {v4} from '@lukeed/uuid';
+// TODO this should be imported from '@lukeed/uuid/secure'
+// but Vite currently fails to bundle it for the browser
+import {v4} from '@lukeed/uuid/secure';
 
 import type {Flavored} from '$lib/util/types.js';
 import {to_counter} from '$lib/util/counter';
