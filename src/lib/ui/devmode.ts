@@ -2,7 +2,7 @@ import {getContext, setContext} from 'svelte';
 import {writable} from 'svelte/store';
 import type {Writable} from 'svelte/store';
 
-const KEY = {};
+const KEY = Symbol();
 
 export const get_devmode = (): Writable<boolean> => getContext(KEY);
 

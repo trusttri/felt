@@ -8,6 +8,8 @@
   ([#96](https://github.com/feltcoop/felt/pull/96))
 - update `ui/style.css`
   ([#95](https://github.com/feltcoop/felt/pull/95))
+- publish `ui/devmode.ts` and `ui/Devmode.svelte`
+  ([#98](https://github.com/feltcoop/felt/pull/98))
 
 ## 0.4.5
 

@@ -12,14 +12,14 @@
 		Welcome to the <a href="/">Felt.dev</a> consentful systems onboarding sketch!
 	</h1>
 	<p>This sketch is a proof of concept, side-by-side comparsion between two onboarding flows:</p>
-	<ul>
+	<ol>
 		<li>one column uses dark design patterns that create an unconsentful experience</li>
 		<li>
 			the other column is designed with the affirmative consent framework described by <a
 				href="https://consentful.systems">consentful.systems</a
 			>
 		</li>
-	</ul>
+	</ol>
 	<p>
 		The goal here is to compare and contrast the two perspectives. We hope you feel the difference!
 	</p>

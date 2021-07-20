@@ -7,6 +7,8 @@ const files = [
 	// deep imports available to external consumers
 
 	// ui components, styles, etc
+	'lib/ui/Devmode.svelte',
+	'lib/ui/devmode.ts',
 	'lib/ui/Markup.svelte',
 	'lib/ui/Pending_Animation.svelte',
 	'lib/ui/style.css',
