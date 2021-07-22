@@ -23,15 +23,10 @@
 	<p>
 		The goal here is to compare and contrast the two perspectives. We hope you feel the difference!
 	</p>
-	<button on:click={() => send('NEXT')}> click here to start {arrow_right} </button>
+	<button on:click={() => send('NEXT')}>
+		<Markup>
+			click here to start {arrow_right}
+		</Markup>
+	</button>
 	<Credits />
 </Markup>
-
-<style>
-	button {
-		font-size: var(--spacing_xl2);
-		font-weight: var(--font_weight_2);
-		text-align: center;
-		color: var(--text_color_disabled);
-	}
-</style>

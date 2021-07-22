@@ -55,59 +55,53 @@
 <Markup>
 	<p>You're almost there!</p>
 	<p>Let's spread the good news:</p>
-</Markup>
 
-<Checkbox
-	bind:checked={consenting}
-	--content="'☻'"
-	--content_empty="'☹'"
-	--overflow="hidden"
-	--font_size="var(--font_size_xl3)"
->
-	<Markup>
-		<div>Invite your friends <small>and everyone you've ever emailed</small></div>
-		<div>so they can join the fun!</div>
-		<div>We already made an account for them!</div>
-	</Markup>
-</Checkbox>
+	<Checkbox
+		bind:checked={consenting}
+		--content="'☻'"
+		--content_empty="'☹'"
+		--overflow="hidden"
+		--font_size="var(--font_size_xl)"
+	>
+		<Markup>
+			<div>Invite your friends <small>and everyone you've ever emailed</small></div>
+			<div>so they can join the fun!</div>
+			<div>We already made an account for them!</div>
+		</Markup>
+	</Checkbox>
 
-<button on:click={() => blast_emails()}>
-	<Markup>
-		email blast {selected_count} contacts!
-	</Markup>
-</button>
+	<button on:click={() => blast_emails()}>
+		<Markup>
+			email blast {selected_count} contacts!
+		</Markup>
+	</button>
 
-{#if consenting}
-	<Message text=":-)" />
-{:else}
-	<Help_Message text="No worries! We'll email only these contacts:" />
-{/if}
-
-<form>
-	{#if !consenting}
-		{#each email_contacts as email_contact (email_contact.id)}
-			<Checkbox
-				checked={email_contact.selected}
-				on_change={(checked) => toggle_selected(checked, email_contact)}
-				--content="'☻'"
-				--content_empty="'☹'"
-				--overflow="hidden"
-				--font_size="var(--font_size_xl3)"
-			>
-				{email_contact.id}
-			</Checkbox>
-		{/each}
+	{#if consenting}
+		<Message text=":-)" />
+	{:else}
+		<Help_Message text="No worries! We'll email only these contacts:" />
 	{/if}
-</form>
+
+	<form>
+		{#if !consenting}
+			{#each email_contacts as email_contact (email_contact.id)}
+				<Checkbox
+					checked={email_contact.selected}
+					on_change={(checked) => toggle_selected(checked, email_contact)}
+					--content="'☻'"
+					--content_empty="'☹'"
+					--overflow="hidden"
+					--font_size="var(--font_size_xl)"
+				>
+					{email_contact.id}
+				</Checkbox>
+			{/each}
+		{/if}
+	</form>
+</Markup>
 
 <style>
 	form {
 		align-items: stretch;
-	}
-	p {
-		font-size: var(--font_size_md);
-	}
-	small {
-		font-size: var(--font_size_xs);
 	}
 </style>

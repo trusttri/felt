@@ -16,7 +16,7 @@
 	}
 	ul {
 		display: grid;
-		grid: auto-flow / repeat(auto-fill, 200px);
+		grid: auto-flow / repeat(auto-fill, 20rem);
 		text-align: left;
 	}
 </style>

@@ -28,10 +28,10 @@
 		bottom: 0;
 		opacity: var(--faded_3);
 	}
-	button::after {
+	button::before {
 		content: '⚙';
 	}
-	button:hover::after {
+	button:hover::before {
 		content: '✕';
 	}
 </style>

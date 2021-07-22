@@ -27,11 +27,11 @@
 </Markup>
 
 <style>
-	.button-text::after {
+	.button-text::before {
 		/* TODO arrow_right var -- as a CSS var? or just refactor? */
 		content: 'continue →';
 	}
-	button:hover .button-text::after {
+	button:hover .button-text::before {
 		content: 'do I have a choice?';
 	}
 </style>

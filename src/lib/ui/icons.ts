@@ -100,3 +100,5 @@ export const rocket = '🚀';
 
 export const arrow_left = '←';
 export const arrow_right = '→';
+export const point_left = '👈';
+export const point_right = '👉';

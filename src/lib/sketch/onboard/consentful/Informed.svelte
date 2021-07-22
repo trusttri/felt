@@ -14,9 +14,8 @@
 		<li>we are not collecting any data, big or little</li>
 		<li>you will not have an account at the end of all this</li>
 	</ol>
+	<button on:click={() => done()}> <Markup>I accept ✓</Markup> </button>
 </Markup>
-
-<button on:click={() => done()}> <Markup>I accept ✓</Markup> </button>
 
 <style>
 	p {

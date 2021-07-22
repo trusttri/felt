@@ -49,32 +49,32 @@
 
 <Markup>
 	<p>Now it's time to join some communities!</p>
+
+	{#each spaces as space (space.name)}
+		<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
+			<div>
+				{space.name}
+			</div>
+			<ul class="tags">
+				{#each space.tags as tag (tag)}
+					<li class="tag">
+						<Tag name={tag} />
+					</li>
+				{/each}
+			</ul>
+		</Checkbox>
+	{/each}
+
+	<button on:click={() => done()}>
+		<Markup>
+			{#if selected_count}
+				join these spaces {arrow_right}
+			{:else}
+				maybe later {arrow_right}
+			{/if}
+		</Markup>
+	</button>
 </Markup>
-
-{#each spaces as space (space.name)}
-	<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
-		<div>
-			{space.name}
-		</div>
-		<ul class="tags">
-			{#each space.tags as tag (tag)}
-				<li class="tag">
-					<Tag name={tag} />
-				</li>
-			{/each}
-		</ul>
-	</Checkbox>
-{/each}
-
-<button on:click={() => done()}>
-	<Markup>
-		{#if selected_count}
-			join these spaces {arrow_right}
-		{:else}
-			maybe later {arrow_right}
-		{/if}
-	</Markup>
-</button>
 
 <style>
 	.tags {
@@ -86,5 +86,6 @@
 	}
 	.tag {
 		display: flex;
+		list-style: none;
 	}
 </style>

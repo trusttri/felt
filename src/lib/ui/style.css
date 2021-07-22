@@ -1,13 +1,8 @@
-/*
-
-TODO still a work in progress
-
-- probably remove alpha from all of the base colors
-- probably use rem instead of px for everything (except borders?)
-
-*/
+/* still a work in progress */
 :root {
-	color-scheme: light dark;
+	/* TODO support dark mode */
+	/* color-scheme: light dark; */
+	font-size: 62.5%;
 
 	--alpha: 0.89;
 	--faded_1: 81%;
@@ -19,58 +14,31 @@ TODO still a work in progress
 	--blue_hue: 210;
 	--blue_saturation: 55%;
 	--blue_lightness: 50%;
-	--blue_alpha: var(--alpha);
-	--blue: hsla(var(--blue_hue), var(--blue_saturation), var(--blue_lightness), var(--blue_alpha));
+	--blue: hsl(var(--blue_hue), var(--blue_saturation), var(--blue_lightness));
 	--green_hue: 120;
 	--green_saturation: 55%;
 	--green_lightness: 42%;
-	--green_alpha: var(--alpha);
-	--green: hsla(
-		var(--green_hue),
-		var(--green_saturation),
-		var(--green_lightness),
-		var(--green_alpha)
-	);
+	--green: hsl(var(--green_hue), var(--green_saturation), var(--green_lightness));
 	--violet_hue: 260;
 	--violet_saturation: 50%;
 	--violet_lightness: 50%;
-	--violet_alpha: var(--alpha);
-	--violet: hsla(
-		var(--violet_hue),
-		var(--violet_saturation),
-		var(--violet_lightness),
-		var(--violet_alpha)
-	);
+	--violet: hsl(var(--violet_hue), var(--violet_saturation), var(--violet_lightness));
 	--pink_hue: 335;
 	--pink_saturation: 74%;
 	--pink_lightness: 71%;
-	--pink_alpha: var(--alpha);
-	--pink: hsla(var(--pink_hue), var(--pink_saturation), var(--pink_lightness), var(--pink_alpha));
+	--pink: hsl(var(--pink_hue), var(--pink_saturation), var(--pink_lightness));
 	--brown_hue: 32;
 	--brown_saturation: 100%;
 	--brown_lightness: 22%;
-	--brown_alpha: var(--alpha);
-	--brown: hsla(
-		var(--brown_hue),
-		var(--brown_saturation),
-		var(--brown_lightness),
-		var(--brown_alpha)
-	);
-	--orange_hue: 24; /* TODO this is too "red", but not sure which direction to go */
+	--brown: hsl(var(--brown_hue), var(--brown_saturation), var(--brown_lightness));
+	--orange_hue: 24;
 	--orange_saturation: 55%;
 	--orange_lightness: 50%;
-	--orange_alpha: var(--alpha);
-	--orange: hsla(
-		var(--orange_hue),
-		var(--orange_saturation),
-		var(--orange_lightness),
-		var(--orange_alpha)
-	);
+	--orange: hsl(var(--orange_hue), var(--orange_saturation), var(--orange_lightness));
 	--red_hue: 0; /* TODO this is too "red", but not sure which direction to go */
 	--red_saturation: 50%;
 	--red_lightness: 50%;
-	--red_alpha: var(--alpha);
-	--red: hsla(var(--red_hue), var(--red_saturation), var(--red_lightness), var(--red_alpha));
+	--red: hsl(var(--red_hue), var(--red_saturation), var(--red_lightness));
 	--tint_hue: var(--orange_hue);
 	--tint_saturation: 11%;
 	--tint_lightness_1: 80%;
@@ -94,30 +62,14 @@ TODO still a work in progress
 		var(--tint_lightness_3),
 		var(--faded_2)
 	);
-	--interactive_color: hsla(
+	--interactive_color: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_3));
+	--interactive_color_hover: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_4));
+	--interactive_color_disabled: hsl(
 		var(--tint_hue),
 		var(--tint_saturation),
-		var(--tint_lightness_2),
-		var(--alpha)
+		var(--tint_lightness_4)
 	);
-	--interactive_color_hover: hsla(
-		var(--tint_hue),
-		var(--tint_saturation),
-		var(--tint_lightness_4),
-		var(--alpha)
-	);
-	--interactive_color_disabled: hsla(
-		var(--tint_hue),
-		var(--tint_saturation),
-		var(--tint_lightness_4),
-		var(--alpha)
-	);
-	--interactive_color_active: hsla(
-		var(--tint_hue),
-		var(--tint_saturation),
-		var(--tint_lightness_5),
-		var(--alpha)
-	);
+	--interactive_color_active: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_5));
 	--active_hue: var(--blue_hue);
 	--active_saturation: var(--blue_saturation);
 	--active_lightness: var(--blue_lightness);
@@ -150,20 +102,20 @@ TODO still a work in progress
 	--font_family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
 		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	--font_family_mono: 'Fira Mono', monospace;
-	--font_size_xl9: 512px;
-	--font_size_xl8: 384px;
-	--font_size_xl7: 256px;
-	--font_size_xl6: 196px;
-	--font_size_xl5: 128px;
-	--font_size_xl4: 96px;
-	--font_size_xl3: 64px;
-	--font_size_xl2: 48px;
-	--font_size_xl: 32px;
-	--font_size_lg: 24px;
-	--font_size_md: 20px;
-	--font_size_nm: 16px;
-	--font_size_sm: 13px;
-	--font_size_xs: 10px;
+	--font_size_xs: 0.989rem;
+	--font_size_sm: 1.258rem;
+	--font_size_nm: 1.6rem;
+	--font_size_md: 2.035rem;
+	--font_size_lg: 2.589rem;
+	--font_size_xl: 3.293rem;
+	--font_size_xl2: 4.189rem;
+	--font_size_xl3: 5.328rem;
+	--font_size_xl4: 6.778rem;
+	--font_size_xl5: 8.621rem;
+	--font_size_xl6: 10.967rem;
+	--font_size_xl7: 13.95rem;
+	--font_size_xl8: 17.744rem;
+	--font_size_xl9: 22.571rem;
 	--font_weight_5: 900;
 	--font_weight_4: 700;
 	--font_weight_3: 500;
@@ -179,25 +131,26 @@ TODO still a work in progress
 	--link_text_decoration_selected: underline;
 	--link_color_active: var(--text_color);
 	--link_cursor: default; /* because we have other visual affordances */
-	/* TODO maybe instead of these round 2^N values, use a formula */
-	--spacing_xl9: 512px;
-	--spacing_xl8: 384px;
-	--spacing_xl7: 256px;
-	--spacing_xl6: 196px;
-	--spacing_xl5: 128px;
-	--spacing_xl4: 96px;
-	--spacing_xl3: 64px;
-	--spacing_xl2: 48px;
-	--spacing_xl: 32px;
-	--spacing_lg: 20px;
-	--spacing_md: 14px;
-	--spacing_nm: 10px;
-	--spacing_sm: 8px;
-	--spacing_xs: 6px;
-	--spacing_xs2: 4px;
-	--spacing_xs3: 3px;
-	--spacing_xs4: 2px;
-	--spacing_xs5: 1px;
+	/* TODO use scaling factor for these, probably,
+	maybe hardcoding a few at 0.1, 0.2, 0.3/etc if it gets better results */
+	--spacing_xs5: 0.1rem;
+	--spacing_xs4: 0.2rem;
+	--spacing_xs3: 0.3rem;
+	--spacing_xs2: 0.4rem;
+	--spacing_xs: 0.6rem;
+	--spacing_sm: 0.8rem;
+	--spacing_nm: 1rem;
+	--spacing_md: 1.272rem;
+	--spacing_lg: 1.618rem;
+	--spacing_xl: 2.058rem;
+	--spacing_xl2: 2.618rem;
+	--spacing_xl3: 3.33rem;
+	--spacing_xl4: 4.236rem;
+	--spacing_xl5: 5.388rem;
+	--spacing_xl6: 6.854rem;
+	--spacing_xl7: 8.719rem;
+	--spacing_xl8: 11.09rem;
+	--spacing_xl9: 14.107rem;
 	--column_width: 640px;
 	--column_width_min: 320px;
 	--nav_height: var(--spacing_xl);
@@ -211,40 +164,40 @@ TODO still a work in progress
 	--border_color_light: rgba(0, 0, 0, var(--faded_4));
 	--border_color_lighter: rgba(0, 0, 0, var(--faded_5));
 	--border_radius_md: 25px;
-	--border_width_xxxl: 14px;
-	--border_width_xxl: var(--spacing_nm);
-	--border_width_xl: var(--spacing_sm);
-	--border_width_lg: var(--spacing_xs);
-	--border_width_md: var(--spacing_xs2);
-	--border_width_nm: var(--spacing_xs4);
-	--border_width_sm: var(--spacing_xs5);
+	--border_radius: 5px;
+	--border_width_6: 8px;
+	--border_width_5: 6px;
+	--border_width_4: 4px;
+	--border_width_3: 3px;
+	--border_width_2: 2px;
+	--border_width_1: 1px;
 	--border_style: solid;
 	--border_style_2: double;
 	--border_style_3: dotted;
 	--border_style_4: dashed;
-	--border: var(--border_width_nm) var(--border_style) var(--tint);
-	--border_alert: var(--border_width_md) var(--border_style_2)
+	--border: var(--border_width_1) var(--border_style) var(--tint);
+	--border_alert: var(--border_width_3) var(--border_style_2)
 		hsla(var(--red_hue), 100%, 50%, var(--faded_3));
-	--border_help: var(--border_width_md) var(--border_style_2)
+	--border_help: var(--border_width_3) var(--border_style_2)
 		hsla(var(--green_hue), 100%, 25%, var(--faded_3));
-	/* --border: var(--border_width_md) var(--border_style_2) hsla(0, 0%, 80%, var(--faded_3)); */
+	/* --border: var(--border_width_3) var(--border_style_2) hsla(0, 0%, 80%, var(--faded_3)); */
 	--outline_width: 0;
-	--outline_width_2: var(--spacing_sm);
-	--outline_width_3: var(--spacing_nm);
+	--outline_width_2: var(--border_width_5);
+	--outline_width_3: var(--border_width_6);
 	--outline_style: var(--border_style_2);
 	--outline_style_2: var(--border_style_3);
 	--outline_color: var(--interactive_color_hover);
 	--button_border_color: var(--border_color);
-	--button_border_width: var(--border_width_md);
-	--button_border_width_inner: var(--border_width_md);
+	--button_border_width: var(--border_width_1);
 	--button_border_style: solid;
 	--button_border_style_inner: double;
 	--button_border_style_selected: solid;
 	--button_border_style_disabled: dashed;
 	--button_font_weight: var(--font_weight_4);
 	--button_text_color: var(--text_color_light);
+	--input_bg_color: var(--bg);
 	--input_border_color: var(--border_color);
-	--input_border_width: var(--border_width_lg);
+	--input_border_width: var(--border_width_1);
 	--input_border_style: solid;
 	--input_padding_v: var(--spacing_xs);
 	--input_padding_h: var(--spacing_nm);
@@ -274,11 +227,11 @@ html {
 }
 
 body {
+	font-size: 1.6rem;
+	font-family: var(--font_family);
+	text-rendering: optimizeSpeed;
 	min-height: 100%;
 	min-width: 100%;
-	font-family: var(--font_family);
-	font-size: var(--font_size_nm);
-	text-rendering: optimizeSpeed;
 	background-color: var(--bg);
 	line-height: var(--line_height);
 }
@@ -372,26 +325,9 @@ button {
 	border-width: var(--button_border_width);
 	border-color: var(--button_border_color);
 	border-style: var(--button_border_style);
+	border-radius: var(--border_radius);
 	color: var(--button_text_color);
 	outline: var(--outline_width) var(--outline_style) var(--outline_color);
-}
-button::before {
-	content: '';
-	height: 100%;
-	width: 100%;
-	position: absolute;
-	left: 0;
-	top: 0;
-	border-width: var(--button_border_width_inner) 0;
-	border-style: var(--button_border_style_inner);
-	border-color: var(--button_border_color);
-}
-button:disabled::before {
-	outline-width: 0;
-}
-button.selected::before {
-	--outline_width: var(--border_width_sm);
-	--border_color: var(--active_color);
 }
 button:hover {
 	background: var(--interactive_color_hover);
@@ -432,9 +368,11 @@ select {
 	font: inherit;
 	font-size: var(--font_size_md);
 	padding: var(--input_padding_v) var(--input_padding_h);
+	background: var(--input_bg_color);
 	border-color: var(--input_border_color);
 	border-style: var(--input_border_style);
 	border-width: var(--input_border_width);
+	border-radius: var(--border_radius);
 	width: 100%;
 	max-width: var(--input_width_max);
 	min-width: var(--input_width_min);
@@ -450,8 +388,6 @@ input[type='checkbox'] {
 	min-width: var(--input_height);
 	--input_padding_v: 0;
 	--input_padding_h: 0;
-	/* setting `outine_style` here instead would force us to override active/focus states */
-	outline-style: var(--border_style_3);
 }
 input[type='checkbox']::before {
 	content: var(--content_empty, '');
@@ -465,11 +401,12 @@ input[type='checkbox']::before {
 	align-items: center;
 	justify-content: center;
 	overflow: var(--overflow, visible);
-	font-size: var(--font_size, var(--font_size_xl4));
-	color: var(--active_color);
+	font-size: var(--font_size, var(--font_size_xl3));
+	color: var(--input_border_color);
 	line-height: 1;
 }
 input[type='checkbox']:checked::before {
+	color: var(--active_color);
 	content: var(--content, '•');
 }
 
@@ -481,7 +418,7 @@ input[type='range']::-webkit-slider-thumb {
 	background-color: var(--input_border_color);
 	border: 0;
 	/* TODO hack to center the thumb vertically, breaks when input height var changes */
-	margin-top: -9px;
+	margin-top: -0.9rem;
 }
 
 input[type='range']::-moz-range-thumb {
@@ -506,7 +443,7 @@ input[type='range']::-moz-range-track {
 }
 
 hr {
-	border: var(--border_width_md) var(--border_style_2) var(--border_color_light);
+	border: var(--border_width_3) var(--border_style_2) var(--border_color_light);
 }
 
 .buttonlike {
@@ -621,7 +558,7 @@ nav button {
 blockquote {
 	padding: var(--spacing_xs) 0 var(--spacing_xs) var(--spacing_lg);
 	margin-bottom: var(--spacing_nm);
-	border-left: var(--border_width_md) solid var(--tint);
+	border-left: var(--border_width_3) solid var(--tint);
 	color: var(--text_color_light);
 }
 

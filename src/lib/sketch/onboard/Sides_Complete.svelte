@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type {Consent_Principle} from '$lib/sketch/onboard/consent';
-	import {arrow_left, arrow_right} from '$lib/ui/icons';
+	import {point_left, point_right, arrow_right} from '$lib/ui/icons';
 
 	export let principle: Consent_Principle;
 	export let consentful_on_left_side: boolean;
@@ -28,8 +28,8 @@
 	</div>
 	<div class="buttons">
 		{#if correct === null}
-			<button on:click={() => choose('left')}>{arrow_left}</button>
-			<button on:click={() => choose('right')}>{arrow_right}</button>
+			<button on:click={() => choose('left')}>{point_left}</button>
+			<button on:click={() => choose('right')}>{point_right}</button>
 		{:else}
 			<button on:click={() => done()}>continue {arrow_right}</button>
 		{/if}

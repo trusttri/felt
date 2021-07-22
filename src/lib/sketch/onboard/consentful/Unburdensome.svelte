@@ -19,8 +19,8 @@
 				)}>felt.dev/help</a
 		>
 	</blockquote>
-</Markup>
 
-<button on:click={() => done()}>
-	<Markup>let's get started {arrow_right}</Markup>
-</button>
+	<button on:click={() => done()}>
+		<Markup>let's get started {arrow_right}</Markup>
+	</button>
+</Markup>

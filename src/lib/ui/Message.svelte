@@ -6,15 +6,13 @@
 {#if text}
 	<div class="message">
 		<div class="wrapper">
-			<div class="wrapper2">
-				<span>
-					{#if icon}
-						<span class="icon">{icon}</span>
-					{/if}
-					<!-- TODO probably make this a slot instead -->
-					{text}
-				</span>
-			</div>
+			<span>
+				{#if icon}
+					<span class="icon">{icon}</span>
+				{/if}
+				<!-- TODO probably make this a slot instead -->
+				{text}
+			</span>
 		</div>
 	</div>
 {/if}
@@ -26,24 +24,18 @@
 		color: var(--message_color, var(--tint));
 		font-weight: var(--font_weight, var(--font_weight_4));
 		font-size: var(--font_size_md);
-		border-width: var(--border_width_md) var(--border_width_xxl);
+		border-width: var(--border_width_3) var(--border_width_5);
 		border-style: var(--border_style_2);
 		border-color: var(--message_color, var(--border_color_lighter));
 		display: flex;
 		align-items: stretch;
+		padding: var(--spacing_nm) var(--spacing_xs);
+		margin-bottom: var(--spacing_md);
 	}
 	.icon {
 		padding-right: var(--spacing_sm);
 	}
 	.wrapper {
-		width: 100%;
-		padding: var(--spacing_nm) var(--spacing_xs);
-		display: flex;
-		border-width: 0 var(--border_width_lg);
-		border-style: var(--border_style_2);
-		border-color: var(--message_color, var(--border_color_lighter));
-	}
-	.wrapper2 {
 		width: 100%;
 		padding: var(--spacing_nm) var(--spacing_xs);
 		display: flex;

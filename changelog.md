@@ -4,6 +4,8 @@
 
 - publish `util/dom.ts` and `util/regexp.ts`
   ([#99](https://github.com/feltcoop/felt/pull/99))
+- update `ui/style.css`
+  ([#100](https://github.com/feltcoop/felt/pull/100))
 
 ## 0.5.0
 

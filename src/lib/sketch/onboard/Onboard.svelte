@@ -28,11 +28,13 @@
 	let done_with_both = false;
 	let consentful_on_left_side = random_bool();
 
-	const reset = () => {
+	const reset = (state_value: string) => {
 		done_with_consentful_side = false;
 		done_with_unconsentful_side = false;
 		done_with_both = false;
-		consentful_on_left_side = random_bool();
+		// the consentful side of the 'informed' page explains how things work,
+		// so we always put it on the left in hopes the user reads it first
+		consentful_on_left_side = state_value === 'informed' ? true : random_bool();
 	};
 
 	const done_with_side = (consentful: Consent_Type) => {
@@ -55,7 +57,7 @@
 		send('PREVIOUS');
 	};
 
-	$: $state, reset();
+	$: reset($state.value as any); // TODO type
 	$: save_state($state.value); // TODO better pattern?
 
 	$: consentful_data = onboard_data.consentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts

@@ -44,33 +44,29 @@
 		</p>
 		<p>Now click "I accept" below for more rewards :-)</p>
 	{/if}
+	<Checkbox bind:checked={consenting} --content="'✗'">
+		<Markup>
+			<div>I consent to:</div>
+			<ul>
+				<li>everything I did not read</li>
+				<li>everything I did read</li>
+			</ul>
+			whether or not I understand anything.
+		</Markup>
+	</Checkbox>
+
+	<button on:click={() => done()} disabled={!enable_continue_button}>
+		<Markup>
+			I accept I am legally bound to the above
+			<br />
+			and my only recourse is complaining on social media
+		</Markup>
+	</button>
+
+	<Help_Message text="This is legally binding but do not worry about it :-)" />
 </Markup>
 
-<Checkbox bind:checked={consenting} --content="'✗'">
-	<Markup>
-		<div>I consent to:</div>
-		<ul>
-			<li>everything I did not read</li>
-			<li>everything I did read</li>
-		</ul>
-		whether or not I understand anything.
-	</Markup>
-</Checkbox>
-
-<button on:click={() => done()} disabled={!enable_continue_button}>
-	<Markup>
-		I accept I am legally bound to the above
-		<br />
-		and my only recourse is complaining on social media
-	</Markup>
-</button>
-
-<Help_Message text="This is legally binding but do not worry about it :-)" />
-
 <style>
-	small {
-		font-size: var(--font_size_xs);
-	}
 	.dog {
 		font-size: var(--font_size_xl4);
 	}
