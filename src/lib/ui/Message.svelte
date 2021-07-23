@@ -23,21 +23,21 @@
 		width: 100%;
 		color: var(--message_color, var(--tint));
 		font-weight: var(--font_weight, var(--font_weight_4));
-		font-size: var(--font_size_md);
+		font-size: var(--font_size_lg);
 		border-width: var(--border_width_3) var(--border_width_5);
 		border-style: var(--border_style_2);
 		border-color: var(--message_color, var(--border_color_lighter));
 		display: flex;
 		align-items: stretch;
-		padding: var(--spacing_nm) var(--spacing_xs);
-		margin-bottom: var(--spacing_md);
+		padding: var(--spacing_md) var(--spacing_xs);
+		margin-bottom: var(--spacing_lg);
 	}
 	.icon {
 		padding-right: var(--spacing_sm);
 	}
 	.wrapper {
 		width: 100%;
-		padding: var(--spacing_nm) var(--spacing_xs);
+		padding: var(--spacing_md) var(--spacing_xs);
 		display: flex;
 		align-items: center;
 		justify-content: center;

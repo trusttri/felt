@@ -20,6 +20,6 @@
 
 <style>
 	li {
-		font-size: var(--font_size_xl2);
+		font-size: var(--font_size_xl3);
 	}
 </style>

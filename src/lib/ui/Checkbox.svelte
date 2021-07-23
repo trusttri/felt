@@ -25,23 +25,28 @@
 	label {
 		width: 100%;
 		color: var(--text_color);
-		font-size: var(--font_size_md);
+		font-size: var(--font_size_lg);
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		border-width: var(--input_border_width);
 		border-style: var(--input_border_style);
 		border-color: var(--input_border_color);
+		border-bottom-width: 0;
 		border-left-width: 0;
 		border-right-width: 0;
 	}
+	label:last-child {
+		border-bottom-width: var(--input_border_width);
+		margin-bottom: var(--spacing_lg);
+	}
 	.content {
 		width: var(--column_width);
-		padding: var(--spacing_md) 0;
+		padding: var(--spacing_lg) 0;
 		display: flex;
 		align-items: center;
 	}
 	input {
-		margin: 0 var(--spacing_lg);
+		margin: 0 var(--spacing_xl);
 	}
 </style>

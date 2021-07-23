@@ -18,10 +18,10 @@
 
 <style>
 	nav {
-		font-size: var(--font_size_lg);
+		font-size: var(--font_size_xl);
 	}
 	.heart {
 		min-width: var(--nav_height);
-		font-size: var(--font_size_nm);
+		font-size: var(--font_size_md);
 	}
 </style>

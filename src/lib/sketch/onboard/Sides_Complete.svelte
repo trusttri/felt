@@ -54,27 +54,27 @@
 	}
 	.prompt {
 		text-align: center;
-		font-size: var(--font_size_xl2);
+		font-size: var(--font_size_xl3);
 		font-weight: bold;
 		/* in case the text slightly overflows, we don't want to make the buttons move */
 		white-space: nowrap;
 	}
 	.icon {
-		font-size: var(--font_size_xl5);
+		font-size: var(--font_size_xl6);
 	}
 	.buttons {
 		max-width: var(--column_width);
 		width: 100%;
 		display: flex;
-		margin: var(--spacing_lg) 0;
+		margin: var(--spacing_xl) 0;
 	}
 	button {
 		flex: 1;
-		font-size: var(--font_size_xl3);
+		font-size: var(--font_size_xl4);
 	}
 	.summary {
-		font-size: var(--font_size_xl);
+		font-size: var(--font_size_xl2);
 		font-weight: bold;
-		margin-bottom: var(--spacing_lg);
+		margin-bottom: var(--spacing_xl);
 	}
 </style>

@@ -27,7 +27,7 @@
 		{id: 'your bank', selected: true},
 		{id: 'who is this?', selected: true},
 		{id: '1000 spammers', selected: true},
-		{id: 'a friend with whom you will talk about this app irl', selected: true},
+		{id: "a friend you'll share with irl", selected: true},
 		{id: 'the friend who invited you in the first place', selected: true},
 		{id: "random stranger who typo'd your address", selected: true}, // TODO reward
 		{id: 'that guy from the thing last week', selected: true},
@@ -61,7 +61,7 @@
 		--content="'☻'"
 		--content_empty="'☹'"
 		--overflow="hidden"
-		--font_size="var(--font_size_xl)"
+		--font_size="var(--font_size_xl2)"
 	>
 		<Markup>
 			<div>Invite your friends <small>and everyone you've ever emailed</small></div>
@@ -88,10 +88,6 @@
 				<Checkbox
 					checked={email_contact.selected}
 					on_change={(checked) => toggle_selected(checked, email_contact)}
-					--content="'☻'"
-					--content_empty="'☹'"
-					--overflow="hidden"
-					--font_size="var(--font_size_xl)"
 				>
 					{email_contact.id}
 				</Checkbox>
@@ -103,5 +99,10 @@
 <style>
 	form {
 		align-items: stretch;
+		/* TODO putting these on the Checkbox using CSS var props breaks its style using :last-child */
+		--font_size: var(--font_size_xl2);
+		--content: '☻';
+		--content_empty: '☹';
+		--overflow: 'hidden';
 	}
 </style>

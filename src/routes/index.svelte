@@ -32,17 +32,17 @@
 	}
 	section {
 		text-align: center;
-		padding: var(--spacing_lg) 0;
+		padding: var(--spacing_xl) 0;
 	}
 	a {
-		font-size: var(--font_size_lg);
+		font-size: var(--font_size_xl);
 		font-weight: var(--font_weight_2);
 	}
 	.learn {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		font-size: var(--font_size_lg);
+		font-size: var(--font_size_xl);
 	}
 	.learn a {
 		display: flex;
@@ -50,7 +50,7 @@
 		align-items: center;
 	}
 	.links {
-		font-size: var(--font_size_lg);
+		font-size: var(--font_size_xl);
 		font-weight: var(--font_weight_2);
 	}
 </style>

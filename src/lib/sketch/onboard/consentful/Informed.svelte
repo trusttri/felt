@@ -19,10 +19,10 @@
 
 <style>
 	p {
-		font-size: var(--font_size_md);
+		font-size: var(--font_size_lg);
 	}
 	li {
-		font-size: var(--font_size_md);
+		font-size: var(--font_size_lg);
 	}
 	ol {
 		list-style-position: inside;

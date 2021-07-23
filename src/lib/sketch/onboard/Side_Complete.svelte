@@ -24,14 +24,14 @@
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
-		font-size: var(--font_size_xl2);
+		font-size: var(--font_size_xl3);
 		font-weight: bold;
-		padding-top: var(--spacing_xl);
+		padding-top: var(--spacing_xl2);
 	}
 	.icon {
-		font-size: var(--font_size_xl7);
+		font-size: var(--font_size_xl8);
 		/* TODO improve this how? adjusts arrow height */
 		line-height: 0.5;
-		padding-bottom: var(--spacing_xl2);
+		padding-bottom: var(--spacing_xl3);
 	}
 </style>

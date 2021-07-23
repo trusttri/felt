@@ -14,7 +14,7 @@
 		margin: auto;
 	}
 	div {
-		padding: var(--spacing_lg) 0;
+		padding: var(--spacing_xl) 0;
 		text-align: center;
 	}
 </style>

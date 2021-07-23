@@ -104,18 +104,17 @@
 	--font_family_mono: 'Fira Mono', monospace;
 	--font_size_xs: 0.989rem;
 	--font_size_sm: 1.258rem;
-	--font_size_nm: 1.6rem;
-	--font_size_md: 2.035rem;
-	--font_size_lg: 2.589rem;
-	--font_size_xl: 3.293rem;
-	--font_size_xl2: 4.189rem;
-	--font_size_xl3: 5.328rem;
-	--font_size_xl4: 6.778rem;
-	--font_size_xl5: 8.621rem;
-	--font_size_xl6: 10.967rem;
-	--font_size_xl7: 13.95rem;
-	--font_size_xl8: 17.744rem;
-	--font_size_xl9: 22.571rem;
+	--font_size_md: 1.6rem;
+	--font_size_lg: 2.035rem;
+	--font_size_xl: 2.589rem;
+	--font_size_xl2: 3.293rem;
+	--font_size_xl3: 4.189rem;
+	--font_size_xl4: 5.328rem;
+	--font_size_xl5: 6.778rem;
+	--font_size_xl6: 8.621rem;
+	--font_size_xl7: 10.967rem;
+	--font_size_xl8: 13.95rem;
+	--font_size_xl9: 17.744rem;
 	--font_weight_5: 900;
 	--font_weight_4: 700;
 	--font_weight_3: 500;
@@ -139,22 +138,21 @@
 	--spacing_xs2: 0.4rem;
 	--spacing_xs: 0.6rem;
 	--spacing_sm: 0.8rem;
-	--spacing_nm: 1rem;
-	--spacing_md: 1.272rem;
-	--spacing_lg: 1.618rem;
-	--spacing_xl: 2.058rem;
-	--spacing_xl2: 2.618rem;
-	--spacing_xl3: 3.33rem;
-	--spacing_xl4: 4.236rem;
-	--spacing_xl5: 5.388rem;
-	--spacing_xl6: 6.854rem;
-	--spacing_xl7: 8.719rem;
-	--spacing_xl8: 11.09rem;
-	--spacing_xl9: 14.107rem;
+	--spacing_md: 1rem;
+	--spacing_lg: 1.272rem;
+	--spacing_xl: 1.618rem;
+	--spacing_xl2: 2.058rem;
+	--spacing_xl3: 2.618rem;
+	--spacing_xl4: 3.33rem;
+	--spacing_xl5: 4.236rem;
+	--spacing_xl6: 5.388rem;
+	--spacing_xl7: 6.854rem;
+	--spacing_xl8: 8.719rem;
+	--spacing_xl9: 11.09rem;
 	--column_width: 640px;
 	--column_width_min: 320px;
-	--nav_height: var(--spacing_xl);
-	--avatar_height: var(--spacing_xl2);
+	--nav_height: var(--spacing_xl2);
+	--avatar_height: var(--spacing_xl3);
 	--border_color: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
@@ -200,10 +198,9 @@
 	--input_border_width: var(--border_width_1);
 	--input_border_style: solid;
 	--input_padding_v: var(--spacing_xs);
-	--input_padding_h: var(--spacing_nm);
-	--input_width_max: 400px;
+	--input_padding_h: var(--spacing_md);
 	--input_width_min: 100px;
-	--input_height: var(--spacing_xl2);
+	--input_height: var(--spacing_xl3);
 	--input_height_inner: calc(
 		var(--input_height) - 2 * var(--input_border_width) - 2 * var(--input_padding_v)
 	);
@@ -317,10 +314,10 @@ button {
 	justify-content: center;
 	font: inherit;
 	/* TODO should `font-size` inherit? */
-	font-size: var(--font_size_md);
+	font-size: var(--font_size_lg);
 	font-weight: var(--button_font_weight);
 	min-height: var(--input_height);
-	padding: var(--spacing_xs) var(--spacing_nm);
+	padding: var(--spacing_xs) var(--spacing_md);
 	background: var(--interactive_color);
 	border-width: var(--button_border_width);
 	border-color: var(--button_border_color);
@@ -366,7 +363,7 @@ select {
 	-webkit-appearance: none;
 	appearance: none;
 	font: inherit;
-	font-size: var(--font_size_md);
+	font-size: var(--font_size_lg);
 	padding: var(--input_padding_v) var(--input_padding_h);
 	background: var(--input_bg_color);
 	border-color: var(--input_border_color);
@@ -374,7 +371,6 @@ select {
 	border-width: var(--input_border_width);
 	border-radius: var(--border_radius);
 	width: 100%;
-	max-width: var(--input_width_max);
 	min-width: var(--input_width_min);
 	min-height: var(--input_height);
 	outline: var(--outline_width) var(--outline_style) var(--outline_color);
@@ -401,7 +397,7 @@ input[type='checkbox']::before {
 	align-items: center;
 	justify-content: center;
 	overflow: var(--overflow, visible);
-	font-size: var(--font_size, var(--font_size_xl3));
+	font-size: var(--font_size, var(--font_size_xl4));
 	color: var(--input_border_color);
 	line-height: 1;
 }
@@ -472,12 +468,6 @@ button:focus {
 	--outline_color: var(--active_color);
 	--outline_style: var(--border_style_2);
 	--outline_width: var(--outline_width_2);
-}
-.buttonlike:focus-within {
-	--input_border_color: var(--border_color);
-}
-.buttonlike.selected {
-	--input_border_color: var(--active_color);
 }
 
 .buttonlike:active,
@@ -556,8 +546,8 @@ nav button {
 
 /* TODO does this belong in `Markup.svelte` ? */
 blockquote {
-	padding: var(--spacing_xs) 0 var(--spacing_xs) var(--spacing_lg);
-	margin-bottom: var(--spacing_nm);
+	padding: var(--spacing_xs) 0 var(--spacing_xs) var(--spacing_xl);
+	margin-bottom: var(--spacing_md);
 	border-left: var(--border_width_3) solid var(--tint);
 	color: var(--text_color_light);
 }

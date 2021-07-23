@@ -1,5 +1,10 @@
 # changelog
 
+## 0.5.2
+
+- update `ui/style.css`
+  ([#101](https://github.com/feltcoop/felt/pull/101))
+
 ## 0.5.1
 
 - publish `util/dom.ts` and `util/regexp.ts`

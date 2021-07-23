@@ -50,20 +50,22 @@
 <Markup>
 	<p>Now it's time to join some communities!</p>
 
-	{#each spaces as space (space.name)}
-		<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
-			<div>
-				{space.name}
-			</div>
-			<ul class="tags">
-				{#each space.tags as tag (tag)}
-					<li class="tag">
-						<Tag name={tag} />
-					</li>
-				{/each}
-			</ul>
-		</Checkbox>
-	{/each}
+	<form>
+		{#each spaces as space (space.name)}
+			<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
+				<div>
+					{space.name}
+				</div>
+				<ul class="tags">
+					{#each space.tags as tag (tag)}
+						<li class="tag">
+							<Tag name={tag} />
+						</li>
+					{/each}
+				</ul>
+			</Checkbox>
+		{/each}
+	</form>
 
 	<button on:click={() => done()}>
 		<Markup>

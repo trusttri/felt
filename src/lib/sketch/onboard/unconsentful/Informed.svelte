@@ -44,16 +44,18 @@
 		</p>
 		<p>Now click "I accept" below for more rewards :-)</p>
 	{/if}
-	<Checkbox bind:checked={consenting} --content="'✗'">
-		<Markup>
-			<div>I consent to:</div>
-			<ul>
-				<li>everything I did not read</li>
-				<li>everything I did read</li>
-			</ul>
-			whether or not I understand anything.
-		</Markup>
-	</Checkbox>
+	<form>
+		<Checkbox bind:checked={consenting} --content="'✗'">
+			<Markup>
+				<div>I consent to:</div>
+				<ul>
+					<li>everything I did not read</li>
+					<li>everything I did read</li>
+				</ul>
+				whether or not I understand anything.
+			</Markup>
+		</Checkbox>
+	</form>
 
 	<button on:click={() => done()} disabled={!enable_continue_button}>
 		<Markup>
@@ -68,6 +70,6 @@
 
 <style>
 	.dog {
-		font-size: var(--font_size_xl4);
+		font-size: var(--font_size_xl5);
 	}
 </style>
