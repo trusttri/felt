@@ -35,6 +35,7 @@ const files = [
 	'lib/util/print.ts',
 	'lib/util/process.ts',
 	'lib/util/random.ts',
+	'lib/util/random_seeded.ts',
 	'lib/util/regexp.ts',
 	'lib/util/string.ts',
 	'lib/util/terminal.ts',

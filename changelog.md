@@ -1,5 +1,10 @@
 # changelog
 
+## 0.5.4
+
+- publish `util/random_seeded.ts`
+  ([#106](https://github.com/feltcoop/felt/pull/106))
+
 ## 0.5.3
 
 - add `util/random_seeded.ts` using

@@ -2,6 +2,9 @@
 
 This is the Alea pseudo-random number generator by Johannes Baagøe
 
+Security disclaimer: Felt cannot vouch for the cryotographic security of this code.
+Use Node/browser/platform crypto APIs instead of this when security matters.
+
 From http://baagoe.com/en/RandomMusings/javascript/
 via https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
 
