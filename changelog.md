@@ -1,5 +1,11 @@
 # changelog
 
+## 0.5.3
+
+- add `util/random_seeded.ts` using
+  [code from Johannes Baagøe'](https://github.com/nquinlan/better-random-numbers-for-javascript-mirror)
+  ([#103](https://github.com/feltcoop/felt/pull/103))
+
 ## 0.5.2
 
 - update `ui/style.css`
