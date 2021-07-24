@@ -3,12 +3,12 @@ import * as t from 'uvu/assert';
 
 import {Logger, Log_Level, Logger_State} from '$lib/util/log.js';
 
-/* test_Logger */
+/* test__Logger */
 interface Test_Logger_Context {
 	logged_args: any;
 	logger_state: Logger_State;
 }
-const create_test_logger_context = (): Test_Logger_Context => {
+const create_test__logger_context = (): Test_Logger_Context => {
 	const ctx: Test_Logger_Context = {
 		logged_args: undefined, // stores the result of the latest log call
 		logger_state: {
@@ -36,9 +36,9 @@ const create_test_logger_context = (): Test_Logger_Context => {
 	};
 	return ctx;
 };
-const test_Logger = suite('Logger', create_test_logger_context());
+const test__Logger = suite('Logger', create_test__logger_context());
 
-test_Logger('prefixes and suffixes', (ctx) => {
+test__Logger('prefixes and suffixes', (ctx) => {
 	const log = new Logger(['p1', 'p2'], ['s1', 's2'], ctx.logger_state);
 
 	log.error('foo', 36);
@@ -102,7 +102,7 @@ test_Logger('prefixes and suffixes', (ctx) => {
 	ctx.logged_args = undefined;
 });
 
-test_Logger('mutate logger state to change prefix and suffix', (ctx) => {
+test__Logger('mutate logger state to change prefix and suffix', (ctx) => {
 	const log = new Logger(undefined, undefined, {
 		...ctx.logger_state,
 		info: {
@@ -123,7 +123,7 @@ test_Logger('mutate logger state to change prefix and suffix', (ctx) => {
 	ctx.logged_args = undefined;
 });
 
-test_Logger('mutate logger state to change log level', (ctx) => {
+test__Logger('mutate logger state to change log level', (ctx) => {
 	const state = {
 		...ctx.logger_state,
 		info: {prefixes: [], suffixes: []},
@@ -147,5 +147,5 @@ test_Logger('mutate logger state to change log level', (ctx) => {
 	ctx.logged_args = undefined;
 });
 
-test_Logger.run();
-/* /test_Logger */
+test__Logger.run();
+/* /test__Logger */

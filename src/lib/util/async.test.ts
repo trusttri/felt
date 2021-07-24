@@ -3,21 +3,21 @@ import * as t from 'uvu/assert';
 
 import {wait, wrap} from '$lib/util/async.js';
 
-/* test_wait */
-const test_wait = suite('wait');
+/* test__wait */
+const test__wait = suite('wait');
 
-test_wait('basic behavior', async () => {
+test__wait('basic behavior', async () => {
 	await wait();
 	await wait(10);
 });
 
-test_wait.run();
-/* /test_wait */
+test__wait.run();
+/* /test__wait */
 
-/* test_wrap */
-const test_wrap = suite('wrap');
+/* test__wrap */
+const test__wrap = suite('wrap');
 
-test_wrap('basic behavior', async () => {
+test__wrap('basic behavior', async () => {
 	let v = 'start';
 	await wrap(async (after) => {
 		t.is(v, 'start');
@@ -41,5 +41,5 @@ test_wrap('basic behavior', async () => {
 	t.is(v, 'after3');
 });
 
-test_wrap.run();
-/* /test_wrap */
+test__wrap.run();
+/* /test__wrap */

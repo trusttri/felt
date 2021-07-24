@@ -3,10 +3,10 @@ import * as t from 'uvu/assert';
 
 import {get_json_type} from '$lib/util/json.js';
 
-/* test_get_json_type */
-const test_get_json_type = suite('get_json_type');
+/* test__get_json_type */
+const test__get_json_type = suite('get_json_type');
 
-test_get_json_type('basic behavior', () => {
+test__get_json_type('basic behavior', () => {
 	t.is(get_json_type(''), 'string');
 	t.is(get_json_type('1'), 'string');
 	t.is(get_json_type(1), 'number');
@@ -22,5 +22,5 @@ test_get_json_type('basic behavior', () => {
 	t.throws(() => get_json_type(Symbol() as any));
 });
 
-test_get_json_type.run();
-/* /test_get_json_type */
+test__get_json_type.run();
+/* /test__get_json_type */

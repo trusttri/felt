@@ -3,10 +3,10 @@ import * as t from 'uvu/assert';
 
 import {create_lock} from '$lib/util/lock.js';
 
-/* test_create_lock */
-const test_create_lock = suite('create_lock');
+/* test__create_lock */
+const test__create_lock = suite('create_lock');
 
-test_create_lock('basic behavior', () => {
+test__create_lock('basic behavior', () => {
 	const lock = create_lock();
 	const run_lifecycle = (key: any) => {
 		t.not.ok(lock.has(key));
@@ -33,5 +33,5 @@ test_create_lock('basic behavior', () => {
 	run_lifecycle({});
 });
 
-test_create_lock.run();
-/* /test_create_lock */
+test__create_lock.run();
+/* /test__create_lock */

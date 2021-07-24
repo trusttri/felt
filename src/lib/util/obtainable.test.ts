@@ -3,10 +3,10 @@ import * as t from 'uvu/assert';
 
 import {to_obtainable} from '$lib/util/obtainable.js';
 
-/* test_to_obtainable */
-const test_to_obtainable = suite('to_obtainable');
+/* test__to_obtainable */
+const test__to_obtainable = suite('to_obtainable');
 
-test_to_obtainable('unobtain out of order', async () => {
+test__to_obtainable('unobtain out of order', async () => {
 	let thing: Symbol | undefined;
 	let is_unobtained = false;
 	const obtain_thing = to_obtainable(
@@ -68,7 +68,7 @@ test_to_obtainable('unobtain out of order', async () => {
 // This is a complicated corner case that probably should not happen
 // because it would normally cause a stack overflow in user code,
 // but we're covering it just in case.
-test_to_obtainable('obtain is called during unobtain', () => {
+test__to_obtainable('obtain is called during unobtain', () => {
 	let should_obtain_during_unobtain = true;
 	let thing: Symbol | undefined;
 	let is_unobtained = false;
@@ -112,7 +112,7 @@ test_to_obtainable('obtain is called during unobtain', () => {
 	t.ok(is_unobtained);
 });
 
-test_to_obtainable('cannot obtain undefined', () => {
+test__to_obtainable('cannot obtain undefined', () => {
 	const obtain_thing = to_obtainable(
 		() => undefined,
 		() => {},
@@ -120,5 +120,5 @@ test_to_obtainable('cannot obtain undefined', () => {
 	t.throws(() => obtain_thing());
 });
 
-test_to_obtainable.run();
-/* /test_to_obtainable */
+test__to_obtainable.run();
+/* /test__to_obtainable */
