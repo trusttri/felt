@@ -1,5 +1,10 @@
 # changelog
 
+## 0.5.5
+
+- update `ui/style.css`
+  ([#102](https://github.com/feltcoop/felt/pull/102))
+
 ## 0.5.4
 
 - publish `util/random_seeded.ts`
