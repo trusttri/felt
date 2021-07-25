@@ -7,6 +7,9 @@
 	export let done: () => void;
 	export let back: () => void;
 
+	// TODO can't find a better good way to silence these warnings
+	data;
+
 	let understood = false;
 </script>
 

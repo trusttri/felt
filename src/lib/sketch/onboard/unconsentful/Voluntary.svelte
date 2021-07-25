@@ -12,6 +12,9 @@
 	export let done: () => void;
 	export let back: () => void;
 
+	// TODO can't find a better good way to silence these warnings
+	back;
+
 	let create_error_message: string | null = null;
 	let signup_error_message: string | null = null;
 	let signup_helper_message: string | null = null;
