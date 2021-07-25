@@ -12,7 +12,7 @@ test__wait('basic behavior', async () => {
 });
 
 test__wait.run();
-/* /test__wait */
+/* test__wait */
 
 /* test__wrap */
 const test__wrap = suite('wrap');
@@ -42,4 +42,4 @@ test__wrap('basic behavior', async () => {
 });
 
 test__wrap.run();
-/* /test__wrap */
+/* test__wrap */

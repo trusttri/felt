@@ -148,4 +148,4 @@ test__Logger('mutate logger state to change log level', (ctx) => {
 });
 
 test__Logger.run();
-/* /test__Logger */
+/* test__Logger */

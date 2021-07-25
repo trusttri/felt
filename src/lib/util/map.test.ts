@@ -56,4 +56,4 @@ test__sort_map('custom comparator', () => {
 });
 
 test__sort_map.run();
-/* /test__sort_map */
+/* test__sort_map */

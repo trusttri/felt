@@ -23,4 +23,4 @@ test__get_json_type('basic behavior', () => {
 });
 
 test__get_json_type.run();
-/* /test__get_json_type */
+/* test__get_json_type */

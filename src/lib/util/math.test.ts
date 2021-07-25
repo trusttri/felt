@@ -23,7 +23,7 @@ test__mix('mixes with 1', () => {
 });
 
 test__mix.run();
-/* /test__mix */
+/* test__mix */
 
 /* test__round */
 const test__round = suite('round');
@@ -37,4 +37,4 @@ test__round('rounds a negative number down to 5 decimals', () => {
 });
 
 test__round.run();
-/* /test__round */
+/* test__round */

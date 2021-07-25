@@ -21,4 +21,4 @@ test__to_counter('custom count', () => {
 });
 
 test__to_counter.run();
-/* /test__to_counter */
+/* test__to_counter */

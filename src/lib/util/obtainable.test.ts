@@ -121,4 +121,4 @@ test__to_obtainable('cannot obtain undefined', () => {
 });
 
 test__to_obtainable.run();
-/* /test__to_obtainable */
+/* test__to_obtainable */

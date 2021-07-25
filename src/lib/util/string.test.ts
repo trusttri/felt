@@ -53,7 +53,7 @@ test__truncate('length shorter than suffix returns empty string', () => {
 });
 
 test__truncate.run();
-/* /test__truncate */
+/* test__truncate */
 
 /* test__strip_start */
 const test__strip_start = suite('strip_start');
@@ -83,7 +83,7 @@ test__strip_start('noop for empty string', () => {
 });
 
 test__strip_start.run();
-/* /test__strip_start */
+/* test__strip_start */
 
 /* test__strip_end */
 const test__strip_end = suite('strip_end');
@@ -113,7 +113,7 @@ test__strip_end('noop for empty string', () => {
 });
 
 test__strip_end.run();
-/* /test__strip_end */
+/* test__strip_end */
 
 /* test__strip_after */
 const test__strip_after = suite('strip_after');
@@ -159,7 +159,7 @@ test__strip_after('empty string', () => {
 });
 
 test__strip_after.run();
-/* /test__strip_after */
+/* test__strip_after */
 
 /* test__strip_before */
 const test__strip_before = suite('strip_before');
@@ -205,7 +205,7 @@ test__strip_before('empty string', () => {
 });
 
 test__strip_before.run();
-/* /test__strip_before */
+/* test__strip_before */
 
 /* test__ensure_start */
 const test__ensure_start = suite('ensure_start');
@@ -251,7 +251,7 @@ test__ensure_start('empty source string', () => {
 });
 
 test__ensure_start.run();
-/* /test__ensure_start */
+/* test__ensure_start */
 
 /* test__ensure_end */
 const test__ensure_end = suite('ensure_end');
@@ -297,7 +297,7 @@ test__ensure_end('empty source string', () => {
 });
 
 test__ensure_end.run();
-/* /test__ensure_end */
+/* test__ensure_end */
 
 /* test__deindent */
 const test__deindent = suite('deindent');
@@ -329,7 +329,7 @@ test__deindent('strips trailing spaces', () => {
 });
 
 test__deindent.run();
-/* /test__deindent */
+/* test__deindent */
 
 /* test__plural */
 const test__plural = suite('plural');
@@ -351,4 +351,4 @@ test__plural('does not pluralize 1', () => {
 });
 
 test__plural.run();
-/* /test__plural */
+/* test__plural */

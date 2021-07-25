@@ -13,7 +13,7 @@ test__create_stopwatch('basic behavior', () => {
 });
 
 test__create_stopwatch.run();
-/* /test__create_stopwatch */
+/* test__create_stopwatch */
 
 /* test__Timings */
 const test__Timings = suite('Timings');
@@ -63,4 +63,4 @@ test__Timings('merge timings', () => {
 });
 
 test__Timings.run();
-/* /test__Timings */
+/* test__Timings */

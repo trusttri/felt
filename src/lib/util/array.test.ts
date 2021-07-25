@@ -13,7 +13,7 @@ test__last('basic behavior', () => {
 });
 
 test__last.run();
-/* /test__last */
+/* test__last */
 
 /* test__to_array */
 const test__to_array = suite('to_array');
@@ -26,4 +26,4 @@ test__to_array('basic behavior', () => {
 });
 
 test__to_array.run();
-/* /test__to_array */
+/* test__to_array */

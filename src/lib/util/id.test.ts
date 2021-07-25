@@ -12,7 +12,7 @@ test__to_uuid('basic behavior', () => {
 });
 
 test__to_uuid.run();
-/* /test__to_uuid */
+/* test__to_uuid */
 
 /* test__is_uuid */
 const test__is_uuid = suite('is_uuid');
@@ -30,7 +30,7 @@ test__is_uuid('basic behavior', () => {
 });
 
 test__is_uuid.run();
-/* /test__is_uuid */
+/* test__is_uuid */
 
 /* test__to_to_client_id */
 const test__to_to_client_id = suite('to_to_client_id');
@@ -50,4 +50,4 @@ test__to_to_client_id('custom count', () => {
 });
 
 test__to_to_client_id.run();
-/* /test__to_to_client_id */
+/* test__to_to_client_id */

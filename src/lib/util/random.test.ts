@@ -15,7 +15,7 @@ test__random_float('-5.5 to 7', () => {
 });
 
 test__random_float.run();
-/* /test__random_float */
+/* test__random_float */
 
 /* test__random_int */
 const test__random_int = suite('random_int');
@@ -64,7 +64,7 @@ test__random_int('2 to 2', () => {
 });
 
 test__random_int.run();
-/* /test__random_int */
+/* test__random_int */
 
 /* test__random_item */
 const test__random_item = suite('random_item');
@@ -98,4 +98,4 @@ test__random_item('empty array', () => {
 });
 
 test__random_item.run();
-/* /test__random_item */
+/* test__random_item */

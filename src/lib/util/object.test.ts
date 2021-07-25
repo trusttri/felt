@@ -18,7 +18,7 @@ test__map_record('basic behavior', () => {
 });
 
 test__map_record.run();
-/* /test__map_record */
+/* test__map_record */
 
 /* test__omit */
 const test__omit = suite('omit');
@@ -30,7 +30,7 @@ test__omit('basic behavior', () => {
 });
 
 test__omit.run();
-/* /test__omit */
+/* test__omit */
 
 /* test__pick_by */
 const test__pick_by = suite('pick_by');
@@ -55,7 +55,7 @@ test__pick_by('basic behavior', () => {
 });
 
 test__pick_by.run();
-/* /test__pick_by */
+/* test__pick_by */
 
 /* test__omit_undefined */
 const test__omit_undefined = suite('omit_undefined');
@@ -69,7 +69,7 @@ test__omit_undefined('basic behavior', () => {
 });
 
 test__omit_undefined.run();
-/* /test__omit_undefined */
+/* test__omit_undefined */
 
 /* test__reorder */
 const test__reorder = suite('reorder');
@@ -82,4 +82,4 @@ test__reorder('basic behavior', () => {
 });
 
 test__reorder.run();
-/* /test__reorder */
+/* test__reorder */

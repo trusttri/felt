@@ -15,7 +15,7 @@ test__to_env_string('basic behavior', async () => {
 });
 
 test__to_env_string.run();
-/* /test__to_env_string */
+/* test__to_env_string */
 
 /* test__to_env_number */
 const test__to_env_number = suite('to_env_number');
@@ -29,4 +29,4 @@ test__to_env_number('basic behavior', async () => {
 });
 
 test__to_env_number.run();
-/* /test__to_env_number */
+/* test__to_env_number */

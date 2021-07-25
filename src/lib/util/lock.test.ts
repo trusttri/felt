@@ -34,4 +34,4 @@ test__create_lock('basic behavior', () => {
 });
 
 test__create_lock.run();
-/* /test__create_lock */
+/* test__create_lock */

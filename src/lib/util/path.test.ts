@@ -15,7 +15,7 @@ test__replace_extension('basic behavior', () => {
 });
 
 test__replace_extension.run();
-/* /test__replace_extension */
+/* test__replace_extension */
 
 /* test__to_path_stem */
 const test__to_path_stem = suite('to_path_stem');
@@ -29,7 +29,7 @@ test__to_path_stem('basic behavior', () => {
 });
 
 test__to_path_stem.run();
-/* /test__to_path_stem */
+/* test__to_path_stem */
 
 /* test__to_path_segments */
 const test__to_path_segments = suite('to_path_segments');
@@ -55,7 +55,7 @@ test__to_path_segments('trailing slash', () => {
 });
 
 test__to_path_segments.run();
-/* /test__to_path_segments */
+/* test__to_path_segments */
 
 /* test__to_path_parts */
 const test__to_path_parts = suite('to_path_parts');
@@ -77,7 +77,7 @@ test__to_path_parts('trailing slash', () => {
 });
 
 test__to_path_parts.run();
-/* /test__to_path_parts */
+/* test__to_path_parts */
 
 /* test__to_common_base_dir */
 const test__to_common_base_dir = suite('to_common_base_dir');
@@ -87,4 +87,4 @@ test__to_common_base_dir('basic behavior', () => {
 });
 
 test__to_common_base_dir.run();
-/* /test__to_common_base_dir */
+/* test__to_common_base_dir */
