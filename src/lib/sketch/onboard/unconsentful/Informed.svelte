@@ -44,7 +44,7 @@
 		</p>
 		<p>Now click "I accept" below for more rewards :-)</p>
 	{/if}
-	<form>
+	<div>
 		<Checkbox bind:checked={consenting} --content="'✗'">
 			<Markup>
 				<div>I consent to:</div>
@@ -55,7 +55,7 @@
 				whether or not I understand anything.
 			</Markup>
 		</Checkbox>
-	</form>
+	</div>
 
 	<button on:click={() => done()} disabled={!enable_continue_button}>
 		<Markup>

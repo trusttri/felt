@@ -304,6 +304,14 @@ form {
 	flex-direction: column;
 	align-items: center;
 }
+form input,
+form textarea,
+form select {
+	width: auto;
+}
+form > *:last-child {
+	margin-bottom: 0;
+}
 
 button {
 	-webkit-appearance: none;
@@ -334,27 +342,6 @@ button:active {
 }
 button.inline {
 	display: inline-block;
-}
-button:disabled.selected {
-	border-left-style: var(--button_border_style_selected);
-	border-right-style: var(--button_border_style_selected);
-	z-index: 1;
-	color: var(--active_color);
-	/* TODO experimental, not sure about these patterns */
-	--button_border_color: var(--active_color);
-	--border_color: var(--active_color);
-	--outline_width: var(--outline_width_2);
-	--outline_style: var(--border_style_2);
-	--outline_color: var(--interactive_color_hover);
-}
-button.selected:active {
-	--outline_width: var(--outline_width_3);
-}
-/* TODO simplify this selector? */
-button:disabled:not(.selected):active {
-	/* TODO hmm maybe delete `button_border_color`? */
-	--border_color: var(--error_color);
-	--button_border_color: var(--error_color);
 }
 
 input,
@@ -518,6 +505,27 @@ textarea:disabled {
 input:disabled:active,
 textarea:disabled:active {
 	--border_color: var(--error_color);
+}
+button.selected {
+	border-left-style: var(--button_border_style_selected);
+	border-right-style: var(--button_border_style_selected);
+	z-index: 1;
+	color: var(--active_color);
+	/* TODO experimental, not sure about these patterns */
+	--button_border_color: var(--active_color);
+	--border_color: var(--active_color);
+	--outline_width: var(--outline_width_2);
+	--outline_style: var(--border_style_2);
+	--outline_color: var(--interactive_color_hover);
+}
+button.selected:active {
+	--outline_width: var(--outline_width_3);
+}
+/* TODO simplify this selector? */
+button:disabled:not(.selected):active {
+	/* TODO hmm maybe delete `button_border_color`? */
+	--border_color: var(--error_color);
+	--button_border_color: var(--error_color);
 }
 
 label {

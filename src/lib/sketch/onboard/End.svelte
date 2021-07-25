@@ -9,19 +9,20 @@
 
 <Markup>
 	<h1>Thanks for playing!</h1>
-	<p>We appreciate you taking the time to go through this sketch.</p>
-	<p>We hope you learned something & had some fun in the process {grin}</p>
+	<p>
+		We appreciate your time — hopefully you learned something & had fun in the process {grin}
+	</p>
 	<blockquote>
-		if you have any questions or comments, open an issue
-		<a href="https://github.com/feltcoop/felt">on GitHub</a>
+		questions or comments? open
+		<a href="https://github.com/feltcoop/felt">a GitHub issue</a>
 		or email us at <a href="mailto:team@felt.social">team@felt.social</a>
 	</blockquote>
 	<Credits />
 	<blockquote>
 		<p>
-			if you'd like to explore freely, press the <code>Backtick</code> key or click this button:
+			to explore freely, press <code>`</code> aka <code>Backtick</code> or click this button:
 		</p>
-		<button class="inline" on:click={() => ($devmode = !$devmode)}>
+		<button type="button" on:click={() => ($devmode = !$devmode)}>
 			{$devmode ? 'disable' : 'enable'} devmode
 		</button>
 	</blockquote>

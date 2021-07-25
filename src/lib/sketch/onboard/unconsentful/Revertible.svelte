@@ -18,8 +18,8 @@
 			on:click|preventDefault={() =>
 				alert('Thank you for calling support. Please hold until you give up.')}
 		>
-			by calling support
-		</a>.
+			by calling support ✆
+		</a>
 	</p>
 	<button on:click={() => done()}>
 		<Markup><span class="button-text" /></Markup>

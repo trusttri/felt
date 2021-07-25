@@ -64,26 +64,26 @@
 		--font_size="var(--font_size_xl2)"
 	>
 		<Markup>
-			<div>Invite your friends <small>and everyone you've ever emailed</small></div>
-			<div>so they can join the fun!</div>
-			<div>We already made an account for them!</div>
+			<p>Invite your friends so they can join the fun!</p>
+			<p>We already made an account for them!</p>
 		</Markup>
 	</Checkbox>
 
 	<button on:click={() => blast_emails()}>
 		<Markup>
-			email blast {selected_count} contacts!
+			email blast {#if consenting}everyone you've ever emailed{:else}{selected_count}
+				contacts{/if}!
 		</Markup>
 	</button>
 
 	{#if consenting}
 		<Message text=":-)" />
 	{:else}
-		<Help_Message text="No worries! We'll email only these contacts:" />
+		<Help_Message text="No worries! We'll invite only these contacts:" />
 	{/if}
 
-	<form>
-		{#if !consenting}
+	{#if !consenting}
+		<div>
 			{#each email_contacts as email_contact (email_contact.id)}
 				<Checkbox
 					checked={email_contact.selected}
@@ -92,8 +92,8 @@
 					{email_contact.id}
 				</Checkbox>
 			{/each}
-		{/if}
-	</form>
+		</div>
+	{/if}
 </Markup>
 
 <style>
@@ -104,5 +104,8 @@
 		--content: '☻';
 		--content_empty: '☹';
 		--overflow: 'hidden';
+	}
+	small {
+		color: var(--text_color_lighter);
 	}
 </style>

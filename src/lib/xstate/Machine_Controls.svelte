@@ -4,30 +4,22 @@
 	export let machine: State_Machine;
 	export let state: State;
 	export let send: Send;
+	export let events: string[] | null = null;
 
-	$: stateNode = machine.states[$state.value as any];
-	// $: console.log('stateNode', stateNode);
+	$: state_node = machine.states[$state.value as any];
+	// $: console.log('state_node', state_node);
 
-	// keyboard controls - TODO refactor
-	const on_keydown = (e: KeyboardEvent) => {
-		if (e.key === 'ArrowRight') {
-			send('NEXT');
-		} else if (e.key === 'ArrowLeft') {
-			send('PREVIOUS');
-		}
-	};
+	let final_events: string[];
+	$: final_events = events || machine.events;
 </script>
 
-{#each machine.events as event_name (event_name)}
-	<button on:click={() => send(event_name)} disabled={!stateNode.handles(event_name)}>
+{#each final_events as event_name (event_name)}
+	<button on:click={() => send(event_name)} disabled={!state_node.handles(event_name)}>
 		<slot {event_name}>
 			{event_name}
 		</slot>
 	</button>
 {/each}
-
-<!-- TODO make this compose -->
-<svelte:window on:keydown={on_keydown} />
 
 <style>
 	button {

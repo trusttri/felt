@@ -23,9 +23,9 @@
 
 <style>
 	button {
-		position: absolute;
-		right: 0;
-		bottom: 0;
+		position: fixed;
+		right: var(--spacing_sm);
+		bottom: var(--spacing_sm);
 		opacity: var(--faded_3);
 	}
 	button::before {

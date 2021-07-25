@@ -9,7 +9,7 @@
 
 <Markup>
 	<h1>
-		Welcome to the <a href="/">Felt.dev</a> consentful systems onboarding sketch!
+		Welcome to the <a href="/">Felt.dev</a> consentful onboarding sketch!
 	</h1>
 	<p>This sketch is a proof of concept, side-by-side comparsion between two onboarding flows:</p>
 	<ol>

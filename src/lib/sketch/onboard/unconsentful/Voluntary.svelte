@@ -164,7 +164,7 @@
 					<input
 						bind:value={anything_else}
 						bind:this={anything_else_el}
-						placeholder="anything else you want to share? :-)"
+						placeholder="anything else to share? :-)"
 						on:keydown={(e) => {
 							if (e.key === 'Enter') {
 								if (enable_signup_button) {

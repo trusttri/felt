@@ -4,5 +4,4 @@
 	export let text: string | null;
 </script>
 
-<!-- TODO redesign? maybe just make `help` an option on `Message`? -->
-<Message {text} icon="ⓘ" --message_color="var(--help_color)" />
+<Message {text} icon="ⓘ" color="var(--help_color)" />

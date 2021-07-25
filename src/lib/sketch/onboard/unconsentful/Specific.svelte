@@ -28,13 +28,13 @@
 <Markup>
 	<p>Now it's time to join some communities!</p>
 
-	<form>
+	<div>
 		{#each spaces as space (space.name)}
 			<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
 				{space.name}
 			</Checkbox>
 		{/each}
-	</form>
+	</div>
 
 	<button on:click={() => done()}>
 		<Markup>let's start posting {arrow_right}</Markup>

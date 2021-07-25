@@ -9,7 +9,7 @@
 </script>
 
 <Markup>
-	<h2>Welcome to Felt.dev!</h2>
+	<p>Welcome to Felt.dev!</p>
 	<blockquote>
 		need help? <a
 			href="/help"

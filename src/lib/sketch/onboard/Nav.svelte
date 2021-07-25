@@ -24,12 +24,29 @@
 			send(event_name);
 		}
 	};
+
+	const on_keydown = (e: KeyboardEvent) => {
+		if (e.key === 'ArrowRight') {
+			send('NEXT');
+		} else if (e.key === 'ArrowLeft') {
+			send('PREVIOUS');
+		}
+	};
 </script>
+
+<!-- TODO make this compose -->
+<svelte:window on:keydown={$devmode ? on_keydown : undefined} />
 
 <div>
 	{#if $devmode}
 		<nav class="buttons">
-			<Machine_Controls machine={onboard_machine} {state} {send} let:event_name>
+			<Machine_Controls
+				machine={onboard_machine}
+				{state}
+				{send}
+				let:event_name
+				events={['PREVIOUS', 'NEXT']}
+			>
 				{event_name === 'PREVIOUS' ? arrow_left : ''}
 				{event_name}
 				{event_name === 'NEXT' ? arrow_right : ''}
