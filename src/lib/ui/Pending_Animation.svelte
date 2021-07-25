@@ -1,11 +1,20 @@
-<span class="one">•</span>
-<span class="two">•</span>
-<span class="three">•</span>
+<script lang="ts">
+	export let icon: string = '•';
+	export let paused: boolean = false;
+</script>
+
+<span class:paused class="one">{icon}</span>
+<span class:paused class="two">{icon}</span>
+<span class:paused class="three">{icon}</span>
 
 <style>
 	span {
 		opacity: 0;
 		animation: dot 1.5s infinite;
+	}
+	.paused {
+		animation: none;
+		opacity: 1;
 	}
 
 	.one {

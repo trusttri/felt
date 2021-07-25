@@ -1,24 +1,37 @@
 <script lang="ts">
-	export let text: string | null;
+	// if the slot is filled, `text` and `icon` are ignored
+	export let text: string | null = null;
 	export let icon: string | null = null;
-	// using a prop here because passing the css var prop causes its `display: contents` div
-	// to break selectors (margin in Markup)
-	export let color: string = 'var(--tint)';
+	export let color: string | null = null;
+	export let status: Message_Status = 'normal';
+
+	export type Message_Status = 'normal' | 'help' | 'error';
+	export interface Message_Status_Options {
+		color: null | string;
+		icon: string | null;
+	}
+	const options_by_status: Record<Message_Status, Message_Status_Options> = {
+		normal: {color: 'var(--text_color_light)', icon: null},
+		help: {color: 'var(--help_color)', icon: 'ⓘ'},
+		error: {color: 'var(--error_color)', icon: '‼'},
+	};
+
+	$: final_icon = icon ?? options_by_status[status].icon;
+	$: final_color = color ?? options_by_status[status].color;
 </script>
 
-{#if text}
-	<div class="message" style="--color: {color}">
-		<div class="wrapper">
+<div class="message" style={final_color ? `--color: ${final_color}` : undefined}>
+	<div class="wrapper">
+		<slot>
 			<span>
-				{#if icon}
-					<span class="icon">{icon}</span>
+				{#if final_icon}
+					<span class="icon">{final_icon}</span>
 				{/if}
-				<!-- TODO probably make this a slot instead -->
 				{text}
 			</span>
-		</div>
+		</slot>
 	</div>
-{/if}
+</div>
 
 <style>
 	.message {
@@ -41,6 +54,7 @@
 	.icon {
 		padding-right: var(--spacing_sm);
 	}
+	/* TODO can we delete the wrapper? */
 	.wrapper {
 		width: 100%;
 		padding: var(--spacing_md) var(--spacing_xs);

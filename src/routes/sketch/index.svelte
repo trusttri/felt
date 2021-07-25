@@ -1,9 +1,6 @@
 <script lang="ts">
 	import Markup from '$lib/ui/Markup.svelte';
-	import {to_sketch_id} from '$lib/sketch/sketch';
-	import type {Sketch} from '$lib/sketch/sketch';
-
-	const sketches: Sketch[] = ['onboard'].map((name) => ({name, id: to_sketch_id(name)}));
+	import {sketches} from '$lib/sketch/sketch';
 </script>
 
 <nav>
@@ -19,6 +16,9 @@
 </nav>
 
 <style>
+	ol {
+		text-align: center;
+	}
 	li {
 		font-size: var(--font_size_xl3);
 	}

@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Help_Message from '$lib/ui/Help_Message.svelte';
+	import Message from '$lib/ui/Message.svelte';
 </script>
 
 <div class="column">
-	<Help_Message text="todo" />
+	<Message status="help" text="todo" />
 	<div>
 		<a href="https://github.com/feltcoop/felt/issues">github.com/feltcoop/felt/issues</a>
 	</div>

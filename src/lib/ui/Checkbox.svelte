@@ -8,13 +8,20 @@
 	// TODO rethink this API, probably use events instead
 	export let checked: boolean;
 	export let on_change: ((checked: boolean) => void) | null = null;
+	// using this instead of component custom props shorthand because it breaks global styles
+	export let content: string | undefined = undefined;
 
 	const id = to_id();
 
 	$: on_change && on_change(checked);
 </script>
 
-<label class="checkbox buttonlike" class:selected={checked} for={id}>
+<label
+	style={content ? `--content: ${content}` : undefined}
+	class="checkbox buttonlike"
+	class:selected={checked}
+	for={id}
+>
 	<div class="content">
 		<input {id} type="checkbox" bind:checked />
 		<slot />

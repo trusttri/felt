@@ -2,7 +2,6 @@
 	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
-	import Help_Message from '$lib/ui/Help_Message.svelte';
 	import Message from '$lib/ui/Message.svelte';
 
 	export let data: Onboard_Data;
@@ -79,11 +78,11 @@
 	{#if consenting}
 		<Message text=":-)" />
 	{:else}
-		<Help_Message text="No worries! We'll invite only these contacts:" />
+		<Message status="help" text="No worries! We'll invite only these contacts:" />
 	{/if}
 
 	{#if !consenting}
-		<div>
+		<div class="emails">
 			{#each email_contacts as email_contact (email_contact.id)}
 				<Checkbox
 					checked={email_contact.selected}
@@ -97,15 +96,12 @@
 </Markup>
 
 <style>
-	form {
+	.emails {
 		align-items: stretch;
 		/* TODO putting these on the Checkbox using CSS var props breaks its style using :last-child */
 		--font_size: var(--font_size_xl2);
 		--content: '☻';
 		--content_empty: '☹';
 		--overflow: 'hidden';
-	}
-	small {
-		color: var(--text_color_lighter);
 	}
 </style>

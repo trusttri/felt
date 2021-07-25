@@ -2,8 +2,6 @@
 	import {tick} from 'svelte';
 
 	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
-	import Error_Message from '$lib/ui/Error_Message.svelte';
-	import Help_Message from '$lib/ui/Help_Message.svelte';
 	import Message from '$lib/ui/Message.svelte';
 	import Markup from '$lib/ui/Markup.svelte';
 	import {Unreachable_Error} from '$lib/util/error';
@@ -117,7 +115,7 @@
 		{#if create_error_message}
 			<div class="message" style="--message_min_height: 10rem;">
 				{#if !selected_provider}
-					<Error_Message text={create_error_message} />
+					<Message status="error" text={create_error_message} />
 				{:else}
 					<Message text=":-)" />
 				{/if}
@@ -144,7 +142,7 @@
 
 			{#if selected_provider === providers.SOCIAL_CO || selected_provider === providers.TRACKER_CO}
 				{#if selected_provider && selected_provider !== providers.TRUSTED_CO}
-					<Help_Message text={signup_helper_message} />
+					<Message status="help" text={signup_helper_message} />
 					<input
 						bind:value={phone_number}
 						bind:this={phone_number_el}
@@ -185,7 +183,7 @@
 					</button>
 				{/if}
 			{:else if selected_provider}
-				<Error_Message text={signup_error_message} />
+				<Message status="error" text={signup_error_message} />
 			{/if}
 		{/if}
 	</form>

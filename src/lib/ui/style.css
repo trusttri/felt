@@ -580,3 +580,8 @@ img {
 	display: block;
 	max-width: 100%;
 }
+
+.paused {
+	/* eww important */
+	animation-play-state: paused !important;
+}

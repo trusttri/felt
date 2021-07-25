@@ -2,7 +2,7 @@
 	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
-	import Help_Message from '$lib/ui/Help_Message.svelte';
+	import Message from '$lib/ui/Message.svelte';
 
 	export let data: Onboard_Data;
 	export let done: () => void;
@@ -45,7 +45,7 @@
 		<p>Now click "I accept" below for more rewards :-)</p>
 	{/if}
 	<div>
-		<Checkbox bind:checked={consenting} --content="'✗'">
+		<Checkbox bind:checked={consenting} content="'✗'">
 			<Markup>
 				<div>I consent to:</div>
 				<ul>
@@ -65,7 +65,7 @@
 		</Markup>
 	</button>
 
-	<Help_Message text="This is legally binding but do not worry about it :-)" />
+	<Message status="help" text="This is legally binding but do not worry about it :-)" />
 </Markup>
 
 <style>

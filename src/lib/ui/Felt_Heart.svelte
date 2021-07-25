@@ -3,4 +3,4 @@
 	export let height = 178;
 </script>
 
-<img src="felt.png" alt="felt heart" {width} {height} />
+<img src="/felt.png" alt="felt heart" {width} {height} />
