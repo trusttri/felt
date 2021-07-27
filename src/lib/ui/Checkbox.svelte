@@ -8,8 +8,10 @@
 	// TODO rethink this API, probably use events instead
 	export let checked: boolean;
 	export let on_change: ((checked: boolean) => void) | null = null;
-	// using this instead of component custom props shorthand because it breaks global styles
+	// using these instead of component custom props shorthand because it breaks global styles using `:last-child`
 	export let content: string | undefined = undefined;
+	export let content_empty: string | undefined = undefined;
+	export let disabled: boolean | undefined = undefined;
 
 	const id = to_id();
 
@@ -17,13 +19,22 @@
 </script>
 
 <label
-	style={content ? `--content: ${content}` : undefined}
+	style="--content: {content ? `'${content}'` : ''}; --content_empty: {content_empty
+		? `'${content_empty}'`
+		: ''}"
 	class="checkbox buttonlike"
 	class:selected={checked}
+	class:disabled
 	for={id}
 >
 	<div class="content">
-		<input {id} type="checkbox" bind:checked />
+		<input
+			{id}
+			type="checkbox"
+			bind:checked
+			class:offset-for-checkmark={content === undefined}
+			{disabled}
+		/>
 		<slot />
 	</div>
 </label>
@@ -46,6 +57,11 @@
 	label:last-child {
 		border-bottom-width: var(--input_border_width);
 		margin-bottom: var(--spacing_lg);
+	}
+	/* the default checkmark needs to be offset to make it look right */
+	.offset-for-checkmark::before {
+		--left: 0.6rem;
+		--top: -0.4rem;
 	}
 	.content {
 		width: var(--column_width);

@@ -56,7 +56,7 @@
 	<nav>
 		{#each state_ids as state_id (state_id)}
 			<button
-				disabled={!$devmode || state_id === $state.value}
+				disabled={!$devmode && state_id !== $state.value}
 				class:selected={state_id === $state.value}
 				on:click={$devmode ? () => select(state_id) : undefined}
 			>

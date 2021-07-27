@@ -10,14 +10,16 @@
 	--faded_3: 38%;
 	--faded_4: 24%;
 	--faded_5: 15%;
+	--faded_6: 9%;
 	--bg: #fff;
+	--shadow: rgba(0, 0, 0, var(--faded_5));
 	--blue_hue: 210;
 	--blue_saturation: 55%;
 	--blue_lightness: 50%;
 	--blue: hsl(var(--blue_hue), var(--blue_saturation), var(--blue_lightness));
 	--green_hue: 120;
 	--green_saturation: 55%;
-	--green_lightness: 42%;
+	--green_lightness: 32%;
 	--green: hsl(var(--green_hue), var(--green_saturation), var(--green_lightness));
 	--violet_hue: 260;
 	--violet_saturation: 50%;
@@ -70,6 +72,15 @@
 		var(--tint_lightness_4)
 	);
 	--interactive_color_active: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_5));
+	--interactive_color_active_dark: hsl(
+		var(--tint_hue),
+		var(--tint_saturation),
+		var(--tint_lightness_2)
+	);
+	--active_hue: var(--blue_hue);
+	--active_saturation: var(--blue_saturation);
+	--active_lightness: var(--blue_lightness);
+	--active_alpha: var(--alpha);
 	--active_hue: var(--blue_hue);
 	--active_saturation: var(--blue_saturation);
 	--active_lightness: var(--blue_lightness);
@@ -153,12 +164,25 @@
 	--column_width_min: 320px;
 	--nav_height: var(--spacing_xl2);
 	--avatar_height: var(--spacing_xl3);
+	--border_color_darker: hsla(
+		var(--tint_hue),
+		var(--tint_saturation),
+		var(--tint_lightness_dark),
+		var(--faded_1)
+	);
+	--border_color_dark: hsla(
+		var(--tint_hue),
+		var(--tint_saturation),
+		var(--tint_lightness_dark),
+		var(--faded_2)
+	);
 	--border_color: hsla(
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness_dark),
 		var(--faded_3)
 	);
+	/* TODO these don't use tint, but the above variants do */
 	--border_color_light: rgba(0, 0, 0, var(--faded_4));
 	--border_color_lighter: rgba(0, 0, 0, var(--faded_5));
 	--border_radius_md: 25px;
@@ -170,27 +194,28 @@
 	--border_width_2: 2px;
 	--border_width_1: 1px;
 	--border_style: solid;
+	--border_style_1: solid;
 	--border_style_2: double;
 	--border_style_3: dotted;
 	--border_style_4: dashed;
+	--border_style_v: var(--border_style_1);
+	--border_style_h: var(--border_style_1);
+	--border_style_disabled: var(--border_style_4);
 	--border: var(--border_width_1) var(--border_style) var(--tint);
 	--border_alert: var(--border_width_3) var(--border_style_2)
 		hsla(var(--red_hue), 100%, 50%, var(--faded_3));
 	--border_help: var(--border_width_3) var(--border_style_2)
 		hsla(var(--green_hue), 100%, 25%, var(--faded_3));
-	/* --border: var(--border_width_3) var(--border_style_2) hsla(0, 0%, 80%, var(--faded_3)); */
 	--outline_width: 0;
 	--outline_width_2: var(--border_width_5);
 	--outline_width_3: var(--border_width_6);
 	--outline_style: var(--border_style_2);
 	--outline_style_2: var(--border_style_3);
 	--outline_color: var(--interactive_color_hover);
-	--button_border_color: var(--border_color);
 	--button_border_width: var(--border_width_1);
 	--button_border_style: solid;
-	--button_border_style_inner: double;
-	--button_border_style_selected: solid;
-	--button_border_style_disabled: dashed;
+	--button_border_v_style_disabled: solid;
+	--button_border_h_style_disabled: dashed;
 	--button_font_weight: var(--font_weight_4);
 	--button_text_color: var(--text_color_light);
 	--input_bg_color: var(--bg);
@@ -204,6 +229,8 @@
 	--input_height_inner: calc(
 		var(--input_height) - 2 * var(--input_border_width) - 2 * var(--input_padding_v)
 	);
+	--left: 0px;
+	--top: 0px;
 }
 
 *,
@@ -287,16 +314,29 @@ li {
 	display: flex;
 }
 
-h1,
-h2,
-h3 {
-	--font_weight: var(--font_weight_2);
-	font-weight: var(--font_weight);
+h1 {
+	font-size: var(--font_size_xl3);
+	font-weight: var(--font_weight_1);
 }
-h1 a,
-h2 a,
-h3 a {
-	--font_weight: var(--font_weight_3);
+h2 {
+	font-size: var(--font_size_xl2);
+	font-weight: var(--font_weight_2);
+}
+h3 {
+	font-size: var(--font_size_xl);
+	font-weight: var(--font_weight_3);
+}
+h4 {
+	font-size: var(--font_size_lg);
+	font-weight: var(--font_weight_4);
+}
+h5 {
+	font-size: var(--font_size_md);
+	font-weight: var(--font_weight_5);
+}
+h6 {
+	font-size: var(--font_size_sm);
+	font-weight: var(--font_weight_5);
 }
 
 form {
@@ -312,38 +352,6 @@ form select {
 form > *:last-child {
 	margin-bottom: 0;
 }
-
-button {
-	-webkit-appearance: none;
-	appearance: none;
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font: inherit;
-	/* TODO should `font-size` inherit? */
-	font-size: var(--font_size_lg);
-	font-weight: var(--button_font_weight);
-	min-height: var(--input_height);
-	padding: var(--spacing_xs) var(--spacing_md);
-	background: var(--interactive_color);
-	border-width: var(--button_border_width);
-	border-color: var(--button_border_color);
-	border-style: var(--button_border_style);
-	border-radius: var(--border_radius);
-	color: var(--button_text_color);
-	outline: var(--outline_width) var(--outline_style) var(--outline_color);
-}
-button:hover {
-	background: var(--interactive_color_hover);
-}
-button:active {
-	background: var(--interactive_color_active);
-}
-button.inline {
-	display: inline-block;
-}
-
 input,
 textarea,
 select {
@@ -360,23 +368,31 @@ select {
 	width: 100%;
 	min-width: var(--input_width_min);
 	min-height: var(--input_height);
-	outline: var(--outline_width) var(--outline_style) var(--outline_color);
+	box-shadow: 0 0 0 2px var(--interactive_color), 0 0 0 3px var(--border_color);
+	outline: none; /* should be enough visual change to make this unnecessary */
+}
+.buttonlike {
+	position: relative;
+	/* TODO more? */
 }
 
 input[type='checkbox'] {
 	position: relative;
+	left: var(--left);
+	top: var(--top);
 	width: var(--input_height);
 	height: var(--input_height);
 	max-width: var(--input_height);
 	min-width: var(--input_height);
+	box-shadow: -2px 2px 0 2px var(--interactive_color_disabled), -2px 2px 0 3px var(--border_color);
 	--input_padding_v: 0;
 	--input_padding_h: 0;
 }
 input[type='checkbox']::before {
 	content: var(--content_empty, '');
 	position: absolute;
-	left: 0;
-	top: 0;
+	left: var(--left);
+	top: var(--top);
 	width: 100%;
 	height: 100%;
 	text-align: center;
@@ -390,7 +406,8 @@ input[type='checkbox']::before {
 }
 input[type='checkbox']:checked::before {
 	color: var(--active_color);
-	content: var(--content, '•');
+	/* TODO set as a var with `✓` or `•` with the source of truth as `bullet_point` in `$lib/ui/icons` */
+	content: var(--content, '✓');
 }
 
 input[type='range']::-webkit-slider-thumb {
@@ -429,103 +446,181 @@ hr {
 	border: var(--border_width_3) var(--border_style_2) var(--border_color_light);
 }
 
-.buttonlike {
-	outline-width: var(--outline_width);
-	outline-style: var(--outline_style);
-	outline-color: var(--outline_color);
-}
-
 .buttonlike:hover,
 input:hover,
 textarea:hover,
-button:hover {
+select:hover {
 	z-index: 3;
-	--outline_style: var(--border_style_2);
-	--outline_width: var(--outline_width_2);
+	box-shadow: 0 0 0 2px var(--interactive_color), 0 0 0 3px var(--border_color),
+		0 0 3px 5px var(--shadow);
 }
 
 .buttonlike:focus,
 .buttonlike:focus-within,
 input:focus,
 textarea:focus,
-button:focus {
+select:focus {
 	z-index: 2;
-	--input_border_color: var(--active_color);
-	--button_border_color: var(--active_color);
-	--outline_color: var(--active_color);
-	--outline_style: var(--border_style_2);
-	--outline_width: var(--outline_width_2);
+	/* TODO which of these is best? both is weird */
+	--border_color: var(--border_color_dark);
+	--input_border_color: var(--border_color_dark);
+	/* TODO vars? */
+	box-shadow: 0 0 0 2px var(--interactive_color), 0 0 0 3px var(--border_color),
+		0 0 5px 6px var(--shadow);
 }
 
 .buttonlike:active,
 .buttonlike:active input,
 .buttonlike:active textarea,
-.buttonlike:active button,
 input:active,
 textarea:active,
-button:active {
+select:active {
 	z-index: 3;
+	--border_color: var(--border_color_dark);
+	--input_border_color: var(--border_color_dark);
 	/* TODO do we want these two vars at all? or should we use selectors+vars? */
-	--input_border_color: var(--active_color);
-	--button_border_color: var(--active_color_2);
-	--outline_color: var(--active_color);
-	/* TODO ? */
-	/* --outline_width: var(--outline_width_2); */
-	--outline_width: var(--outline_width_3);
-}
-.buttonlike:active input,
-input:active {
-	/* TODO ? */
-	--outline_color: var(--active_color);
+	box-shadow: 0 0 0 3px var(--interactive_color), 0 0 0 4px var(--border_color),
+		0 0 5px 7px var(--shadow);
 }
 
-input[type='checkbox']:focus {
-	--input_border_color: var(--border_color);
-}
-input[type='checkbox']:checked {
-	--input_border_color: var(--active_color);
-}
-.buttonlike:active input[type='checkbox'],
-input:active {
-	--input_border_color: var(--active_color_2);
+/* TODO kind of a hacky override -- we don't want the .buttonlike to animate size, at least not with checkboxes  */
+.buttonlike:active {
+	box-shadow: 0 0 0 2px var(--interactive_color), 0 0 0 3px var(--border_color),
+		0 0 5px 6px var(--shadow);
 }
 
-button:disabled,
 input:disabled,
-textarea:disabled {
+textarea:disabled,
+select:disabled,
+.buttonlike.disabled {
 	z-index: 1;
-	--outline_width: 0;
 	--input_border_color: var(--border_color);
 	opacity: 1; /* for some browsers */
 	background: var(--interactive_color_disabled);
 	color: var(--text_color_disabled);
-	border-left-style: var(--button_border_style_disabled);
-	border-right-style: var(--button_border_style_disabled);
+	border-left-style: var(--button_border_h_style_disabled);
+	border-right-style: var(--button_border_h_style_disabled);
+	border-top-style: var(--button_border_v_style_disabled);
+	border-bottom-style: var(--button_border_v_style_disabled);
 }
-input:disabled:active,
-textarea:disabled:active {
+input:disabled:focus,
+textarea:disabled:focus,
+select:disabled:focus,
+.buttonlike.disabled:focus {
+	z-index: 2;
+	--input_border_color: var(--error_color);
 	--border_color: var(--error_color);
+}
+input:disabled:hover,
+textarea:disabled:hover,
+select:disabled:hover,
+.buttonlike.disabled:hover {
+	z-index: 3;
+	--input_border_color: var(--error_color);
+	--border_color: var(--error_color);
+}
+
+button {
+	-webkit-appearance: none;
+	appearance: none;
+	position: relative;
+	left: var(--left);
+	top: var(--top);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font: inherit;
+	/* TODO should `font-size` inherit? */
+	font-size: var(--font_size_lg);
+	font-weight: var(--button_font_weight);
+	min-height: var(--input_height);
+	padding: var(--spacing_xs) var(--spacing_md);
+	background: var(--interactive_color);
+	border-width: var(--button_border_width);
+	border-color: var(--border_color);
+	border-style: var(--border_style_v) var(--border_style_h);
+	border-radius: var(--border_radius);
+	color: var(--button_text_color);
+	outline: none; /* should be enough visual change to make this unnecessary */
+	box-shadow: -2px 2px 0 2px var(--interactive_color_disabled), -2px 2px 0 3px var(--border_color);
+}
+button::after,
+input[type='checkbox']::after {
+	/* this is an interactive surface, lets us reposition button content on hover without moving the hitbox */
+	content: '';
+	position: absolute;
+	left: calc(-1 * var(--left));
+	top: calc(-1 * var(--top));
+	width: 100%;
+	height: 100%;
+}
+button:disabled,
+input[type='checkbox']:disabled {
+	z-index: 1;
+	opacity: 1; /* for some browsers */
+	background: var(--interactive_color_disabled);
+	color: var(--text_color_disabled);
+	--border_style_h: var(--border_style_disabled);
 }
 button.selected {
-	border-left-style: var(--button_border_style_selected);
-	border-right-style: var(--button_border_style_selected);
-	z-index: 1;
-	color: var(--active_color);
-	/* TODO experimental, not sure about these patterns */
-	--button_border_color: var(--active_color);
+	z-index: 2;
+}
+button:hover,
+button:focus,
+.buttonlike:hover input[type='checkbox'],
+.buttonlike:focus input[type='checkbox'],
+input[type='checkbox']:hover,
+input[type='checkbox']:focus {
+	--border_color: var(--border_color_dark);
+	/* TODO delete this */
+	--input_border_color: var(--border_color);
+	z-index: 3;
+	background: var(--interactive_color_hover);
+	box-shadow: -2px 2px 0 2px var(--interactive_color), -2px 2px 0 3px var(--border_color),
+		-2px 2px 5px 5px var(--shadow);
+}
+button:active,
+.buttonlike:active input[type='checkbox'],
+input[type='checkbox']:active {
+	--left: -2px;
+	--top: 2px;
+	--border_color: var(--border_color_darker);
+	z-index: 4;
+	background: var(--interactive_color_active);
+	box-shadow: -1px 1px 0 1px var(--interactive_color_active_dark),
+		-1px 1px 0 2px var(--border_color), 0 0 5px 5px var(--shadow);
+}
+/* the `::after` pseudo element is our hitbox, and we keep it in place */
+button::after:active,
+.buttonlike:active input[type='checkbox']::after,
+input[type='checkbox']:active::after {
+	--left: 2px;
+	--top: -2px;
+}
+button.inline {
+	display: inline-block;
+	margin-left: var(--spacing_lg);
+}
+button.selected {
 	--border_color: var(--active_color);
-	--outline_width: var(--outline_width_2);
-	--outline_style: var(--border_style_2);
-	--outline_color: var(--interactive_color_hover);
+	--border_style_h: var(--border_style_1);
+	color: var(--active_color);
 }
-button.selected:active {
-	--outline_width: var(--outline_width_3);
+input[type='checkbox']:checked,
+.buttonlike:hover input[type='checkbox']:checked,
+.buttonlike:focus input[type='checkbox']:checked {
+	/* TODO probably refactor away `input_border_color` */
+	--input_border_color: var(--active_color);
+	--border_color: var(--active_color);
 }
-/* TODO simplify this selector? */
-button:disabled:not(.selected):active {
-	/* TODO hmm maybe delete `button_border_color`? */
+button:disabled:hover,
+.buttonlike:hover input[type='checkbox']:disabled,
+input[type='checkbox']:hover:disabled,
+button:disabled:focus,
+.buttonlike:focus input[type='checkbox']:disabled,
+input[type='checkbox']:focus:disabled {
 	--border_color: var(--error_color);
-	--button_border_color: var(--error_color);
+	--color: var(--error_color);
 }
 
 label {

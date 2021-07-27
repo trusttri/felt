@@ -34,7 +34,8 @@
 	.markup :global(li) {
 		display: list-item;
 	}
-	.markup :global(p) {
+	.markup :global(p),
+	.markup :global(form) {
 		margin-bottom: var(--spacing_lg);
 	}
 	.markup :global(button),

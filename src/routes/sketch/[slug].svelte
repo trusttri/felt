@@ -4,7 +4,6 @@
 	import Library from '$lib/sketch/library/Library.svelte';
 
 	$: slug = $page.params.slug;
-	$: console.log('slug', slug);
 </script>
 
 <!-- TODO loading these eagerly is no good -->

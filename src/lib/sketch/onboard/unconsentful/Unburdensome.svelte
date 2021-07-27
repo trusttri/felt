@@ -61,8 +61,8 @@
 
 	<Checkbox
 		bind:checked={consenting}
-		--content="'☻'"
-		--content_empty="'☹'"
+		content="☻"
+		content_empty="☹"
 		--overflow="hidden"
 		--font_size="var(--font_size_xl2)"
 	>
@@ -80,9 +80,9 @@
 	</button>
 
 	{#if consenting}
-		<Message text=":-)" />
+		<Message>It is better to not know how we got your contacts :-)</Message>
 	{:else}
-		<Message status="help" text="No worries! We'll invite only these contacts:" />
+		<Message status="help">No worries! We'll invite only these contacts:</Message>
 	{/if}
 
 	{#if !consenting}
@@ -91,6 +91,8 @@
 				<Checkbox
 					checked={email_contact.selected}
 					on_change={(checked) => toggle_selected(checked, email_contact)}
+					content="☻"
+					content_empty="☹"
 				>
 					{email_contact.id}
 				</Checkbox>
@@ -102,10 +104,7 @@
 <style>
 	.emails {
 		align-items: stretch;
-		/* TODO putting these on the Checkbox using CSS var props breaks its style using :last-child */
 		--font_size: var(--font_size_xl2);
-		--content: '☻';
-		--content_empty: '☹';
 		--overflow: 'hidden';
 	}
 </style>

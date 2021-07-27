@@ -24,8 +24,10 @@
 <style>
 	button {
 		position: fixed;
-		right: var(--spacing_sm);
-		bottom: var(--spacing_sm);
+		left: unset;
+		top: unset;
+		right: calc(var(--spacing_sm) - var(--left));
+		bottom: calc(var(--spacing_sm) - var(--top));
 		opacity: var(--faded_3);
 	}
 	button::before {

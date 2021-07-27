@@ -1,41 +1,45 @@
 <script lang="ts">
-	export let icon: string = '•';
+	import {bullet_point} from '$lib/ui/icons';
+
 	export let paused: boolean = false;
 </script>
 
-<span class:paused class="one">{icon}</span>
-<span class:paused class="two">{icon}</span>
-<span class:paused class="three">{icon}</span>
+<span class:paused style="animation-delay: 0s"><slot>{bullet_point}</slot></span>
+<span class:paused style="animation-delay: 0.09s"><slot>{bullet_point}</slot></span>
+<span class:paused style="animation-delay: 0.3s"><slot>{bullet_point}</slot></span>
 
 <style>
 	span {
 		opacity: 0;
 		animation: dot 1.5s infinite;
+		/* TODO ? */
+		/* --scale_x: 1.1;
+		--scale_y: 1.1;
+		--scale_z: 1.1;
+		transform: scale3d(3.1, 3.1, 3.1); */
 	}
 	.paused {
+		/* show the default full-opacity state instead of pausing mid-animation */
 		animation: none;
 		opacity: 1;
+		/* transform: scale3d(1, 1, 1); */
 	}
-
-	.one {
-		animation-delay: 0s;
-	}
-	.two {
-		animation-delay: 0.2s;
-	}
-	.three {
-		animation-delay: 0.3s;
-	}
-
 	@keyframes dot {
 		0% {
 			opacity: 0;
+			/* transform: scale3d(1, 1, 1); */
 		}
-		33% {
+		38% {
 			opacity: 1;
+			/* transform: scale3d(1.1, 1.1, 1.1); */
+		}
+		62% {
+			opacity: 1;
+			/* transform: scale3d(1.1, 1.1, 1.1); */
 		}
 		100% {
 			opacity: 0;
+			/* transform: scale3d(1, 1, 1); */
 		}
 	}
 </style>

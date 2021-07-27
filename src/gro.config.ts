@@ -10,6 +10,7 @@ const files = [
 	'lib/ui/Devmode.svelte',
 	'lib/ui/devmode.ts',
 	'lib/ui/Markup.svelte',
+	'lib/ui/Message.svelte',
 	'lib/ui/Pending_Animation.svelte',
 	'lib/ui/style.css',
 

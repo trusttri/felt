@@ -3,7 +3,7 @@ import {round} from '$lib/util/math.js';
 import {truncate} from '$lib/util/string.js';
 import type {Timings} from '$lib/util/timings.js';
 import type {Logger} from '$lib/util/log.js';
-import {arrow_left} from '$lib/ui/icons.js';
+import {arrow_left, bullet_point} from '$lib/ui/icons.js';
 
 export const print_key_value = (key: string, val: string | number): string =>
 	gray(`${key}(`) + val + gray(')');
@@ -15,7 +15,7 @@ export const print_ms = (ms: number, decimals?: number | undefined): string => {
 	return white(round(ms, decimals).toFixed(decimals)) + gray('ms');
 };
 export const print_causes = (solutions: string[]): string =>
-	'\n	Possible causes:' + solutions.map((s) => `\n		• ${s}`).join('');
+	'\n	Possible causes:' + solutions.map((s) => `\n		${bullet_point} ${s}`).join('');
 export const print_str = (s: string): string => green(`'${s}'`);
 
 export const print_value = (value: unknown): unknown => {

@@ -1,36 +1,18 @@
 <script lang="ts">
-	// if the slot is filled, `text` and `icon` are ignored
-	export let text: string | null = null;
-	export let icon: string | null = null;
-	export let color: string | null = null;
+	import type {Message_Status} from '$lib/ui/message';
+	import {message_status_options} from '$lib/ui/message';
+
 	export let status: Message_Status = 'normal';
+	export let icon: string | null | undefined = undefined; // TODO maybe change to a slot
+	export let color: string | null | undefined = undefined;
 
-	export type Message_Status = 'normal' | 'help' | 'error';
-	export interface Message_Status_Options {
-		color: null | string;
-		icon: string | null;
-	}
-	const options_by_status: Record<Message_Status, Message_Status_Options> = {
-		normal: {color: 'var(--text_color_light)', icon: null},
-		help: {color: 'var(--help_color)', icon: 'ⓘ'},
-		error: {color: 'var(--error_color)', icon: '‼'},
-	};
-
-	$: final_icon = icon ?? options_by_status[status].icon;
-	$: final_color = color ?? options_by_status[status].color;
+	$: final_icon = icon === undefined ? message_status_options[status].icon : icon;
+	$: final_color = color === undefined ? message_status_options[status].color : color;
 </script>
 
 <div class="message" style={final_color ? `--color: ${final_color}` : undefined}>
-	<div class="wrapper">
-		<slot>
-			<span>
-				{#if final_icon}
-					<span class="icon">{final_icon}</span>
-				{/if}
-				{text}
-			</span>
-		</slot>
-	</div>
+	<span class="icon">{final_icon}</span>
+	<slot />
 </div>
 
 <style>
@@ -38,13 +20,14 @@
 		min-height: var(--message_min_height);
 		width: 100%;
 		color: var(--color);
-		font-weight: var(--font_weight, var(--font_weight_4));
+		font-weight: var(--font_weight_4);
 		font-size: var(--font_size_lg);
-		border-width: var(--border_width_1) var(--border_width_5);
-		border-style: var(--border_style_2);
+		border-width: 0 0 var(--border_width_3) var(--border_width_1);
+		background-color: var(--tint_highlight);
+		border-style: var(--border_style);
 		border-color: var(--color);
 		display: flex;
-		align-items: stretch;
+		align-items: center;
 		padding: var(--spacing_xs2) var(--spacing_xs);
 		margin-bottom: var(--spacing_lg);
 	}
@@ -52,15 +35,7 @@
 		margin-bottom: 0;
 	}
 	.icon {
-		padding-right: var(--spacing_sm);
-	}
-	/* TODO can we delete the wrapper? */
-	.wrapper {
-		width: 100%;
-		padding: var(--spacing_md) var(--spacing_xs);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		text-align: center;
+		padding-right: var(--spacing_md);
+		font-size: var(--font_size_xl2);
 	}
 </style>

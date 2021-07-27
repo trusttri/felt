@@ -1,5 +1,16 @@
 # changelog
 
+## 0.6.0
+
+- **break**: rename and add exports in `ui/icons.ts`
+  ([#108](https://github.com/feltcoop/felt/pull/108))
+- update `ui/Pending_Animation.svelte` with slot content and `paused` prop
+  ([#108](https://github.com/feltcoop/felt/pull/108))
+- replace `ui/Message.svelte` prop `text` with a slot
+  ([#108](https://github.com/feltcoop/felt/pull/108))
+- publish `ui/Message.svelte`
+  ([#108](https://github.com/feltcoop/felt/pull/108))
+
 ## 0.5.5
 
 - update `ui/style.css`

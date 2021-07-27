@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
+	import Message from '$lib/ui/Message.svelte';
 
 	export let data: Onboard_Data;
 	export let done: () => void;
@@ -15,6 +16,7 @@
 </script>
 
 <Markup>
+	<Message>this is not real</Message>
 	<form>
 		<input bind:value={username} placeholder="username" />
 		<input type="password" bind:value={password} placeholder="password" />

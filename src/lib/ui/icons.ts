@@ -1,3 +1,5 @@
+// TODO add metadata, mainly tags
+
 export const greenheart = '💚';
 export const felt = greenheart;
 export const chestnut = '🌰';
@@ -5,12 +7,9 @@ export const gro = chestnut;
 export const grin = '😁';
 export const rofl = '🤣';
 export const upsidedown = '🙃';
-export const blush = '😊';
 export const starstruck = '🤩';
 export const zany = '🤪';
 export const moneymouth = '🤑';
-export const thinking = '🤔';
-export const expressionless = '😑';
 export const rolleyes = '🙄';
 export const disappointed = '😞';
 export const grimace = '😬';
@@ -25,7 +24,6 @@ export const waving = '👋';
 export const raisehand = '✋';
 export const thumbsup = '👍';
 export const thumbsdown = '👎';
-export const indexpointing = '☝️';
 export const raisedhands = '🙌';
 export const pray = '🙏';
 export const writing = '✍️';
@@ -64,7 +62,6 @@ export const pineapple = '🍍';
 export const banana = '🍌';
 export const cherries = '🍒';
 export const pear = '🍐';
-export const avocado = '🥑';
 export const eggplant = '🍆';
 export const potato = '🥔';
 export const corn = '🌽';
@@ -100,5 +97,23 @@ export const rocket = '🚀';
 
 export const arrow_left = '←';
 export const arrow_right = '→';
-export const point_left = '👈';
-export const point_right = '👉';
+export const bullet_point = '•';
+export const checkmark = '✓';
+export const ballot_mark = '✗';
+
+export const hand_point_left = '👈';
+export const hand_point_right = '👉';
+export const hand_point_up = '👆';
+export const hand_point_down = '👇';
+export const hand_thumbs_up = '👍';
+export const hand_thumbs_down = '👎';
+export const hand_facing_forward = '✋';
+export const hand_ok = '👌';
+
+export const face_blush = '😊';
+export const face_think = '🤔';
+export const face_wink = '😉';
+export const face_expressionless = '😑';
+
+export const item_key = '🔑';
+export const item_avocado = '🥑';

@@ -64,12 +64,31 @@
 		}
 		if (should_focus) {
 			await tick();
-			phone_number_el.focus();
+			if (!focus_next_input()) {
+				signup_button_el.focus();
+			}
 		}
 	};
 
-	const signup = (data: Onboard_Data, provider: Service_Provider_Data | null) => {
+	const focus_next_input = (): HTMLInputElement | null => {
+		if (!phone_number) {
+			phone_number_el.focus();
+			return phone_number_el;
+		}
+		if (!home_address) {
+			home_address_el.focus();
+			return home_address_el;
+		}
+		if (!anything_else) {
+			anything_else_el.focus();
+			return anything_else_el;
+		}
+		return null;
+	};
+
+	const signup = (provider: Service_Provider_Data | null): void => {
 		console.log('signup data, provider', data, provider);
+		if (focus_next_input()) return;
 		if (provider) done();
 	};
 
@@ -87,12 +106,13 @@
 	let home_address_el: HTMLInputElement;
 	let anything_else = '';
 	let anything_else_el: HTMLInputElement;
+	let signup_button_el: HTMLButtonElement;
 
 	$: enable_create_button = !create_error_message;
-	$: enable_signup_button = phone_number && home_address && anything_else;
 </script>
 
 <Markup>
+	<Message>this is fake</Message>
 	<form>
 		<input
 			bind:value={username}
@@ -118,9 +138,9 @@
 		{#if create_error_message}
 			<div class="message" style="--message_min_height: 10rem;">
 				{#if !selected_provider}
-					<Message status="error" text={create_error_message} />
+					<Message status="error">{create_error_message}</Message>
 				{:else}
-					<Message text=":-)" />
+					<Message>:-)</Message>
 				{/if}
 			</div>
 		{/if}
@@ -130,7 +150,6 @@
 				<button
 					type="button"
 					on:click={() => signup_with(provider)}
-					disabled={!!selected_provider && selected_provider === provider}
 					class:selected={!!selected_provider && selected_provider === provider}
 				>
 					{#if provider.name === 'TRUSTED_CO'}
@@ -145,7 +164,7 @@
 
 			{#if selected_provider === providers.SOCIAL_CO || selected_provider === providers.TRACKER_CO}
 				{#if selected_provider && selected_provider !== providers.TRUSTED_CO}
-					<Message status="help" text={signup_helper_message} />
+					<Message status="help">{signup_helper_message}</Message>
 					<input
 						bind:value={phone_number}
 						bind:this={phone_number_el}
@@ -168,25 +187,21 @@
 						placeholder="anything else to share? :-)"
 						on:keydown={(e) => {
 							if (e.key === 'Enter') {
-								if (enable_signup_button) {
-									signup(data, selected_provider);
-								} else {
-									phone_number_el.focus();
-								}
+								signup(selected_provider);
 							}
 						}}
 					/>
 					<button
 						type="button"
-						on:click={() => signup(data, selected_provider)}
-						disabled={!enable_signup_button}
+						bind:this={signup_button_el}
+						on:click={() => signup(selected_provider)}
 					>
 						call my phone<br />
 						to finish signup<br />with {selected_provider.name}
 					</button>
 				{/if}
 			{:else if selected_provider}
-				<Message status="error" text={signup_error_message} />
+				<Message status="error">{signup_error_message}</Message>
 			{/if}
 		{/if}
 	</form>

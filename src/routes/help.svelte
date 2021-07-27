@@ -3,7 +3,7 @@
 </script>
 
 <div class="column">
-	<Message status="help" text="todo" />
+	<Message status="help">todo</Message>
 	<div>
 		<a href="https://github.com/feltcoop/felt/issues">github.com/feltcoop/felt/issues</a>
 	</div>

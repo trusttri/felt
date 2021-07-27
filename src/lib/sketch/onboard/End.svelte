@@ -10,7 +10,7 @@
 <Markup>
 	<h1>Thanks for playing!</h1>
 	<p>
-		We appreciate your time — hopefully you learned something & had fun in the process {grin}
+		We appreciate your time — hopefully you learned something & had some fun {grin}
 	</p>
 	<blockquote>
 		questions or comments? open

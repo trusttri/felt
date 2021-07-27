@@ -3,6 +3,7 @@
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Message from '$lib/ui/Message.svelte';
+	import {ballot_mark} from '$lib/ui/icons';
 
 	export let data: Onboard_Data;
 	export let done: () => void;
@@ -13,7 +14,7 @@
 	back;
 
 	let consenting = true; // :-)
-	let won = false; // you did it!
+	let win_count = 0; // you did it!
 
 	$: enable_continue_button = consenting;
 </script>
@@ -37,19 +38,25 @@
 		</small>.
 	</p>
 	<p>
-		Now click the win button! <button class="inline" disabled={won} on:click={() => (won = true)}>
+		Now click the win button! <button
+			class="inline"
+			class:selected={!!win_count}
+			disabled={win_count > 10}
+			on:click={() => win_count++}
+		>
 			win!!!
 		</button>
 	</p>
-	{#if won}
+	{#if win_count}
 		<p>
-			Wow you did it! You win a doggy:
+			Wow you did it!{#if win_count > 2}!{/if}{#if win_count > 5}!{/if} You win a doggy{#if win_count > 8}s{/if}:
 			<span class="dog">🐕</span>
+			{#if win_count > 8}<span class="dog">🐕</span>{/if}
 		</p>
 		<p>Now click "I accept" below for more rewards :-)</p>
 	{/if}
 	<div>
-		<Checkbox bind:checked={consenting} content="'✗'">
+		<Checkbox bind:checked={consenting} content={ballot_mark}>
 			<Markup>
 				<div>I consent to:</div>
 				<ul>
@@ -69,7 +76,7 @@
 		</Markup>
 	</button>
 
-	<Message status="help" text="This is legally binding but do not worry about it :-)" />
+	<Message status="help">This is legally binding but do not worry about it :-)</Message>
 </Markup>
 
 <style>
