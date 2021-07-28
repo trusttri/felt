@@ -1,8 +1,9 @@
 /*--------------------------------------------------------------------------
 
-source: https://github.com/sinclairzx81/typebox
-url: https://github.com/sinclairzx81/typebox/blob/master/src/typebox.ts
-raw: https://raw.githubusercontent.com/sinclairzx81/typebox/40d4f2071510f71d1af1ca75b18f29f1aed87e6e/src/typebox.ts
+github_url: https://github.com/sinclairzx81/typebox
+npm_url: https://www.npmjs.com/package/@sinclair/typebox
+source_url: https://github.com/sinclairzx81/typebox/blob/master/src/typebox.ts
+raw_url: https://raw.githubusercontent.com/sinclairzx81/typebox/40d4f2071510f71d1af1ca75b18f29f1aed87e6e/src/typebox.ts
 
 TypeBox: JSON Schema Type Builder with Static Type Resolution for TypeScript
 
