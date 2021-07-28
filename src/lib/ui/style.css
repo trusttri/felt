@@ -65,18 +65,22 @@
 		var(--faded_2)
 	);
 	--interactive_color: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_3));
+	--interactive_color_dark: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_2));
+	--interactive_color_darker: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_1));
+	--interactive_color_light: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_4));
+	--interactive_color_lighter: hsl(
+		var(--tint_hue),
+		var(--tint_saturation),
+		var(--tint_lightness_5)
+	);
 	--interactive_color_hover: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_4));
 	--interactive_color_disabled: hsl(
 		var(--tint_hue),
 		var(--tint_saturation),
 		var(--tint_lightness_4)
 	);
-	--interactive_color_active: hsl(var(--tint_hue), var(--tint_saturation), var(--tint_lightness_5));
-	--interactive_color_active_dark: hsl(
-		var(--tint_hue),
-		var(--tint_saturation),
-		var(--tint_lightness_2)
-	);
+	--interactive_color_active: var(--interactive_color_lighter);
+	--interactive_color_active_dark: var(--interactive_color_dark);
 	--active_hue: var(--blue_hue);
 	--active_saturation: var(--blue_saturation);
 	--active_lightness: var(--blue_lightness);
@@ -542,7 +546,7 @@ button {
 	border-radius: var(--border_radius);
 	color: var(--button_text_color);
 	outline: none; /* should be enough visual change to make this unnecessary */
-	box-shadow: -2px 2px 0 2px var(--interactive_color_disabled), -2px 2px 0 3px var(--border_color);
+	box-shadow: -2px 2px 0 2px var(--interactive_color_dark), -2px 2px 0 3px var(--border_color);
 }
 button::after,
 input[type='checkbox']::after {
@@ -554,6 +558,11 @@ input[type='checkbox']::after {
 	width: 100%;
 	height: 100%;
 }
+/* TODO should probably move differently when disabled:
+	--left: 1px;
+	--top: -1px;
+	but then we need to offset the box shadows by --left and --top
+*/
 button:disabled,
 input[type='checkbox']:disabled {
 	z-index: 1;
