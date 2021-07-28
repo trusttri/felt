@@ -41,6 +41,7 @@ const files = [
 	'lib/util/string.ts',
 	'lib/util/terminal.ts',
 	'lib/util/timings.ts',
+	'lib/util/typebox.ts',
 	'lib/util/types.ts',
 ];
 
