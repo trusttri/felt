@@ -47,6 +47,7 @@ npm start
 [esbuild](https://github.com/evanw/esbuild) ∙
 [Rollup](https://github.com/rollup/rollup) ∙
 [Prettier](https://github.com/prettier/prettier) ∙
+[`@sinclair/typebox`](https://github.com/sinclairzx81/typebox)
 [@lukeed\/\*](https://github.com/lukeed)
 & [more](package.json)
 
