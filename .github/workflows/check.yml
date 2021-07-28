@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+      - run: npm i -g npm # TODO delete this after upgrading to node 16
       - run: npm ci
       - run: npx gro check
       - run: npx gro build
