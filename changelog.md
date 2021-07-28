@@ -10,7 +10,9 @@
   ([#108](https://github.com/feltcoop/felt/pull/108))
 - publish `ui/Message.svelte`
   ([#108](https://github.com/feltcoop/felt/pull/108))
-- add vendored `util/typebox.ts` ([npm](https://www.npmjs.com/package/@sinclair/typebox))
+- add vendored `util/typebox.ts`
+  ([npm](https://www.npmjs.com/package/@sinclair/typebox))
+  ([github](https://github.com/sinclairzx81/typebox))
   ([#113](https://github.com/feltcoop/felt/pull/113))
 
 ## 0.5.5
