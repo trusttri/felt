@@ -1,7 +1,9 @@
 # changelog
 
-## 0.6.1
+## 0.7.0
 
+- **break**: require Node >=16.6.0
+  ([#116](https://github.com/feltcoop/gro/pull/116))
 - update styles
   ([#115](https://github.com/feltcoop/felt/pull/115))
 

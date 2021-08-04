@@ -27,7 +27,7 @@ import {random_int} from '@feltcoop/felt/util/random.js';
 ## develop
 
 ```bash
-npm i # node >= 14.16
+npm i # node >=16.6
 
 # development
 npm run dev

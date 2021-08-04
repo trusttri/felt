@@ -39,7 +39,7 @@
     "xstate": "^4.20.2"
   },
   "engines": {
-    "node": ">= 14.16.0"
+    "node": ">=16.6.0"
   },
   "prettier": {
     "useTabs": true,
