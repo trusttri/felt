@@ -1,5 +1,10 @@
 # changelog
 
+## 0.6.1
+
+- update styles
+  ([#115](https://github.com/feltcoop/felt/pull/115))
+
 ## 0.6.0
 
 - **break**: rename and add exports in `ui/icons.ts`

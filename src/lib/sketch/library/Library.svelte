@@ -59,11 +59,6 @@
 <!-- TODO don't lay out in a single column, use css grid probably -->
 <div class="library column">
 	<Markup>
-		<h2><code>Felt_Heart</code></h2>
-	</Markup>
-	<Felt_Heart />
-
-	<Markup>
 		<h2><code>Pending_Animation</code></h2>
 	</Markup>
 	<Pending_Animation />
@@ -72,9 +67,12 @@
 	<h3><code>Pending_Animation</code> with slot <code>🐢</code></h3>
 	<Pending_Animation>🐢</Pending_Animation>
 	<h3>
-		<code>Pending_Animation</code> with <code>paused={'{'}true{'}'}</code> and slot <code>⏳</code>
+		<code>Pending_Animation</code> with <code>paused={'{'}true{'}'}</code> and slot
+		<code>{'<span style="font-size: var(--font_size_xl5)">🐸</span>⏳'}</code>
 	</h3>
-	<Pending_Animation paused={true}>⏳</Pending_Animation>
+	<Pending_Animation paused={true}>
+		<span style="font-size: var(--font_size_xl5)">🐸</span>⏳
+	</Pending_Animation>
 
 	<Markup>
 		<h2><code>hr</code></h2>
@@ -229,7 +227,33 @@
 	<Markup>
 		<h2><code>Icons</code></h2>
 	</Markup>
+	<Markup>
+		<h3>
+			<code>{'<'}span style="font-size: var(--...);"{'>'}🐢{'<'}/span{'>'}</code> with
+			<code>font-size</code>
+			set to
+			<code>icon_size_xs</code>, <code>icon_size_sm</code>,
+			<code>icon_size_md</code>, <code>icon_size_lg</code>, <code>icon_size_xl</code>,
+			<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, & the max <code>icon_size_xl4</code>,
+			which is <code>512px</code>
+		</h3>
+		<div class="icon-sizes">
+			<div style="--size: var(--icon_size_xs);">🐢</div>
+			<div style="--size: var(--icon_size_sm);">🐢</div>
+			<div style="--size: var(--icon_size_md);">🐢</div>
+			<div style="--size: var(--icon_size_lg);">🐢</div>
+			<div style="--size: var(--icon_size_xl);">🐢</div>
+			<div style="--size: var(--icon_size_xl2);">🐢</div>
+			<div style="--size: var(--icon_size_xl3);">🐢</div>
+			<div style="--size: var(--icon_size_xl4);">🐢</div>
+		</div>
+	</Markup>
 	<Icons {icons} />
+
+	<Markup>
+		<h2><code>Felt_Heart</code></h2>
+	</Markup>
+	<Felt_Heart />
 </div>
 
 <style>
@@ -265,5 +289,18 @@
 		color: var(--bg);
 		font-size: var(--font_size_xl6);
 		font-weight: var(--font_weight_4);
+	}
+	.icon-sizes {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+	.icon-sizes > div {
+		width: var(--size);
+		height: var(--size);
+		border: var(--border);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

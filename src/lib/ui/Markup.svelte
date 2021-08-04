@@ -39,10 +39,10 @@
 		margin-bottom: var(--spacing_lg);
 	}
 	.markup :global(button),
-	:global(input),
-	:global(textarea),
-	:global(select),
-	:global(.message) {
+	.markup :global(input),
+	.markup :global(textarea),
+	.markup :global(select),
+	.markup :global(.message) {
 		margin-bottom: var(--spacing_lg);
 	}
 	.markup > :global(*:last-child),

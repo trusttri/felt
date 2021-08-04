@@ -64,7 +64,7 @@
 	$: unconsentful_data = onboard_data.unconsentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts
 </script>
 
-<div class="onboard">
+<div class="onboard" style="--column_width: 640px">
 	<Nav {state} {send} />
 	<div class="content">
 		{#if $state.value === 'begin'}

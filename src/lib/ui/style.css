@@ -164,7 +164,7 @@
 	--spacing_xl7: 6.854rem;
 	--spacing_xl8: 8.719rem;
 	--spacing_xl9: 11.09rem;
-	--column_width: 640px;
+	--column_width: 800px;
 	--column_width_min: 320px;
 	--nav_height: var(--spacing_xl2);
 	--avatar_height: var(--spacing_xl3);
@@ -233,6 +233,16 @@
 	--input_height_inner: calc(
 		var(--input_height) - 2 * var(--input_border_width) - 2 * var(--input_padding_v)
 	);
+	/* these decrease by the golden ratio */
+	--icon_size_max: 512px;
+	--icon_size_xl4: 512px;
+	--icon_size_xl3: 316.433px;
+	--icon_size_xl2: 195.567px;
+	--icon_size_xl: 120.867px;
+	--icon_size_lg: 74.7px;
+	--icon_size_md: 46.167px;
+	--icon_size_sm: 28.533px;
+	--icon_size_xs: 17.634px;
 	--left: 0px;
 	--top: 0px;
 }
