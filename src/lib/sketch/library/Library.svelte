@@ -277,7 +277,7 @@
 		display: flex;
 	}
 	hr {
-		margin: var(--spacing_lg) 0;
+		margin: var(--spacing_xl5) 0;
 	}
 	.palette {
 		display: flex;
