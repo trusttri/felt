@@ -229,13 +229,12 @@
 	</Markup>
 	<Markup>
 		<h3>
-			<code>{'<'}span style="font-size: var(--...);"{'>'}🐢{'<'}/span{'>'}</code> with
-			<code>font-size</code>
-			set to
+			`{'<'}div{'>'}`s with width and height set to
 			<code>icon_size_xs</code>, <code>icon_size_sm</code>,
 			<code>icon_size_md</code>, <code>icon_size_lg</code>, <code>icon_size_xl</code>,
-			<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, & the max <code>icon_size_xl4</code>,
-			which is <code>512px</code>
+			<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, & the max <code>icon_size_xl4</code>
+			aka <code>icon_size_max</code> -- these are insensitive to browser font size, using
+			<code>px</code> not <code>rem</code>
 		</h3>
 		<div class="icon-sizes">
 			<div style="--size: var(--icon_size_xs);">🐢</div>

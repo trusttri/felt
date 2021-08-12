@@ -233,7 +233,7 @@
 	--input_height_inner: calc(
 		var(--input_height) - 2 * var(--input_border_width) - 2 * var(--input_padding_v)
 	);
-	/* these decrease by the golden ratio */
+	/* these decrease by the golden ratio and are insensitive to font size (`px` not `rem`) */
 	--icon_size_max: 512px;
 	--icon_size_xl4: 512px;
 	--icon_size_xl3: 316.433px;
