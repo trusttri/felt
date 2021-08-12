@@ -93,7 +93,7 @@
 				placeholder="password"
 			/>
 			<textarea bind:value={lifestory} disabled={created_account} placeholder="life story" />
-			<select disabled={created_account}>
+			<select style="font-size: var(--font_size_xl5)" disabled={created_account}>
 				{#each faces as face (face)}
 					<option value={face}>{face}</option>
 				{/each}
@@ -241,7 +241,7 @@
 	</Markup>
 	<Markup>
 		<h3>
-			`{'<'}div{'>'}`s with width and height set to
+			<code>{'<'}div{'>'}</code>s with width and height set to
 			<code>icon_size_xs</code>, <code>icon_size_sm</code>,
 			<code>icon_size_md</code>, <code>icon_size_lg</code>, <code>icon_size_xl</code>,
 			<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, & the max <code>icon_size_xl4</code>
