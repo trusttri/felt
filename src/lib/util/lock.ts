@@ -1,17 +1,17 @@
-export interface Lock<T_Key = any> {
-	has(key: T_Key): boolean;
-	peek(): T_Key | null;
-	lock(key: T_Key): boolean;
-	unlock(key: T_Key): boolean;
+export interface Lock<TKey = any> {
+	has(key: TKey): boolean;
+	peek(): TKey | null;
+	lock(key: TKey): boolean;
+	unlock(key: TKey): boolean;
 }
 
 // TODO look at `Obtainable`
 // TODO maybe this is a good usecase for xstate? or is that a little much?
-export const create_lock = <T_Key>(initial_key: T_Key | null = null): Lock<T_Key> => {
-	let locked_key: T_Key | null = initial_key;
-	const has = (key: T_Key): boolean => key === locked_key;
-	const peek = (): T_Key | null => locked_key;
-	const lock = (key: T_Key): boolean => {
+export const create_lock = <TKey>(initial_key: TKey | null = null): Lock<TKey> => {
+	let locked_key: TKey | null = initial_key;
+	const has = (key: TKey): boolean => key === locked_key;
+	const peek = (): TKey | null => locked_key;
+	const lock = (key: TKey): boolean => {
 		if (Object.is(locked_key, key)) return true;
 		if (locked_key === null) {
 			locked_key = key;
@@ -19,7 +19,7 @@ export const create_lock = <T_Key>(initial_key: T_Key | null = null): Lock<T_Key
 		}
 		return false;
 	};
-	const unlock = (key: T_Key): boolean => {
+	const unlock = (key: TKey): boolean => {
 		if (locked_key === key) {
 			locked_key = null;
 			return true;
