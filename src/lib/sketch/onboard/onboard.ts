@@ -2,32 +2,32 @@ import {createMachine as create_machine} from 'xstate';
 import {useMachine} from '@xstate/svelte'; // TODO should be a type import
 import type {SvelteComponent} from 'svelte';
 
-import Consentful_Voluntary from '$lib/sketch/onboard/consentful/Voluntary.svelte';
-import Consentful_Informed from '$lib/sketch/onboard/consentful/Informed.svelte';
-import Consentful_Revertible from '$lib/sketch/onboard/consentful/Revertible.svelte';
-import Consentful_Specific from '$lib/sketch/onboard/consentful/Specific.svelte';
-import Consentful_Unburdensome from '$lib/sketch/onboard/consentful/Unburdensome.svelte';
-import Unconsentful_Voluntary from '$lib/sketch/onboard/unconsentful/Voluntary.svelte';
-import Unconsentful_Informed from '$lib/sketch/onboard/unconsentful/Informed.svelte';
-import Unconsentful_Revertible from '$lib/sketch/onboard/unconsentful/Revertible.svelte';
-import Unconsentful_Specific from '$lib/sketch/onboard/unconsentful/Specific.svelte';
-import Unconsentful_Unburdensome from '$lib/sketch/onboard/unconsentful/Unburdensome.svelte';
-import type {Consent_Type} from '$lib/sketch/onboard/consent';
+import ConsentfulVoluntary from '$lib/sketch/onboard/consentful/Voluntary.svelte';
+import ConsentfulInformed from '$lib/sketch/onboard/consentful/Informed.svelte';
+import ConsentfulRevertible from '$lib/sketch/onboard/consentful/Revertible.svelte';
+import ConsentfulSpecific from '$lib/sketch/onboard/consentful/Specific.svelte';
+import ConsentfulUnburdensome from '$lib/sketch/onboard/consentful/Unburdensome.svelte';
+import UnconsentfulVoluntary from '$lib/sketch/onboard/unconsentful/Voluntary.svelte';
+import UnconsentfulInformed from '$lib/sketch/onboard/unconsentful/Informed.svelte';
+import UnconsentfulRevertible from '$lib/sketch/onboard/unconsentful/Revertible.svelte';
+import UnconsentfulSpecific from '$lib/sketch/onboard/unconsentful/Specific.svelte';
+import UnconsentfulUnburdensome from '$lib/sketch/onboard/unconsentful/Unburdensome.svelte';
+import type {ConsentType} from '$lib/sketch/onboard/consent';
 
 // TODO we're currently using only a fraction of the xstate functionality that we want to
 
 // TODO copypasta with src/xstate/machine.ts
 
 // TODO types
-export interface Onboard_Context {}
-export type Onboard_Event = any;
-export type Onboard_Typestate = any;
+export interface OnboardContext {}
+export type OnboardEvent = any;
+export type OnboardTypestate = any;
 
-export type Onboard_State = ReturnType<Use_Onboard_Machine>['state'];
-export type Onboard_Send = ReturnType<Use_Onboard_Machine>['send'];
-type Use_Onboard_Machine = typeof to_use_onboard_machine; // TODO this is a hack to get generics working
+export type OnboardState = ReturnType<UseOnboardMachine>['state'];
+export type OnboardSend = ReturnType<UseOnboardMachine>['send'];
+type UseOnboardMachine = typeof to_use_onboard_machine; // TODO this is a hack to get generics working
 const to_use_onboard_machine = () =>
-	useMachine<Onboard_Context, Onboard_Event, Onboard_Typestate>(null!);
+	useMachine<OnboardContext, OnboardEvent, OnboardTypestate>(null!);
 
 const INITIAL_VALUE = 'begin';
 
@@ -62,7 +62,7 @@ export const onboard_machine = create_machine<object>({
 // console.log('onboard_machine', onboard_machine);
 
 // TODO derive?
-export type Onboard_State_Name =
+export type OnboardStateName =
 	| 'begin'
 	| 'voluntary'
 	| 'informed'
@@ -70,13 +70,13 @@ export type Onboard_State_Name =
 	| 'specific'
 	| 'unburdensome'
 	| 'end';
-export interface Onboard_Data {
+export interface OnboardData {
 	id: string;
 	component: typeof SvelteComponent | null;
 }
 
 // TODO does this belong in the machine context?
-export const onboard_data: Record<Consent_Type, Record<Onboard_State_Name, Onboard_Data>> = {
+export const onboard_data: Record<ConsentType, Record<OnboardStateName, OnboardData>> = {
 	consentful: {
 		begin: {
 			id: 'begin',
@@ -84,23 +84,23 @@ export const onboard_data: Record<Consent_Type, Record<Onboard_State_Name, Onboa
 		},
 		voluntary: {
 			id: 'voluntary',
-			component: Consentful_Voluntary,
+			component: ConsentfulVoluntary,
 		},
 		informed: {
 			id: 'informed',
-			component: Consentful_Informed,
+			component: ConsentfulInformed,
 		},
 		revertible: {
 			id: 'revertible',
-			component: Consentful_Revertible,
+			component: ConsentfulRevertible,
 		},
 		specific: {
 			id: 'specific',
-			component: Consentful_Specific,
+			component: ConsentfulSpecific,
 		},
 		unburdensome: {
 			id: 'unburdensome',
-			component: Consentful_Unburdensome,
+			component: ConsentfulUnburdensome,
 		},
 		end: {
 			id: 'end',
@@ -114,23 +114,23 @@ export const onboard_data: Record<Consent_Type, Record<Onboard_State_Name, Onboa
 		},
 		voluntary: {
 			id: 'voluntary',
-			component: Unconsentful_Voluntary,
+			component: UnconsentfulVoluntary,
 		},
 		informed: {
 			id: 'informed',
-			component: Unconsentful_Informed,
+			component: UnconsentfulInformed,
 		},
 		revertible: {
 			id: 'revertible',
-			component: Unconsentful_Revertible,
+			component: UnconsentfulRevertible,
 		},
 		specific: {
 			id: 'specific',
-			component: Unconsentful_Specific,
+			component: UnconsentfulSpecific,
 		},
 		unburdensome: {
 			id: 'unburdensome',
-			component: Unconsentful_Unburdensome,
+			component: UnconsentfulUnburdensome,
 		},
 		end: {
 			id: 'end',

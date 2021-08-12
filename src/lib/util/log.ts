@@ -7,7 +7,7 @@ import {to_env_number} from '$lib/util/env.js';
 // TODO track warnings/errors (or anything above a certain threshold)
 // and report at the end of each build (and other tasks)
 
-export enum Log_Level {
+export enum LogLevel {
 	Off = 0,
 	Error = 1,
 	Warn = 2,
@@ -16,7 +16,7 @@ export enum Log_Level {
 }
 
 export const ENV_LOG_LEVEL = to_env_number('GRO_LOG_LEVEL');
-export const DEFAULT_LOG_LEVEL = ENV_LOG_LEVEL ?? Log_Level.Trace;
+export const DEFAULT_LOG_LEVEL = ENV_LOG_LEVEL ?? LogLevel.Trace;
 
 /*
 
@@ -24,12 +24,12 @@ export const DEFAULT_LOG_LEVEL = ENV_LOG_LEVEL ?? Log_Level.Trace;
 to achieve a good mix of convenience and flexibility
 both for Felt and user code.
 It uses late binding to allow runtime mutations
-and it accepts a `Logger_State` argument for custom behavior.
+and it accepts a `LoggerState` argument for custom behavior.
 Though the code is more verbose and slower as a result,
 the tradeoffs make sense for logging in development.
 TODO use a different logger in production
 
-The default `Logger_State` is the `Logger` class itself.
+The default `LoggerState` is the `Logger` class itself.
 This pattern allows us to have globally mutable logger state
 without locking the code into the singleton pattern.
 Properties like the static `Logger.level` can be mutated
@@ -37,7 +37,7 @@ to affect all loggers that get instantiated with the default state,
 but loggers can also be instantiated with other state
 that isn't affected by these globally mutable values.
 
-Custom loggers like `System_Logger` (see below)
+Custom loggers like `SystemLogger` (see below)
 demonstrate extending `Logger` to partition logging concerns.
 User code is given a lot of control and flexibility.
 
@@ -57,29 +57,29 @@ TODO !
 
 export type Log = (...args: any[]) => void;
 
-export interface Logger_State {
-	level: Log_Level;
+export interface LoggerState {
+	level: LogLevel;
 	log: Log;
-	error: Log_Level_Defaults;
-	warn: Log_Level_Defaults;
-	info: Log_Level_Defaults;
-	trace: Log_Level_Defaults;
+	error: LogLevelDefaults;
+	warn: LogLevelDefaults;
+	info: LogLevelDefaults;
+	trace: LogLevelDefaults;
 }
 
-interface Log_Level_Defaults {
+interface LogLevelDefaults {
 	prefixes: any[];
 	suffixes: any[];
 }
 
-export class Dev_Logger {
+export class DevLogger {
 	readonly prefixes: readonly any[];
 	readonly suffixes: readonly any[];
-	readonly state: Logger_State; // can be the implementing class constructor
+	readonly state: LoggerState; // can be the implementing class constructor
 
 	constructor(
 		prefixes: readonly any[] | unknown,
 		suffixes: readonly any[] | unknown,
-		state: Logger_State,
+		state: LoggerState,
 	) {
 		this.prefixes = to_array(prefixes);
 		this.suffixes = to_array(suffixes);
@@ -87,7 +87,7 @@ export class Dev_Logger {
 	}
 
 	error(...args: any[]): void {
-		if (this.state.level < Log_Level.Error) return;
+		if (this.state.level < LogLevel.Error) return;
 		this.state.log(
 			...this.state.error.prefixes,
 			...this.prefixes,
@@ -98,7 +98,7 @@ export class Dev_Logger {
 	}
 
 	warn(...args: any[]): void {
-		if (this.state.level < Log_Level.Warn) return;
+		if (this.state.level < LogLevel.Warn) return;
 		this.state.log(
 			...this.state.warn.prefixes,
 			...this.prefixes,
@@ -109,7 +109,7 @@ export class Dev_Logger {
 	}
 
 	info(...args: any[]): void {
-		if (this.state.level < Log_Level.Info) return;
+		if (this.state.level < LogLevel.Info) return;
 		this.state.log(
 			...this.state.info.prefixes,
 			...this.prefixes,
@@ -120,7 +120,7 @@ export class Dev_Logger {
 	}
 
 	trace(...args: any[]): void {
-		if (this.state.level < Log_Level.Trace) return;
+		if (this.state.level < LogLevel.Trace) return;
 		this.state.log(
 			...this.state.trace.prefixes,
 			...this.prefixes,
@@ -139,33 +139,33 @@ export class Dev_Logger {
 	}
 }
 
-export class Logger extends Dev_Logger {
+export class Logger extends DevLogger {
 	constructor(
 		prefixes: readonly any[] | unknown = EMPTY_ARRAY,
 		suffixes: readonly any[] | unknown = EMPTY_ARRAY,
-		state: Logger_State = Logger,
+		state: LoggerState = Logger,
 	) {
 		super(prefixes, suffixes, state);
 	}
 
 	// These properties can be mutated at runtime (see `configure_log_level`)
 	// to affect all loggers instantiated with the default `state`.
-	// See the comment on `Logger_State` for more.
-	static level: Log_Level = DEFAULT_LOG_LEVEL;
+	// See the comment on `LoggerState` for more.
+	static level: LogLevel = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
-	static error: Log_Level_Defaults = {
+	static error: LogLevelDefaults = {
 		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
 		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
 	};
-	static warn: Log_Level_Defaults = {
+	static warn: LogLevelDefaults = {
 		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
 		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
 	};
-	static info: Log_Level_Defaults = {
+	static info: LogLevelDefaults = {
 		prefixes: [gray('➤')],
 		suffixes: [],
 	};
-	static trace: Log_Level_Defaults = {
+	static trace: LogLevelDefaults = {
 		prefixes: [gray('—')],
 		suffixes: [],
 	};
@@ -173,48 +173,48 @@ export class Logger extends Dev_Logger {
 
 /*
 
-The `System_Logger` is distinct from the `Logger`
+The `SystemLogger` is distinct from the `Logger`
 to cleanly separate Felt's logging from user logging, decoupling their log levels.
-Felt internally uses `System_Logger`, not `Logger` directly.
+Felt internally uses `SystemLogger`, not `Logger` directly.
 This allows user code to simply import and use `Logger`.
-`System_Logger` is still made available to user code,
+`SystemLogger` is still made available to user code,
 and users can always extend `Logger` with their own custom versions.
 
 */
-export class System_Logger extends Dev_Logger {
+export class SystemLogger extends DevLogger {
 	constructor(
 		prefixes: readonly any[] | unknown = EMPTY_ARRAY,
 		suffixes: readonly any[] | unknown = EMPTY_ARRAY,
-		state: Logger_State = System_Logger,
+		state: LoggerState = SystemLogger,
 	) {
 		super(prefixes, suffixes, state);
 	}
 
 	// These properties can be mutated at runtime (see `configure_log_level`)
 	// to affect all loggers instantiated with the default `state`.
-	// See the comment on `Logger_State` for more.
-	static level: Log_Level = DEFAULT_LOG_LEVEL;
+	// See the comment on `LoggerState` for more.
+	static level: LogLevel = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
-	static error: Log_Level_Defaults = {
+	static error: LogLevelDefaults = {
 		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
 		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
 	};
-	static warn: Log_Level_Defaults = {
+	static warn: LogLevelDefaults = {
 		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
 		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
 	};
-	static info: Log_Level_Defaults = {
+	static info: LogLevelDefaults = {
 		prefixes: [gray('➤')],
 		suffixes: [],
 	};
-	static trace: Log_Level_Defaults = {
+	static trace: LogLevelDefaults = {
 		prefixes: [gray('—')],
 		suffixes: [],
 	};
 }
 
 export const configure_log_level = (
-	level: Log_Level,
+	level: LogLevel,
 	configure_main_logger = true,
 	configure_system_logger = true,
 ): void => {
@@ -222,7 +222,7 @@ export const configure_log_level = (
 		Logger.level = level;
 	}
 	if (configure_system_logger) {
-		System_Logger.level = level;
+		SystemLogger.level = level;
 	}
 };
 

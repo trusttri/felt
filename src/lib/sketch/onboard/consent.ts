@@ -5,16 +5,16 @@ The five principles of consent are from https://consentful.systems/
 
 */
 
-export type Consent_Type = 'consentful' | 'unconsentful';
+export type ConsentType = 'consentful' | 'unconsentful';
 
-export type Consent_Principle_Type =
+export type ConsentPrincipleType =
 	| 'voluntary'
 	| 'informed'
 	| 'revertible'
 	| 'specific'
 	| 'unburdensome';
 
-export const consent_principle_types: Consent_Principle_Type[] = [
+export const consent_principle_types: ConsentPrincipleType[] = [
 	'voluntary',
 	'informed',
 	'revertible',
@@ -22,12 +22,12 @@ export const consent_principle_types: Consent_Principle_Type[] = [
 	'unburdensome',
 ];
 
-export interface Consent_Principle {
-	type: Consent_Principle_Type;
+export interface ConsentPrinciple {
+	type: ConsentPrincipleType;
 	summary: string;
 }
 
-export const consent_principles_data: Consent_Principle[] = [
+export const consent_principles_data: ConsentPrinciple[] = [
 	{
 		type: 'voluntary',
 		summary: 'Consent is an agreement that is 1) freely given and 2) enthusiastic.',
@@ -55,7 +55,7 @@ export const consent_principles_data: Consent_Principle[] = [
 
 const [voluntary, informed, revertible, specific, unburdensome] = consent_principles_data;
 
-export const consent_principles: Record<Consent_Principle_Type, Consent_Principle> = {
+export const consent_principles: Record<ConsentPrincipleType, ConsentPrinciple> = {
 	voluntary,
 	informed,
 	revertible,

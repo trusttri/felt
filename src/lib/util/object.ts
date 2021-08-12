@@ -1,4 +1,4 @@
-import type {Omit_Strict} from '$lib/util/types.js';
+import type {OmitStrict} from '$lib/util/types.js';
 
 // Iterated keys in `for..in` are always returned as strings,
 // so to prevent usage errors the key type of `mapper` is always a string.
@@ -17,7 +17,7 @@ export const map_record = <T, K extends string | number, U>(
 export const omit = <T extends Record<K, any>, K extends keyof T>(
 	obj: T,
 	keys: K[],
-): Omit_Strict<T, K> => {
+): OmitStrict<T, K> => {
 	const result = {} as T;
 	for (const key in obj) {
 		if (!keys.includes(key as any)) {

@@ -1,19 +1,19 @@
-export type Async_Status = 'initial' | 'pending' | 'success' | 'failure';
+export type AsyncStatus = 'initial' | 'pending' | 'success' | 'failure';
 
 export const wait = (duration: number = 0): Promise<void> =>
 	new Promise((resolve) => setTimeout(resolve, duration));
 
-interface Wrap_After {
-	(cb: Wrap_After_Callback): void;
+interface WrapAfter {
+	(cb: WrapAfterCallback): void;
 }
-interface Wrap_After_Callback {
+interface WrapAfterCallback {
 	(): unknown | Promise<unknown>;
 }
 
 // TODO consider adding the value/err to the callback params?
-export const wrap = <T>(fn: (after: Wrap_After) => Promise<T>): Promise<T> => {
-	let cbs: Wrap_After_Callback[] | null = null;
-	const after: Wrap_After = (cb) => {
+export const wrap = <T>(fn: (after: WrapAfter) => Promise<T>): Promise<T> => {
+	let cbs: WrapAfterCallback[] | null = null;
+	const after: WrapAfter = (cb) => {
 		(cbs || (cbs = [])).push(cb);
 	};
 	const call_cbs = async () => {

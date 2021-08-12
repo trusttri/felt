@@ -2,8 +2,8 @@
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Message from '$lib/ui/Message.svelte';
-	import Felt_Heart from '$lib/ui/Felt_Heart.svelte';
-	import Pending_Animation from '$lib/ui/Pending_Animation.svelte';
+	import FeltHeart from '$lib/ui/FeltHeart.svelte';
+	import PendingAnimation from '$lib/ui/PendingAnimation.svelte';
 	import Icons from '$lib/ui/Icons.svelte';
 	import * as icons_by_name from '$lib/ui/icons';
 	import {
@@ -59,20 +59,20 @@
 <!-- TODO don't lay out in a single column, use css grid probably -->
 <div class="library column">
 	<Markup>
-		<h2><code>Pending_Animation</code></h2>
+		<h2><code>PendingAnimation</code></h2>
 	</Markup>
-	<Pending_Animation />
-	<h3><code>Pending_Animation</code> with <code>paused={'{'}true{'}'}</code></h3>
-	<Pending_Animation paused={true} />
-	<h3><code>Pending_Animation</code> with slot <code>🐢</code></h3>
-	<Pending_Animation>🐢</Pending_Animation>
+	<PendingAnimation />
+	<h3><code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code></h3>
+	<PendingAnimation paused={true} />
+	<h3><code>PendingAnimation</code> with slot <code>🐢</code></h3>
+	<PendingAnimation>🐢</PendingAnimation>
 	<h3>
-		<code>Pending_Animation</code> with <code>paused={'{'}true{'}'}</code> and slot
+		<code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code> and slot
 		<code>{'<span style="font-size: var(--font_size_xl5)">🐸</span>⏳'}</code>
 	</h3>
-	<Pending_Animation paused={true}>
+	<PendingAnimation paused={true}>
 		<span style="font-size: var(--font_size_xl5)">🐸</span>⏳
-	</Pending_Animation>
+	</PendingAnimation>
 
 	<Markup>
 		<h2><code>hr</code></h2>
@@ -251,9 +251,9 @@
 	<Icons {icons} />
 
 	<Markup>
-		<h2><code>Felt_Heart</code></h2>
+		<h2><code>FeltHeart</code></h2>
 	</Markup>
-	<Felt_Heart />
+	<FeltHeart />
 </div>
 
 <style>

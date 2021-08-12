@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type {Onboard_Send} from '$lib/sketch/onboard/onboard';
+	import type {OnboardSend} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Credits from '$lib/sketch/onboard/Credits.svelte';
 	import {arrow_right} from '$lib/ui/icons';
 
-	export let send: Onboard_Send;
+	export let send: OnboardSend;
 </script>
 
 <Markup>

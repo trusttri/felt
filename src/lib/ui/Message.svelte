@@ -1,8 +1,8 @@
 <script lang="ts">
-	import type {Message_Status} from '$lib/ui/message';
+	import type {MessageStatus} from '$lib/ui/message';
 	import {message_status_options} from '$lib/ui/message';
 
-	export let status: Message_Status = 'normal';
+	export let status: MessageStatus = 'normal';
 	export let icon: string | null | undefined = undefined; // TODO maybe change to a slot
 	export let color: string | null | undefined = undefined;
 

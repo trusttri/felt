@@ -1,14 +1,14 @@
 <script lang="ts">
 	import {tick} from 'svelte';
 
-	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
+	import type {OnboardData} from '$lib/sketch/onboard/onboard';
 	import Message from '$lib/ui/Message.svelte';
 	import Markup from '$lib/ui/Markup.svelte';
-	import {Unreachable_Error} from '$lib/util/error';
+	import {UnreachableError} from '$lib/util/error';
 
 	// TODO refactor to an xstate machine
 
-	export let data: Onboard_Data;
+	export let data: OnboardData;
 	export let done: () => void;
 	export let back: () => void;
 
@@ -20,23 +20,23 @@
 	let signup_helper_message: string | null = null;
 
 	// TODO extract to `src/providers` or `src/services` or something?
-	type Service_Provider = 'SOCIAL_CO' | 'TRACKER_CO' | 'TRUSTED_CO';
-	interface Service_Provider_Data {
-		name: Service_Provider;
+	type ServiceProvider = 'SOCIAL_CO' | 'TRACKER_CO' | 'TRUSTED_CO';
+	interface ServiceProviderData {
+		name: ServiceProvider;
 	}
-	const providers: Record<Service_Provider, Service_Provider_Data> = {
+	const providers: Record<ServiceProvider, ServiceProviderData> = {
 		SOCIAL_CO: {name: 'SOCIAL_CO'},
 		TRACKER_CO: {name: 'TRACKER_CO'},
 		TRUSTED_CO: {name: 'TRUSTED_CO'},
 	};
 	const provider_list = Object.values(providers);
-	let selected_provider: Service_Provider_Data | null = null;
+	let selected_provider: ServiceProviderData | null = null;
 
 	const create = (_username: string, _password: string): void => {
 		selected_provider = null;
 		create_error_message = `Oopsies — our robots can be so clumsy! Please click the buttons below :-)`;
 	};
-	const signup_with = async (provider: Service_Provider_Data): Promise<void> => {
+	const signup_with = async (provider: ServiceProviderData): Promise<void> => {
 		console.log('signup_with name', provider, data);
 		let should_focus = false;
 		switch (provider.name) {
@@ -60,7 +60,7 @@
 				break;
 			}
 			default:
-				throw new Unreachable_Error(provider.name);
+				throw new UnreachableError(provider.name);
 		}
 		if (should_focus) {
 			await tick();
@@ -86,7 +86,7 @@
 		return null;
 	};
 
-	const signup = (provider: Service_Provider_Data | null): void => {
+	const signup = (provider: ServiceProviderData | null): void => {
 		console.log('signup data, provider', data, provider);
 		if (focus_next_input()) return;
 		if (provider) done();

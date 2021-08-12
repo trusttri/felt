@@ -1,9 +1,9 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
+	import type {OnboardData} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import {arrow_left, arrow_right} from '$lib/ui/icons';
 
-	export let data: Onboard_Data;
+	export let data: OnboardData;
 	export let done: () => void;
 	export let back: () => void;
 

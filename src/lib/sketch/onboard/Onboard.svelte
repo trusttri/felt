@@ -2,14 +2,14 @@
 	import {useMachine} from '@xstate/svelte';
 
 	import {consent_principles} from '$lib/sketch/onboard/consent';
-	import type {Consent_Type, Consent_Principle_Type} from '$lib/sketch/onboard/consent';
+	import type {ConsentType, ConsentPrincipleType} from '$lib/sketch/onboard/consent';
 	import {onboard_machine, onboard_data} from '$lib/sketch/onboard/onboard';
-	import type {Onboard_State_Name} from '$lib/sketch/onboard/onboard';
+	import type {OnboardStateName} from '$lib/sketch/onboard/onboard';
 	import Nav from '$lib/sketch/onboard/Nav.svelte';
 	import Begin from '$lib/sketch/onboard/Begin.svelte';
 	import End from '$lib/sketch/onboard/End.svelte';
-	import Side_Complete from '$lib/sketch/onboard/Side_Complete.svelte';
-	import Sides_Complete from '$lib/sketch/onboard/Sides_Complete.svelte';
+	import SideComplete from '$lib/sketch/onboard/SideComplete.svelte';
+	import SidesComplete from '$lib/sketch/onboard/SidesComplete.svelte';
 	import {random_bool} from '$lib/util/random';
 
 	const onboard = useMachine(onboard_machine);
@@ -19,7 +19,7 @@
 	// TODO types
 	$: principle =
 		($state.value as string) in consent_principles
-			? consent_principles[$state.value as Consent_Principle_Type]
+			? consent_principles[$state.value as ConsentPrincipleType]
 			: null;
 
 	// TODO probably move to an xstate machine, somehow
@@ -37,7 +37,7 @@
 		consentful_on_left_side = state_value === 'informed' ? true : random_bool();
 	};
 
-	const done_with_side = (consentful: Consent_Type) => {
+	const done_with_side = (consentful: ConsentType) => {
 		if (consentful === 'consentful') {
 			done_with_consentful_side = true;
 			if (done_with_unconsentful_side) {
@@ -59,8 +59,8 @@
 
 	$: reset($state.value as any); // TODO type
 
-	$: consentful_data = onboard_data.consentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts
-	$: unconsentful_data = onboard_data.unconsentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts
+	$: consentful_data = onboard_data.consentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
+	$: unconsentful_data = onboard_data.unconsentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
 </script>
 
 <div class="onboard" style="--column_width: 640px">
@@ -83,7 +83,7 @@
 					{back}
 				/>
 				{#if done_with_unconsentful_side && !done_with_both}
-					<Side_Complete left={!consentful_on_left_side} />
+					<SideComplete left={!consentful_on_left_side} />
 				{/if}
 			</section>
 			<section class="column">
@@ -94,12 +94,12 @@
 					{back}
 				/>
 				{#if done_with_consentful_side && !done_with_both}
-					<Side_Complete left={consentful_on_left_side} />
+					<SideComplete left={consentful_on_left_side} />
 				{/if}
 			</section>
 			{#if done_with_both}
 				{#if principle}
-					<Sides_Complete {principle} {consentful_on_left_side} done={done_with_both_sides} />
+					<SidesComplete {principle} {consentful_on_left_side} done={done_with_both_sides} />
 				{:else}
 					<!-- TODO a cleaner design would make this check unnecessary -->
 					internal error: unprincipled! :(
