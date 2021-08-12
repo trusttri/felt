@@ -248,6 +248,9 @@
 			aka <code>icon_size_max</code> -- these are insensitive to browser font size, using
 			<code>px</code> not <code>rem</code>
 		</h3>
+		<blockquote>
+			these docs are currently lacking, so we suggest browser dev tools to improve the experience
+		</blockquote>
 		<div class="icon-sizes">
 			<div style="--size: var(--icon_size_xs);">🐢</div>
 			<div style="--size: var(--icon_size_sm);">🐢</div>
