@@ -7,27 +7,27 @@
 
 		
 
-		<link rel="modulepreload" href="/./_app/start-39b07623.js">
+		<link rel="modulepreload" href="/./_app/start-b8f6d050.js">
 		<link rel="modulepreload" href="/./_app/chunks/vendor-62d40c72.js">
-		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-2217972a.js">
+		<link rel="modulepreload" href="/./_app/pages/__layout.svelte-c536f47b.js">
 		<link rel="modulepreload" href="/./_app/chunks/devmode-e624e724.js">
 		<link rel="modulepreload" href="/./_app/chunks/icons-dd67c916.js">
-		<link rel="modulepreload" href="/./_app/pages/sketch/library.svelte-a250dad5.js">
+		<link rel="modulepreload" href="/./_app/pages/sketch/library.svelte-b9a9b8fc.js">
 		<link rel="modulepreload" href="/./_app/chunks/Checkbox-66983d77.js">
 		<link rel="modulepreload" href="/./_app/chunks/Markup-2508e83c.js">
 		<link rel="modulepreload" href="/./_app/chunks/Message-3b025d70.js">
 		<link rel="modulepreload" href="/./_app/chunks/Felt_Heart-2aa136a9.js">
 		<link rel="modulepreload" href="/./_app/chunks/Icons-1c421955.js">
 		<link rel="stylesheet" href="/./_app/assets/start-a8cd1609.css">
-		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-085cfcbe.css">
-		<link rel="stylesheet" href="/./_app/assets/pages/sketch/library.svelte-6f712b99.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/__layout.svelte-c0c18016.css">
+		<link rel="stylesheet" href="/./_app/assets/pages/sketch/library.svelte-5fe8ee2a.css">
 		<link rel="stylesheet" href="/./_app/assets/Checkbox-4178c023.css">
 		<link rel="stylesheet" href="/./_app/assets/Markup-8160be7b.css">
 		<link rel="stylesheet" href="/./_app/assets/Message-23ad0871.css">
 		<link rel="stylesheet" href="/./_app/assets/Icons-8d6e0c26.css">
 
 		<script type="module">
-			import { start } from "/./_app/start-39b07623.js";
+			import { start } from "/./_app/start-b8f6d050.js";
 			start({
 				target: document.querySelector("#root"),
 				paths: {"base":"","assets":"/."},
@@ -40,8 +40,8 @@
 					status: 200,
 					error: null,
 					nodes: [
-						import("/./_app/pages/__layout.svelte-2217972a.js"),
-						import("/./_app/pages/sketch/library.svelte-a250dad5.js")
+						import("/./_app/pages/__layout.svelte-c536f47b.js"),
+						import("/./_app/pages/sketch/library.svelte-b9a9b8fc.js")
 					],
 					page: {
 						host: location.host, // TODO this is redundant
@@ -90,7 +90,20 @@
 
 	<div class="markup svelte-1fuchu"><h2><code>hr</code></h2>
 </div>
-	<hr>
+	<hr class="svelte-16k00vi">
+
+	<div class="markup svelte-1fuchu"><h2><code>form</code> <code>input</code> <code>textarea</code> <code>select</code>
+	<code>button</code></h2>
+<form><input  placeholder="username" value="">
+	<input type="password"  placeholder="password" value="">
+	<textarea  placeholder="life story"></textarea>
+	<select style="font-size: var(--font_size_xl5)" ><option value="😊">😊</option><option value="😑">😑</option><option value="🤔">🤔</option><option value="😉">😉</option></select>
+	<button type="button" >create account
+	</button></form>
+
+</div>
+
+	<hr class="svelte-16k00vi">
 
 	<div class="markup svelte-1fuchu"><h2><code>Checkbox</code></h2>
 </div>
@@ -124,21 +137,10 @@ d
 	</div>
 </label></div>
 
-	<div class="markup svelte-1fuchu"><h2><code>form</code> <code>input</code> <code>textarea</code> <code>select</code>
-	<code>button</code></h2>
-</div>
-	<div class="markup svelte-1fuchu"><form><input  placeholder="username" value="">
-	<input type="password"  placeholder="password" value="">
-	<textarea  placeholder="life story"></textarea>
-	<select ><option value="😊">😊</option><option value="😑">😑</option><option value="🤔">🤔</option><option value="😉">😉</option></select>
-	<button type="button" >create account
-	</button></form>
-
-</div>
+	<hr class="svelte-16k00vi">
 
 	<div class="markup svelte-1fuchu"><h2><code>Message</code></h2>
-</div>
-	<div class="markup svelte-1fuchu"><div class="message svelte-1742szy" style="--color: var(--text_color_light)"><span class="icon svelte-1742szy">👍</span>
+<div class="message svelte-1742szy" style="--color: var(--text_color_light)"><span class="icon svelte-1742szy">👍</span>
 	:-)
 </div>
 <h3><code>Message</code> with <code>icon={face_expressionless}</code></h3>
@@ -164,54 +166,70 @@ d
 </div>
 </div>
 
+	<hr class="svelte-16k00vi">
+
 	<div class="markup svelte-1fuchu"><h2>typography</h2>
 </div>
-	<div class="typography svelte-1gg74ag" style="--color: var(--pink);"><div class="palette svelte-1gg74ag"><button style="color: var(--pink);" class="svelte-1gg74ag selected">█</button><button style="color: var(--orange);" class="svelte-1gg74ag">█</button><button style="color: var(--red);" class="svelte-1gg74ag">█</button><button style="color: var(--violet);" class="svelte-1gg74ag">█</button><button style="color: var(--blue);" class="svelte-1gg74ag">█</button><button style="color: var(--green);" class="svelte-1gg74ag">█</button><button style="color: var(--brown);" class="svelte-1gg74ag">█</button></div>
-<div class="markup svelte-1fuchu"><h1 style="color: var(--pink)">h1</h1>
-	<h2 style="color: var(--orange)">h2</h2>
-	<h3 style="color: var(--red)">h3</h3>
-	<h4 style="color: var(--violet)">h4</h4>
-	<h5 style="color: var(--blue)">h5</h5>
-	<h6 style="color: var(--green)">h6</h6>
-	<p style="font-size: var(--font_size_xs); color: var(--brown)">--font_size_xs: 0.989rem;
+	<div class="typography svelte-16k00vi" style="--color: var(--pink);"><div class="palette svelte-16k00vi"><button style="color: var(--pink);" class="svelte-16k00vi selected">█</button><button style="color: var(--orange);" class="svelte-16k00vi">█</button><button style="color: var(--red);" class="svelte-16k00vi">█</button><button style="color: var(--violet);" class="svelte-16k00vi">█</button><button style="color: var(--blue);" class="svelte-16k00vi">█</button><button style="color: var(--green);" class="svelte-16k00vi">█</button><button style="color: var(--brown);" class="svelte-16k00vi">█</button></div>
+<div class="markup svelte-1fuchu"><h1 style="color: var(--orange)">h1</h1>
+	<h2 style="color: var(--red)">h2</h2>
+	<h3 style="color: var(--violet)">h3</h3>
+	<h4 style="color: var(--blue)">h4</h4>
+	<h5 style="color: var(--green)">h5</h5>
+	<h6 style="color: var(--brown)">h6</h6>
+	<p style="font-size: var(--font_size_xs); color: var(--pink)">--font_size_xs: 0.989rem;
 	</p>
-	<p style="font-size: var(--font_size_sm); color: var(--brown)">--font_size_sm: 1.258rem;
+	<p style="font-size: var(--font_size_sm); color: var(--pink)">--font_size_sm: 1.258rem;
 	</p>
-	<p style="font-size: var(--font_size_md); color: var(--brown)">--font_size_md: 1.6rem;</p>
-	<p style="font-size: var(--font_size_lg); color: var(--brown)">--font_size_lg: 2.035rem;
+	<p style="font-size: var(--font_size_md); color: var(--pink)">--font_size_md: 1.6rem;</p>
+	<p style="font-size: var(--font_size_lg); color: var(--pink)">--font_size_lg: 2.035rem;
 	</p>
-	<p style="font-size: var(--font_size_xl); color: var(--brown)">--font_size_xl: 2.589rem;
+	<p style="font-size: var(--font_size_xl); color: var(--pink)">--font_size_xl: 2.589rem;
 	</p>
-	<p style="font-size: var(--font_size_xl2); color: var(--brown)">--font_size_xl2: 3.293rem;
+	<p style="font-size: var(--font_size_xl2); color: var(--pink)">--font_size_xl2: 3.293rem;
 	</p>
-	<p style="font-size: var(--font_size_xl3); color: var(--brown)">--font_size_xl3: 4.189rem;
+	<p style="font-size: var(--font_size_xl3); color: var(--pink)">--font_size_xl3: 4.189rem;
 	</p>
 	
-	<div class="scape svelte-1gg74ag"><div style="background-color: var(--brown);" class="svelte-1gg74ag"></div><div style="background-color: var(--green);" class="svelte-1gg74ag"></div><div style="background-color: var(--blue);" class="svelte-1gg74ag"></div><div style="background-color: var(--violet);" class="svelte-1gg74ag"></div><div style="background-color: var(--red);" class="svelte-1gg74ag"></div><div style="background-color: var(--orange);" class="svelte-1gg74ag"></div><div style="background-color: var(--pink);" class="svelte-1gg74ag selected"></div></div>
-	<div class="main-color svelte-1gg74ag">pink</div>
+	<div class="scape svelte-16k00vi"><div style="background-color: var(--brown);" class="svelte-16k00vi"></div><div style="background-color: var(--green);" class="svelte-16k00vi"></div><div style="background-color: var(--blue);" class="svelte-16k00vi"></div><div style="background-color: var(--violet);" class="svelte-16k00vi"></div><div style="background-color: var(--red);" class="svelte-16k00vi"></div><div style="background-color: var(--orange);" class="svelte-16k00vi"></div><div style="background-color: var(--pink);" class="svelte-16k00vi selected"></div></div>
+	<div class="main-color svelte-16k00vi">pink</div>
+	<p class="xl-font-sizes svelte-16k00vi"><span style="font-size: var(--font_size_xl4); color: var(--pink)">xl4 </span>
+		<span style="font-size: var(--font_size_xl5); color: var(--pink)">xl5 </span>
+		<span style="font-size: var(--font_size_xl6); color: var(--pink)">xl6 </span>
+		<span style="font-size: var(--font_size_xl7); color: var(--pink)">xl7 </span>
+		<span style="font-size: var(--font_size_xl8); color: var(--pink)">xl8 </span>
+		<span style="font-size: var(--font_size_xl9); color: var(--pink)">xl9 </span></p>
 </div></div>
+
+	<hr class="svelte-16k00vi">
 
 	<div class="markup svelte-1fuchu"><h2><code>Icons</code></h2>
 </div>
-	<div class="markup svelte-1fuchu"><h3><code>&lt;span style=&quot;font-size: var(--...);&quot;&gt;🐢&lt;/span&gt;</code> with
-	<code>font-size</code>
-	set to
+	<div class="markup svelte-1fuchu"><h3><code>&lt;div&gt;</code>s with width and height set to
 	<code>icon_size_xs</code>, <code>icon_size_sm</code>,
 	<code>icon_size_md</code>, <code>icon_size_lg</code>, <code>icon_size_xl</code>,
-	<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, &amp; the max <code>icon_size_xl4</code>,
-	which is <code>512px</code></h3>
-<div class="icon-sizes svelte-1gg74ag"><div style="--size: var(--icon_size_xs);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_sm);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_md);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_lg);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_xl);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_xl2);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_xl3);" class="svelte-1gg74ag">🐢</div>
-	<div style="--size: var(--icon_size_xl4);" class="svelte-1gg74ag">🐢</div></div>
+	<code>icon_size_xl2</code>, <code>icon_size_xl3</code>, &amp; the max <code>icon_size_xl4</code>
+	aka <code>icon_size_max</code> -- these are insensitive to browser font size, using
+	<code>px</code> not <code>rem</code></h3>
+<blockquote>these docs are currently lacking, so we suggest browser dev tools to improve the experience
+</blockquote>
+<div class="icon-sizes svelte-16k00vi"><div style="--size: var(--icon_size_xs);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_sm);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_md);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_lg);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_xl);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_xl2);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_xl3);" class="svelte-16k00vi">🐢</div>
+	<div style="--size: var(--icon_size_xl4);" class="svelte-16k00vi">🐢</div></div>
 </div>
+
+	<hr class="svelte-16k00vi">
+
 	<h1 class="svelte-1g2hagp">💚 icons 💚</h1>
 <ul class="svelte-1g2hagp"><li>← arrow_left</li><li>→ arrow_right</li><li>🥓 bacon</li><li>✗ ballot_mark</li><li>🍌 banana</li><li>🍺 beer</li><li>🚴 biking</li><li>🐦 bird</li><li>🧠 brain</li><li>🍞 bread</li><li>• bullet_point</li><li>🌯 burrito</li><li>🚌 bus</li><li>🐪 camel</li><li>🚗 car</li><li>🐈 cat</li><li>✓ checkmark</li><li>🥂 cheers</li><li>🧀 cheese</li><li>🍒 cherries</li><li>🌸 cherryblossom</li><li>🌰 chestnut</li><li>🏙️ cityscape</li><li>☁️ cloud</li><li>☕ coffee</li><li>🌽 corn</li><li>🤠 cowboy</li><li>😞 disappointed</li><li>🐕 dog</li><li>🍩 doughnut</li><li>👂 ear</li><li>🥚 egg</li><li>🍆 eggplant</li><li>🌲 evergreen</li><li>🐑 ewe</li><li>👁️ eye</li><li>👀 eyes</li><li>😊 face_blush</li><li>😑 face_expressionless</li><li>🤔 face_think</li><li>😉 face_wink</li><li>💚 felt</li><li>🔥 fire</li><li>💪 flex</li><li>🦊 fox</li><li>🌐 globe</li><li>💚 greenheart</li><li>😬 grimace</li><li>😁 grin</li><li>🌰 gro</li><li>✋ hand_facing_forward</li><li>👌 hand_ok</li><li>👇 hand_point_down</li><li>👈 hand_point_left</li><li>👉 hand_point_right</li><li>👆 hand_point_up</li><li>👎 hand_thumbs_down</li><li>👍 hand_thumbs_up</li><li>🏠 house</li><li>🥑 item_avocado</li><li>🔑 item_key</li><li>🐆 leopard</li><li>🍁 maple</li><li>🏅 medal</li><li>🤯 mindblown</li><li>🤑 moneymouth</li><li>🍄 mushroom</li><li>🤢 nauseated</li><li>🏢 office</li><li>🥚 ouef</li><li>🦉 owl</li><li>🌴 palm</li><li>🍑 peach</li><li>🍐 pear</li><li>🌶️ pepper</li><li>🍍 pineapple</li><li>🍕 pizza</li><li>💩 poop</li><li>🥔 potato</li><li>🙏 pray</li><li>🙌 raisedhands</li><li>✋ raisehand</li><li>🐀 rat</li><li>🍚 rice</li><li>🚀 rocket</li><li>🤣 rofl</li><li>🙄 rolleyes</li><li>🧂 salt</li><li>🌱 seedling</li><li>🐑 sheep</li><li>🚢 ship</li><li>💀 skull</li><li>🐍 snake</li><li>❄️ snowflake</li><li>☃️ snowman</li><li>😭 sob</li><li>⚽ soccer</li><li>🌶️ spicy</li><li>🤩 starstruck</li><li>😎 sunglasses</li><li>🍵 tea</li><li>🧵 thread</li><li>👎 thumbsdown</li><li>👍 thumbsup</li><li>🥃 tumbler</li><li>🐢 turtle</li><li>🦄 unicorn</li><li>🙃 upsidedown</li><li>👋 waving</li><li>🍷 wine</li><li>✍️ writing</li><li>🤪 zany</li><li>⚡ zap</li>
 </ul>
+
+	<hr class="svelte-16k00vi">
 
 	<div class="markup svelte-1fuchu"><h2><code>Felt_Heart</code></h2>
 </div>
