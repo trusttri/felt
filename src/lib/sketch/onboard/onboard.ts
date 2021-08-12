@@ -1,5 +1,4 @@
 import {createMachine as create_machine} from 'xstate';
-import type {StateValue} from 'xstate';
 import {useMachine} from '@xstate/svelte'; // TODO should be a type import
 import type {SvelteComponent} from 'svelte';
 
@@ -31,26 +30,10 @@ const to_use_onboard_machine = () =>
 	useMachine<Onboard_Context, Onboard_Event, Onboard_Typestate>(null!);
 
 const INITIAL_VALUE = 'begin';
-const STORAGE_KEY = 'felt_onboard_state';
-const load_initial_value = (): string => {
-	if (typeof localStorage === 'undefined') return INITIAL_VALUE;
-	const saved = localStorage.getItem(STORAGE_KEY);
-	try {
-		return saved ? JSON.parse(saved) : INITIAL_VALUE;
-	} catch (err) {
-		// handle bad values in case we change things or have bugs
-		localStorage.removeItem(STORAGE_KEY);
-		return INITIAL_VALUE;
-	}
-};
-export const save_state = (value: StateValue): void => {
-	if (typeof localStorage === 'undefined') return;
-	localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
-};
 
 export const onboard_machine = create_machine<object>({
 	id: 'onboard',
-	initial: load_initial_value(),
+	initial: INITIAL_VALUE,
 	states: {
 		begin: {
 			on: {NEXT: 'voluntary'},

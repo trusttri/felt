@@ -3,7 +3,7 @@
 
 	import {consent_principles} from '$lib/sketch/onboard/consent';
 	import type {Consent_Type, Consent_Principle_Type} from '$lib/sketch/onboard/consent';
-	import {onboard_machine, onboard_data, save_state} from '$lib/sketch/onboard/onboard';
+	import {onboard_machine, onboard_data} from '$lib/sketch/onboard/onboard';
 	import type {Onboard_State_Name} from '$lib/sketch/onboard/onboard';
 	import Nav from '$lib/sketch/onboard/Nav.svelte';
 	import Begin from '$lib/sketch/onboard/Begin.svelte';
@@ -58,7 +58,6 @@
 	};
 
 	$: reset($state.value as any); // TODO type
-	$: save_state($state.value); // TODO better pattern?
 
 	$: consentful_data = onboard_data.consentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts
 	$: unconsentful_data = onboard_data.unconsentful[$state.value as Onboard_State_Name]; // TODO fix type in ../onboard.ts
