@@ -1,7 +1,7 @@
 <script lang="ts">
-	import type {State_Machine, State, Send} from '$lib/xstate/machine';
+	import type {StateMachine, State, Send} from '$lib/xstate/machine';
 
-	export let machine: State_Machine | null = null;
+	export let machine: StateMachine | null = null;
 	export let state: State;
 	export let send: Send | null = null;
 </script>

@@ -15,16 +15,16 @@ export const is_uuid = (str: string): str is Uuid => uuid_matcher.test(str);
 // The Ajv validator does support the namespace, hence this custom implementation.
 export const uuid_matcher = /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/i;
 
-export type Client_Id = Flavored<string, 'Client_Id'>;
+export type ClientId = Flavored<string, 'ClientId'>;
 
-export interface To_Client_Id {
-	(): Client_Id;
+export interface ToClientId {
+	(): ClientId;
 }
 
-// Creates a `Client_Id` generator function.
+// Creates a `ClientId` generator function.
 // Client ids take the form `${name}_${count}`,
 // and they're only safe to persist across page loads by hydrating the initial `count`.
-export const to_to_client_id = (name: string, count?: number): To_Client_Id => {
+export const to_to_client_id = (name: string, count?: number): ToClientId => {
 	const counter = to_counter(count);
 	return () => `${name}_${counter()}`;
 };

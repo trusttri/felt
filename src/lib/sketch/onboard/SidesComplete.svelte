@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type {Consent_Principle} from '$lib/sketch/onboard/consent';
+	import type {ConsentPrinciple} from '$lib/sketch/onboard/consent';
 	import {
 		hand_point_left,
 		hand_point_right,
@@ -9,7 +9,7 @@
 		face_wink,
 	} from '$lib/ui/icons';
 
-	export let principle: Consent_Principle;
+	export let principle: ConsentPrinciple;
 	export let consentful_on_left_side: boolean;
 	export let done: () => void; // could pass `correct` if we want to use it
 

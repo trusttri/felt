@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type {Onboard_Send, Onboard_State} from '$lib/sketch/onboard/onboard';
-	import Machine_Controls from '$lib/xstate/Machine_Controls.svelte';
+	import type {OnboardSend, OnboardState} from '$lib/sketch/onboard/onboard';
+	import MachineControls from '$lib/xstate/MachineControls.svelte';
 	import {onboard_machine} from '$lib/sketch/onboard/onboard';
 	import {get_devmode} from '$lib/ui/devmode';
 	import {arrow_left, arrow_right} from '$lib/ui/icons';
 
-	export let state: Onboard_State;
-	export let send: Onboard_Send;
+	export let state: OnboardState;
+	export let send: OnboardSend;
 
 	const devmode = get_devmode();
 
@@ -40,7 +40,7 @@
 <div>
 	{#if $devmode}
 		<nav class="buttons">
-			<Machine_Controls
+			<MachineControls
 				machine={onboard_machine}
 				{state}
 				{send}
@@ -50,7 +50,7 @@
 				{event_name === 'PREVIOUS' ? arrow_left : ''}
 				{event_name}
 				{event_name === 'NEXT' ? arrow_right : ''}
-			</Machine_Controls>
+			</MachineControls>
 		</nav>
 	{/if}
 	<nav>

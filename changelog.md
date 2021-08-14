@@ -1,5 +1,10 @@
 # changelog
 
+## 0.8.0
+
+- **break**: rename to `PascalCase` from `Proper_Snake_Case`
+  ([#120](https://github.com/feltcoop/gro/pull/120))
+
 ## 0.7.0
 
 - **break**: require Node >=16.6.0

@@ -1,4 +1,4 @@
-import type {Gro_Config_Creator, Gro_Config_Partial} from '@feltcoop/gro';
+import type {GroConfigCreator, GroConfigPartial} from '@feltcoop/gro';
 
 const files = [
 	// top level API: `import {...} from '@feltcoop/felt';`
@@ -11,7 +11,7 @@ const files = [
 	'lib/ui/devmode.ts',
 	'lib/ui/Markup.svelte',
 	'lib/ui/Message.svelte',
-	'lib/ui/Pending_Animation.svelte',
+	'lib/ui/PendingAnimation.svelte',
 	'lib/ui/style.css',
 
 	// utils
@@ -44,8 +44,8 @@ const files = [
 	'lib/util/types.ts',
 ];
 
-export const config: Gro_Config_Creator = async () => {
-	const partial: Gro_Config_Partial = {
+export const config: GroConfigCreator = async () => {
+	const partial: GroConfigPartial = {
 		builds: [{name: 'library', platform: 'node', input: files}],
 	};
 	return partial;

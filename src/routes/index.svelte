@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Felt_Heart from '$lib/ui/Felt_Heart.svelte';
+	import FeltHeart from '$lib/ui/FeltHeart.svelte';
 	import {arrow_left, arrow_right} from '$lib/ui/icons';
 </script>
 
@@ -10,7 +10,7 @@
 	<div class="learn">
 		<a href="https://www.felt.social/about">
 			<div>learn {arrow_right} about {arrow_left} Felt</div>
-			<Felt_Heart />
+			<FeltHeart />
 		</a>
 	</div>
 </section>

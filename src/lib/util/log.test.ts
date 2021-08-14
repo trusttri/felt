@@ -1,18 +1,18 @@
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {Logger, Log_Level, Logger_State} from '$lib/util/log.js';
+import {Logger, LogLevel, LoggerState} from '$lib/util/log.js';
 
 /* test__Logger */
-interface Test_Logger_Context {
+interface TestLoggerContext {
 	logged_args: any;
-	logger_state: Logger_State;
+	logger_state: LoggerState;
 }
-const create_test__logger_context = (): Test_Logger_Context => {
-	const ctx: Test_Logger_Context = {
+const create_test__logger_context = (): TestLoggerContext => {
+	const ctx: TestLoggerContext = {
 		logged_args: undefined, // stores the result of the latest log call
 		logger_state: {
-			level: Log_Level.Trace,
+			level: LogLevel.Trace,
 			log: (...log_args: any[]) => {
 				ctx.logged_args = log_args;
 			},
@@ -135,7 +135,7 @@ test__Logger('mutate logger state to change log level', (ctx) => {
 	t.equal(ctx.logged_args, ['foo']);
 	ctx.logged_args = undefined;
 
-	state.level = Log_Level.Warn;
+	state.level = LogLevel.Warn;
 
 	// `info` should now be silenced
 	log.info('foo');

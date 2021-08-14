@@ -1,11 +1,11 @@
 <script lang="ts">
-	import type {Onboard_Data} from '$lib/sketch/onboard/onboard';
+	import type {OnboardData} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Message from '$lib/ui/Message.svelte';
 	import {ballot_mark} from '$lib/ui/icons';
 
-	export let data: Onboard_Data;
+	export let data: OnboardData;
 	export let done: () => void;
 	export let back: () => void;
 
