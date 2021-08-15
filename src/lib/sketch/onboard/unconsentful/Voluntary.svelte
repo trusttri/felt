@@ -20,14 +20,14 @@
 	let signup_helper_message: string | null = null;
 
 	// TODO extract to `src/providers` or `src/services` or something?
-	type ServiceProvider = 'SOCIAL_CO' | 'TRACKER_CO' | 'TRUSTED_CO';
+	type ServiceProvider = 'SocialCo' | 'TrackerCo' | 'TrustedCo';
 	interface ServiceProviderData {
 		name: ServiceProvider;
 	}
 	const providers: Record<ServiceProvider, ServiceProviderData> = {
-		SOCIAL_CO: {name: 'SOCIAL_CO'},
-		TRACKER_CO: {name: 'TRACKER_CO'},
-		TRUSTED_CO: {name: 'TRUSTED_CO'},
+		SocialCo: {name: 'SocialCo'},
+		TrackerCo: {name: 'TrackerCo'},
+		TrustedCo: {name: 'TrustedCo'},
 	};
 	const provider_list = Object.values(providers);
 	let selected_provider: ServiceProviderData | null = null;
@@ -40,22 +40,22 @@
 		console.log('signup_with name', provider, data);
 		let should_focus = false;
 		switch (provider.name) {
-			case 'TRACKER_CO': {
-				selected_provider = providers.TRACKER_CO;
+			case 'TrackerCo': {
+				selected_provider = providers.TrackerCo;
 				signup_error_message = '';
 				signup_helper_message = `Great! Let's get you social with ${selected_provider.name}`;
 				should_focus = true;
 				break;
 			}
-			case 'SOCIAL_CO': {
-				selected_provider = providers.SOCIAL_CO;
+			case 'SocialCo': {
+				selected_provider = providers.SocialCo;
 				signup_error_message = '';
 				signup_helper_message = `Great! Let's get you tracked with ${selected_provider.name}`;
 				should_focus = true;
 				break;
 			}
-			case 'TRUSTED_CO': {
-				selected_provider = providers.TRUSTED_CO;
+			case 'TrustedCo': {
+				selected_provider = providers.TrustedCo;
 				signup_error_message = '404 not found :-)';
 				break;
 			}
@@ -152,7 +152,7 @@
 					on:click={() => signup_with(provider)}
 					class:selected={!!selected_provider && selected_provider === provider}
 				>
-					{#if provider.name === 'TRUSTED_CO'}
+					{#if provider.name === 'TrustedCo'}
 						signup with {provider.name}
 					{:else}
 						<Markup>
@@ -162,8 +162,8 @@
 				</button>
 			{/each}
 
-			{#if selected_provider === providers.SOCIAL_CO || selected_provider === providers.TRACKER_CO}
-				{#if selected_provider && selected_provider !== providers.TRUSTED_CO}
+			{#if selected_provider === providers.SocialCo || selected_provider === providers.TrackerCo}
+				{#if selected_provider && selected_provider !== providers.TrustedCo}
 					<Message status="help">{signup_helper_message}</Message>
 					<input
 						bind:value={phone_number}

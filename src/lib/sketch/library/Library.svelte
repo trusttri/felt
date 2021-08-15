@@ -43,7 +43,8 @@
 	let password: string = '';
 	let lifestory: string = '';
 	let created_account = false;
-	const create_account = () => (created_account = !created_account);
+	const create_account = () => (created_account = true);
+	const uncreate_account = () => (created_account = false);
 
 	type Color = 'pink' | 'orange' | 'red' | 'violet' | 'blue' | 'green' | 'brown';
 	let colors: Color[] = ['pink', 'orange', 'red', 'violet', 'blue', 'green', 'brown'];
@@ -103,7 +104,8 @@
 			</button>
 		</form>
 		{#if created_account}
-			<Message status="error">cannot create account because the library is fake</Message>
+			<Message status="error">cannot create account because this library is fake</Message>
+			<button type="button" on:click={() => uncreate_account()}> undo </button>
 		{/if}
 	</Markup>
 

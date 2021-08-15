@@ -74,7 +74,7 @@
 	<button on:click={() => done()}>
 		<Markup>
 			{#if selected_count}
-				join these spaces {arrow_right}
+				join these communities {arrow_right}
 			{:else}
 				maybe later {arrow_right}
 			{/if}
