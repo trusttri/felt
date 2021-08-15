@@ -112,7 +112,7 @@
 </script>
 
 <Markup>
-	<Message>this is fake</Message>
+	<Message>this is a fake sign-up</Message>
 	<form>
 		<input
 			bind:value={username}
