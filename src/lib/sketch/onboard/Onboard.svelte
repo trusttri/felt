@@ -63,7 +63,7 @@
 	$: unconsentful_data = onboard_data.unconsentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
 </script>
 
-<div class="onboard" style="--column_width: 640px">
+<div class="onboard column">
 	<Nav {state} {send} />
 	<div class="content">
 		{#if $state.value === 'begin'}
@@ -111,9 +111,6 @@
 
 <style>
 	.onboard {
-		/* make the onboard sketch 2x the normal column width */
-		max-width: calc(2 * var(--column_width));
-		min-width: calc(2 * var(--column_width_min));
 		width: 100%;
 		height: 100%;
 		display: flex;
@@ -124,6 +121,7 @@
 		height: 100%;
 		display: flex;
 		justify-content: center;
+		flex-wrap: wrap;
 	}
 	section {
 		position: relative;
@@ -133,12 +131,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		/* TODO should this be on `.column` ? */
-		border-left: var(--border);
-		border-right: var(--border);
-		border-bottom: var(--border);
+		margin-bottom: var(--spacing_xl6);
+		border: var(--border);
 	}
 	.swapped {
 		order: 1;
+	}
+	@media (max-width: 40rem) {
+		.content {
+			flex-direction: column;
+		}
 	}
 </style>

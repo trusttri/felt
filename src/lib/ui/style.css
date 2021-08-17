@@ -164,8 +164,8 @@
 	--spacing_xl7: 6.854rem;
 	--spacing_xl8: 8.719rem;
 	--spacing_xl9: 11.09rem;
-	--column_width: 800px;
-	--column_width_min: 320px;
+	--column_width: 800px; /* TODO might want to pad this a bit */
+	--column_width_min: 320px; /* seems to be the obvious minimum supported width for smartphones */
 	--nav_height: var(--spacing_xl2);
 	--avatar_height: var(--spacing_xl3);
 	--border_color_darker: hsla(

@@ -45,6 +45,7 @@
 	let created_account = false;
 	const create_account = () => (created_account = true);
 	const uncreate_account = () => (created_account = false);
+	let selected_button = 1;
 
 	type Color = 'pink' | 'orange' | 'red' | 'violet' | 'blue' | 'green' | 'brown';
 	let colors: Color[] = ['pink', 'orange', 'red', 'violet', 'blue', 'green', 'brown'];
@@ -59,6 +60,11 @@
 
 <!-- TODO don't lay out in a single column, use css grid probably -->
 <div class="library column">
+	<Markup>
+		<h2><code>hr</code></h2>
+	</Markup>
+	<hr />
+
 	<Markup>
 		<h2><code>PendingAnimation</code></h2>
 	</Markup>
@@ -75,9 +81,6 @@
 		<span style="font-size: var(--font_size_xl5)">🐸</span>⏳
 	</PendingAnimation>
 
-	<Markup>
-		<h2><code>hr</code></h2>
-	</Markup>
 	<hr />
 
 	<Markup>
@@ -107,6 +110,25 @@
 			<Message status="error">cannot create account because this library is fake</Message>
 			<button type="button" on:click={() => uncreate_account()}> undo </button>
 		{/if}
+	</Markup>
+
+	<hr />
+
+	<Markup>
+		<h2>
+			<code>button</code> with css class <code>.selected</code>
+		</h2>
+		<nav>
+			<button class:selected={selected_button === 0} on:click={() => (selected_button = 0)}>
+				button 0
+			</button>
+			<button class:selected={selected_button === 1} on:click={() => (selected_button = 1)}>
+				button 1
+			</button>
+			<button class:selected={selected_button === 2} on:click={() => (selected_button = 2)}>
+				button 2
+			</button>
+		</nav>
 	</Markup>
 
 	<hr />

@@ -8,6 +8,7 @@
 		face_blush,
 		face_wink,
 	} from '$lib/ui/icons';
+	import Markup from '$lib/ui/Markup.svelte';
 
 	export let principle: ConsentPrinciple;
 	export let consentful_on_left_side: boolean;
@@ -26,11 +27,14 @@
 	</div>
 	<div class="prompt">
 		{#if correct === null}
-			which feels {principle.type}?
+			which feels<br />
+			{principle.type}?
 		{:else if correct}
-			we think so too
+			we think<br />
+			so too
 		{:else}
-			we meant the opposite
+			we meant<br />
+			the opposite
 		{/if}
 	</div>
 	<div class="buttons">
@@ -42,7 +46,11 @@
 		{/if}
 	</div>
 	<div class="column summary">
-		{principle.summary}
+		<Markup>
+			<p>
+				{principle.summary}
+			</p>
+		</Markup>
 	</div>
 </div>
 
@@ -63,8 +71,6 @@
 		text-align: center;
 		font-size: var(--font_size_xl3);
 		font-weight: bold;
-		/* in case the text slightly overflows, we don't want to make the buttons move */
-		white-space: nowrap;
 	}
 	.icon {
 		font-size: var(--font_size_xl6);
