@@ -12,6 +12,7 @@ const files = [
 	'lib/ui/Markup.svelte',
 	'lib/ui/Message.svelte',
 	'lib/ui/PendingAnimation.svelte',
+	'lib/ui/PendingButton.svelte',
 	'lib/ui/style.css',
 
 	// utils

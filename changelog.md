@@ -1,5 +1,10 @@
 # changelog
 
+## 0.8.1
+
+- add and publish `ui/PendingButton.svelte`
+  ([#125](https://github.com/feltcoop/felt/pull/125))
+
 ## 0.8.0
 
 - **break**: rename to `PascalCase` from `Proper_Snake_Case`

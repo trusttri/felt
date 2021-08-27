@@ -4,6 +4,7 @@
 	import Message from '$lib/ui/Message.svelte';
 	import FeltHeart from '$lib/ui/FeltHeart.svelte';
 	import PendingAnimation from '$lib/ui/PendingAnimation.svelte';
+	import PendingButton from '$lib/ui/PendingButton.svelte';
 	import Icons from '$lib/ui/Icons.svelte';
 	import * as icons_by_name from '$lib/ui/icons';
 	import {
@@ -69,17 +70,31 @@
 		<h2><code>PendingAnimation</code></h2>
 	</Markup>
 	<PendingAnimation />
-	<h3><code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code></h3>
+	<Markup>
+		<h3><code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code></h3>
+	</Markup>
 	<PendingAnimation paused={true} />
-	<h3><code>PendingAnimation</code> with slot <code>🐢</code></h3>
+	<Markup>
+		<h3><code>PendingAnimation</code> with slot <code>🐢</code></h3>
+	</Markup>
 	<PendingAnimation>🐢</PendingAnimation>
-	<h3>
-		<code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code> and slot
-		<code>{'<span style="font-size: var(--font_size_xl5)">🐸</span>⏳'}</code>
-	</h3>
+	<Markup>
+		<h3>
+			<code>PendingAnimation</code> with <code>paused={'{'}true{'}'}</code> and slot
+			<code>{'<span style="font-size: var(--font_size_xl5)">🐸</span>⏳'}</code>
+		</h3>
+	</Markup>
 	<PendingAnimation paused={true}>
 		<span style="font-size: var(--font_size_xl5)">🐸</span>⏳
 	</PendingAnimation>
+	<Markup>
+		<h3>
+			<code>PendingButton</code> with <code>pending={'{'}false{'}'}</code>
+			and <code>pending={'{'}true{'}'}</code>
+		</h3>
+	</Markup>
+	<PendingButton pending={false}>pending button</PendingButton>
+	<PendingButton pending={true}>pending button</PendingButton>
 
 	<hr />
 
