@@ -16,7 +16,7 @@
 </script>
 
 <Markup>
-	<Message>this is not a real sign-up</Message>
+	<Message status="inform">this is not a real sign-up</Message>
 	<form>
 		<input bind:value={username} placeholder="username" />
 		<input type="password" bind:value={password} placeholder="password" />
