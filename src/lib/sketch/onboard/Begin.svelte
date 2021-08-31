@@ -13,9 +13,9 @@
 	</h1>
 	<p>This sketch is a proof of concept, side-by-side comparsion between two onboarding flows:</p>
 	<ol>
-		<li>one column uses dark design patterns that create an unconsentful experience</li>
+		<li>one version uses dark design patterns that create an unconsentful experience</li>
 		<li>
-			the other column is designed with the affirmative consent framework described by <a
+			the other is designed with the affirmative consent framework described by <a
 				href="https://consentful.systems">consentful.systems</a
 			>
 		</li>
