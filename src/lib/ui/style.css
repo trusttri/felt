@@ -4,7 +4,6 @@
 	/* color-scheme: light dark; */
 	font-size: 62.5%;
 
-	--alpha: 0.89;
 	--faded_1: 81%;
 	--faded_2: 62%;
 	--faded_3: 38%;
@@ -13,6 +12,7 @@
 	--faded_6: 9%;
 	--bg: #fff;
 	--shadow: rgba(0, 0, 0, var(--faded_5));
+	--overlay_bg: hsla(0, 0%, 0%, var(--faded_2));
 	--blue_hue: 210;
 	--blue_saturation: 55%;
 	--blue_lightness: 50%;
@@ -84,18 +84,7 @@
 	--active_hue: var(--blue_hue);
 	--active_saturation: var(--blue_saturation);
 	--active_lightness: var(--blue_lightness);
-	--active_alpha: var(--alpha);
-	--active_hue: var(--blue_hue);
-	--active_saturation: var(--blue_saturation);
-	--active_lightness: var(--blue_lightness);
-	--active_alpha: var(--alpha);
-	/* --active_text_decoration: underline; */
-	--active_color: hsla(
-		var(--active_hue),
-		var(--active_saturation),
-		var(--active_lightness),
-		var(--active_alpha)
-	);
+	--active_color: hsl(var(--active_hue), var(--active_saturation), var(--active_lightness));
 	--active_saturation_bg_light: 70%;
 	--active_lightness_bg_light: 80%;
 	--active_alpha_bg_light: 0.5;
@@ -266,19 +255,42 @@ html {
 }
 
 body {
+	height: 100%;
+	width: 100%;
 	font-size: 1.6rem;
 	font-family: var(--font_family);
 	text-rendering: optimizeSpeed;
-	min-height: 100%;
-	min-width: 100%;
 	background-color: var(--bg);
 	line-height: var(--line_height);
 }
 
+/*
+
+`#root` is the `svelte.config.js` `kit.target` element.
+It contains `<main>` and overlays like the modal.
+
+*/
 #root {
+	height: 100%;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+/*
+
+`<main>` is the primary scrollable container --
+ideally Felt wouldn't know this much about your layout,
+but it's needed so we can get consistent modal behavior.
+The `<main>` element is mounted inside `#root`,
+and Felt's overlay containers are a sibling to `<main>`.
+
+*/
+main {
+	height: 100%;
+	width: 100%;
+	overflow: auto;
 }
 
 a {

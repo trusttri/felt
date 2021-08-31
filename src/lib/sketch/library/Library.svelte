@@ -4,6 +4,8 @@
 	import Message from '$lib/ui/Message.svelte';
 	import FeltHeart from '$lib/ui/FeltHeart.svelte';
 	import PendingAnimation from '$lib/ui/PendingAnimation.svelte';
+	import Modal from '$lib/ui/Modal.svelte';
+	import Portal from '$lib/ui/Portal.svelte';
 	import PendingButton from '$lib/ui/PendingButton.svelte';
 	import Icons from '$lib/ui/Icons.svelte';
 	import * as icons_by_name from '$lib/ui/icons';
@@ -47,6 +49,11 @@
 	const create_account = () => (created_account = true);
 	const uncreate_account = () => (created_account = false);
 	let selected_button = 1;
+	let modal_open = false;
+
+	let portal1: HTMLElement;
+	let portal2: HTMLElement;
+	let swap_portal = true;
 
 	type Color = 'pink' | 'orange' | 'red' | 'violet' | 'blue' | 'green' | 'brown';
 	let colors: Color[] = ['pink', 'orange', 'red', 'violet', 'blue', 'green', 'brown'];
@@ -64,6 +71,7 @@
 	<Markup>
 		<h2><code>hr</code></h2>
 	</Markup>
+
 	<hr />
 
 	<Markup>
@@ -145,6 +153,44 @@
 			</button>
 		</nav>
 	</Markup>
+
+	<hr />
+
+	<Markup>
+		<h2>
+			<code>Modal</code>
+		</h2>
+	</Markup>
+	<button on:click={() => (modal_open = true)}>open modal</button>
+	{#if modal_open}
+		<Modal on:close={() => (modal_open = false)}>
+			<Markup>
+				<h1>attention</h1>
+				<p>this is a modal</p>
+				<button on:click={() => (modal_open = false)}>k</button>
+			</Markup>
+		</Modal>
+	{/if}
+
+	<hr />
+
+	<Markup>
+		<h2>
+			<code>Portal</code>
+		</h2>
+		<p>
+			The<code>Modal</code> uses the <code>Portal</code> to mount itself to a top-level DOM element,
+			instead of the location that the <code>Modal</code> component appears in code, solving various
+			issues. The <code>Portal</code> can be used to relocate other elements too, in the rare cases that's
+			useful.
+		</p>
+	</Markup>
+	<Portal to={swap_portal ? portal1 : portal2}>🐰</Portal>
+	<div class="portals">
+		<div bind:this={portal1} />
+		<div bind:this={portal2} />
+	</div>
+	<button on:click={() => (swap_portal = !swap_portal)}>teleport the rabbit</button>
 
 	<hr />
 
@@ -277,8 +323,6 @@
 
 	<Markup>
 		<h2><code>Icons</code></h2>
-	</Markup>
-	<Markup>
 		<h3>
 			<code>{'<'}div{'>'}</code>s with width and height set to
 			<code>icon_size_xs</code>, <code>icon_size_sm</code>,
@@ -366,5 +410,17 @@
 	}
 	.xl-font-sizes {
 		text-align: center;
+	}
+	.portals {
+		display: flex;
+	}
+	.portals > div {
+		width: var(--spacing_xl8);
+		height: var(--spacing_xl8);
+		border: var(--border);
+		font-size: var(--font_size_xl3);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>

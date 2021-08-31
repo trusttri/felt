@@ -11,15 +11,14 @@
 	<link rel="shortcut icon" href="/favicon.png" />
 </svelte:head>
 
-<Nav />
 <main>
+	<Nav />
 	<slot />
 </main>
 <Devmode {devmode} />
 
 <style>
 	main {
-		width: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;

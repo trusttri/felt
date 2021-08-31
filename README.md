@@ -21,7 +21,8 @@ import type {Result} from '@feltcoop/felt';
 // for now, you'll typically use deep imports to specific modules:
 import '@feltcoop/felt/ui/style.css';
 import Markup from '@feltcoop/felt/ui/Markup.svelte';
-import {random_int} from '@feltcoop/felt/util/random.js';
+import Modal from '@feltcoop/felt/ui/Modal.svelte';
+import PendingAnimation from '@feltcoop/felt/ui/PendingAnimation.svelte';
 ```
 
 ## develop

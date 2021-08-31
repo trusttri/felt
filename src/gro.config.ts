@@ -11,8 +11,10 @@ const files = [
 	'lib/ui/devmode.ts',
 	'lib/ui/Markup.svelte',
 	'lib/ui/Message.svelte',
+	'lib/ui/Modal.svelte',
 	'lib/ui/PendingAnimation.svelte',
 	'lib/ui/PendingButton.svelte',
+	'lib/ui/Portal.svelte',
 	'lib/ui/style.css',
 
 	// utils
