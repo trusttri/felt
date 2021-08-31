@@ -1,38 +1,35 @@
 <script lang="ts">
+	import SketchList from '$lib/sketch/SketchList.svelte';
 	import FeltHeart from '$lib/ui/FeltHeart.svelte';
-	import {arrow_left, arrow_right} from '$lib/ui/icons';
+	import {sketches} from '$lib/sketch/sketch';
+	import FeltFooter from '$lib/ui/FeltFooter.svelte';
 </script>
 
-<h1>@feltcoop/felt</h1>
+<!-- <h1>@feltcoop/felt</h1> -->
 <!-- TODO publish and link the above to npm -->
 
 <section>
 	<div class="learn">
 		<a href="https://www.felt.social/about">
-			<div>learn {arrow_right} about {arrow_left} Felt</div>
+			<div>¿ learn about Felt ?</div>
 			<FeltHeart />
 		</a>
 	</div>
 </section>
 <section>
-	<a href="https://github.com/feltcoop/felt">source code on GitHub</a>
+	<h2><a href="/sketch">sketches</a></h2>
+	<SketchList {sketches} />
 </section>
 <section>
-	<div class="links">
-		@feltcoop on
-		<a href="https://github.com/feltcoop">GitHub</a> and
-		<a href="https://twitter.com/feltcoop">Twitter</a>
-	</div>
+	<FeltFooter />
 </section>
 
 <style>
-	h1 {
-		margin: 2rem 0;
-		text-align: center;
-	}
 	section {
+		padding: var(--spacing_xl4) 0;
+	}
+	h2 {
 		text-align: center;
-		padding: var(--spacing_xl) 0;
 	}
 	a {
 		font-size: var(--font_size_xl);
@@ -48,9 +45,5 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-	}
-	.links {
-		font-size: var(--font_size_xl);
-		font-weight: var(--font_weight_2);
 	}
 </style>
