@@ -16,7 +16,7 @@ export const wrap = <T>(fn: (after: WrapAfter) => Promise<T>): Promise<T> => {
 	const after: WrapAfter = (cb) => {
 		(cbs || (cbs = [])).push(cb);
 	};
-	const call_cbs = async () => {
+	const callCbs = async () => {
 		if (cbs === null) return;
 		for (const cb of cbs) {
 			await cb();
@@ -24,11 +24,11 @@ export const wrap = <T>(fn: (after: WrapAfter) => Promise<T>): Promise<T> => {
 	};
 	return fn(after).then(
 		async (value) => {
-			await call_cbs();
+			await callCbs();
 			return value;
 		},
 		async (err) => {
-			await call_cbs();
+			await callCbs();
 			throw err;
 		},
 	);

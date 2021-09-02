@@ -10,14 +10,14 @@ export {
 	cyan,
 	white,
 	gray,
-	bgBlack as black_bg,
-	bgRed as red_bg,
-	bgGreen as green_bg,
-	bgYellow as yellow_bg,
-	bgBlue as blue_bg,
-	bgMagenta as magenta_bg,
-	bgCyan as cyan_bg,
-	bgWhite as white_bg,
+	bgBlack as blackBg,
+	bgRed as redBg,
+	bgGreen as greenBg,
+	bgYellow as yellowBg,
+	bgBlue as blueBg,
+	bgMagenta as magentaBg,
+	bgCyan as cyanBg,
+	bgWhite as whiteBg,
 	reset,
 	bold,
 	dim,
@@ -28,9 +28,9 @@ export {
 	strikethrough,
 } from 'kleur/colors';
 
-const rainbow_colors = [red, yellow, green, cyan, blue, magenta];
+const rainbowColors = [red, yellow, green, cyan, blue, magenta];
 
 export const rainbow = (str: string): string =>
 	Array.from(str)
-		.map((char, i) => rainbow_colors[i % rainbow_colors.length](char))
+		.map((char, i) => rainbowColors[i % rainbowColors.length](char))
 		.join('');

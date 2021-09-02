@@ -1,29 +1,29 @@
 <script lang="ts">
 	import type {ConsentPrinciple} from '$lib/sketch/onboard/consent';
 	import {
-		hand_point_left,
-		hand_point_right,
-		arrow_right,
-		face_think,
-		face_blush,
-		face_wink,
+		handPointLeft,
+		handPointRight,
+		arrowRight,
+		faceThink,
+		faceBlush,
+		faceWink,
 	} from '$lib/ui/icons';
 	import Markup from '$lib/ui/Markup.svelte';
 
 	export let principle: ConsentPrinciple;
-	export let consentful_on_left_side: boolean;
+	export let consentfulOnLeftSide: boolean;
 	export let done: () => void; // could pass `correct` if we want to use it
 
 	let correct: boolean | null = null;
 
 	const choose = (side: 'left' | 'right'): void => {
-		correct = side === 'left' ? consentful_on_left_side : !consentful_on_left_side;
+		correct = side === 'left' ? consentfulOnLeftSide : !consentfulOnLeftSide;
 	};
 </script>
 
 <div class="sides-complete">
 	<div class="icon">
-		{#if correct === null}{face_think}{:else if correct}{face_blush}{:else}{face_wink}{/if}
+		{#if correct === null}{faceThink}{:else if correct}{faceBlush}{:else}{faceWink}{/if}
 	</div>
 	<div class="prompt">
 		{#if correct === null}
@@ -39,10 +39,10 @@
 	</div>
 	<div class="buttons">
 		{#if correct === null}
-			<button on:click={() => choose('left')}>{hand_point_left}</button>
-			<button on:click={() => choose('right')}>{hand_point_right}</button>
+			<button on:click={() => choose('left')}>{handPointLeft}</button>
+			<button on:click={() => choose('right')}>{handPointRight}</button>
 		{:else}
-			<button on:click={() => done()}>continue {arrow_right}</button>
+			<button on:click={() => done()}>continue {arrowRight}</button>
 		{/if}
 	</div>
 	<div class="column summary">

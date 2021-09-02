@@ -32,7 +32,7 @@
 
 <style>
 	.button-text::before {
-		/* TODO arrow_right var -- as a CSS var? or just refactor? */
+		/* TODO arrowRight var -- as a CSS var? or just refactor? */
 		content: 'continue →';
 	}
 	button:hover .button-text::before {

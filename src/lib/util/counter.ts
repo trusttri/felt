@@ -7,7 +7,7 @@ export interface ToCounter {
 }
 
 // 0-based counter by default
-export const to_counter: ToCounter =
+export const toCounter: ToCounter =
 	(count = 0) =>
 	() =>
 		count++;

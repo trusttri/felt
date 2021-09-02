@@ -2,7 +2,7 @@
 	import type {OnboardData} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
-	import {arrow_right} from '$lib/ui/icons';
+	import {arrowRight} from '$lib/ui/icons';
 
 	export let data: OnboardData;
 	export let done: () => void;
@@ -24,7 +24,7 @@
 		{name: 'RAGE FACTORY', selected: true},
 	];
 
-	const toggle_selected = (selected: boolean, space: Space) => {
+	const toggleSelected = (selected: boolean, space: Space) => {
 		space.selected = selected;
 	};
 </script>
@@ -34,13 +34,13 @@
 
 	<div>
 		{#each spaces as space (space.name)}
-			<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
+			<Checkbox checked={space.selected} onChange={(checked) => toggleSelected(checked, space)}>
 				{space.name}
 			</Checkbox>
 		{/each}
 	</div>
 
 	<button on:click={() => done()}>
-		<Markup>let's start posting {arrow_right}</Markup>
+		<Markup>let's start posting {arrowRight}</Markup>
 	</button>
 </Markup>

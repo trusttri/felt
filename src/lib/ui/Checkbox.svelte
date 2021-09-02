@@ -1,26 +1,26 @@
 <script context="module" lang="ts">
 	// TODO extract helper
-	let id_count = 0;
-	const to_id = (): string => `Checkbox_${id_count++}`;
+	let idCount = 0;
+	const toId = (): string => `Checkbox_${idCount++}`;
 </script>
 
 <script lang="ts">
 	// TODO rethink this API, probably use events instead
 	export let checked: boolean;
-	export let on_change: ((checked: boolean) => void) | null = null;
+	export let onChange: ((checked: boolean) => void) | null = null;
 	// using these instead of component custom props shorthand because it breaks global styles using `:last-child`
 	export let content: string | undefined = undefined;
-	export let content_empty: string | undefined = undefined;
+	export let contentEmpty: string | undefined = undefined;
 	export let disabled: boolean | undefined = undefined;
 
-	const id = to_id();
+	const id = toId();
 
-	$: on_change && on_change(checked);
+	$: onChange && onChange(checked);
 </script>
 
 <label
-	style="--content: {content ? `'${content}'` : ''}; --content_empty: {content_empty
-		? `'${content_empty}'`
+	style="--content: {content ? `'${content}'` : ''}; --content_empty: {contentEmpty
+		? `'${contentEmpty}'`
 		: ''}"
 	class="checkbox buttonlike"
 	class:selected={checked}

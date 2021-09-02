@@ -1,53 +1,53 @@
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {to_uuid, is_uuid, to_to_client_id} from '$lib/util/id.js';
+import {toUuid, isUuid, toToClientId} from '$lib/util/id.js';
 
-/* test__to_uuid */
-const test__to_uuid = suite('to_uuid');
+/* test__toUuid */
+const test__toUuid = suite('toUuid');
 
-test__to_uuid('basic behavior', () => {
-	t.ok(to_uuid());
-	t.is(to_uuid().length, 36);
+test__toUuid('basic behavior', () => {
+	t.ok(toUuid());
+	t.is(toUuid().length, 36);
 });
 
-test__to_uuid.run();
-/* test__to_uuid */
+test__toUuid.run();
+/* test__toUuid */
 
-/* test__is_uuid */
-const test__is_uuid = suite('is_uuid');
+/* test__isUuid */
+const test__isUuid = suite('isUuid');
 
-test__is_uuid('basic behavior', () => {
-	t.ok(is_uuid(to_uuid()));
-	t.ok(is_uuid('f81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
-	t.not.ok(is_uuid('g81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
-	t.not.ok(is_uuid(''));
-	t.not.ok(is_uuid(null!));
-	t.not.ok(is_uuid(undefined!));
+test__isUuid('basic behavior', () => {
+	t.ok(isUuid(toUuid()));
+	t.ok(isUuid('f81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
+	t.not.ok(isUuid('g81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
+	t.not.ok(isUuid(''));
+	t.not.ok(isUuid(null!));
+	t.not.ok(isUuid(undefined!));
 
 	// See the implementation's comments for why the namespace syntax is not supported.
-	t.not.ok(is_uuid('urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
+	t.not.ok(isUuid('urn:uuid:f81d4fae-7dec-11d0-a765-00a0c91e6bf6'));
 });
 
-test__is_uuid.run();
-/* test__is_uuid */
+test__isUuid.run();
+/* test__isUuid */
 
-/* test__to_to_client_id */
-const test__to_to_client_id = suite('to_to_client_id');
+/* test__toToClientId */
+const test__toToClientId = suite('toToClientId');
 
-test__to_to_client_id('basic behavior', () => {
-	const to_client_id = to_to_client_id('abc');
-	t.is(to_client_id(), 'abc_0');
-	t.is(to_client_id(), 'abc_1');
-	t.is(to_client_id(), 'abc_2');
+test__toToClientId('basic behavior', () => {
+	const toClientId = toToClientId('abc');
+	t.is(toClientId(), 'abc_0');
+	t.is(toClientId(), 'abc_1');
+	t.is(toClientId(), 'abc_2');
 });
 
-test__to_to_client_id('custom count', () => {
-	const to_client_id = to_to_client_id('abc', 1);
-	t.is(to_client_id(), 'abc_1');
-	t.is(to_client_id(), 'abc_2');
-	t.is(to_client_id(), 'abc_3');
+test__toToClientId('custom count', () => {
+	const toClientId = toToClientId('abc', 1);
+	t.is(toClientId(), 'abc_1');
+	t.is(toClientId(), 'abc_2');
+	t.is(toClientId(), 'abc_3');
 });
 
-test__to_to_client_id.run();
-/* test__to_to_client_id */
+test__toToClientId.run();
+/* test__toToClientId */

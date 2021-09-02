@@ -2,7 +2,7 @@
 	import {createEventDispatcher} from 'svelte';
 	import {browser} from '$app/env';
 
-	import {is_editable} from '$lib/util/dom';
+	import {isEditable} from '$lib/util/dom';
 	import Portal from '$lib/ui/Portal.svelte';
 
 	const ROOT_EL_ID = 'root'; // TODO where to put this? is the same as `kit.target` in `svelte.config.js`
@@ -12,24 +12,24 @@
 
 	export let container: HTMLElement | undefined = undefined;
 
-	let container_el: HTMLElement | undefined;
-	$: browser && update_container_el(container);
+	let containerEl: HTMLElement | undefined;
+	$: browser && updateContainerEl(container);
 
-	const update_container_el = (container: HTMLElement | undefined): void => {
+	const updateContainerEl = (container: HTMLElement | undefined): void => {
 		if (container) {
-			container_el = container;
+			containerEl = container;
 		} else {
 			const found = document.getElementById(CONTAINER_EL_ID);
 			if (found) {
-				container_el = found;
+				containerEl = found;
 			} else {
-				const root_el = document.getElementById(ROOT_EL_ID);
-				if (!root_el) {
+				const rootEl = document.getElementById(ROOT_EL_ID);
+				if (!rootEl) {
 					throw Error(`Expected root HTML element with id ${ROOT_EL_ID}`);
 				}
-				container_el = document.createElement('div');
-				container_el.id = CONTAINER_EL_ID;
-				root_el.appendChild(container_el);
+				containerEl = document.createElement('div');
+				containerEl.id = CONTAINER_EL_ID;
+				rootEl.appendChild(containerEl);
 			}
 		}
 	};
@@ -37,8 +37,8 @@
 	let el: HTMLElement;
 
 	// TODO hook into a ui input system
-	const on_window_keydown = (e: KeyboardEvent) => {
-		if (!(e.target instanceof HTMLElement && is_editable(e.target))) {
+	const onWindowKeydown = (e: KeyboardEvent) => {
+		if (!(e.target instanceof HTMLElement && isEditable(e.target))) {
 			if (e.key === 'Escape') {
 				dispatch('close');
 			}
@@ -50,11 +50,11 @@
 	let ready = false;
 </script>
 
-<svelte:window on:keydown={on_window_keydown} />
+<svelte:window on:keydown={onWindowKeydown} />
 
 <!-- the `tabindex` enables scrolling because SvelteKit puts it on the body -->
 <Portal
-	to={container_el}
+	to={containerEl}
 	on:move={() => {
 		ready = true;
 		el.focus();

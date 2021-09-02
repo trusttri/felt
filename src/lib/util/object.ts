@@ -3,7 +3,7 @@ import type {OmitStrict} from '$lib/util/types.js';
 // Iterated keys in `for..in` are always returned as strings,
 // so to prevent usage errors the key type of `mapper` is always a string.
 // Symbols are not enumerable as keys, so they're excluded.
-export const map_record = <T, K extends string | number, U>(
+export const mapRecord = <T, K extends string | number, U>(
 	obj: Record<K, T>,
 	mapper: (value: T, key: string) => U,
 ): Record<K, U> => {
@@ -27,25 +27,25 @@ export const omit = <T extends Record<K, any>, K extends keyof T>(
 	return result;
 };
 
-export const pick_by = <T extends Record<K, any>, K extends string | number>(
+export const pickBy = <T extends Record<K, any>, K extends string | number>(
 	obj: T,
-	should_pick: (value: any, key: K) => boolean,
+	shouldPick: (value: any, key: K) => boolean,
 ): Partial<T> => {
 	const result = {} as Partial<T>;
 	for (const key in obj) {
 		const value = obj[key];
-		if (should_pick(value, key as any)) {
+		if (shouldPick(value, key as any)) {
 			result[key] = value;
 		}
 	}
 	return result;
 };
 
-// `omit_undefined` is a commonly used form of `pick_by`
+// `omitUndefined` is a commonly used form of `pickBy`
 // See this issue for why it's used so much:
 // https://github.com/Microsoft/TypeScript/issues/13195
-export const omit_undefined = <T extends Record<string | number, any>>(obj: T): T =>
-	pick_by(obj, (v) => v !== undefined) as T;
+export const omitUndefined = <T extends Record<string | number, any>>(obj: T): T =>
+	pickBy(obj, (v) => v !== undefined) as T;
 
 // A more explicit form of `{putThisFirst: obj.putThisFirst, ...obj}`
 export const reorder = <T extends Record<K, any>, K extends string | number>(

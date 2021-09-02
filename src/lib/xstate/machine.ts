@@ -13,7 +13,7 @@ export type Typestate = any;
 
 export type State = ReturnType<UseMachine>['state'];
 export type Send = ReturnType<UseMachine>['send'];
-type UseMachine = typeof to_use_machine; // TODO this is a hack to get generics working
-const to_use_machine = () => useMachine<Context, Event, Typestate>(null as any);
+type UseMachine = typeof toUseMachine; // TODO this is a hack to get generics working
+const toUseMachine = () => useMachine<Context, Event, Typestate>(null as any);
 
 export type StateMachine = BaseStateMachine<Context, Event, Typestate>;

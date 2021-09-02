@@ -1,31 +1,31 @@
 <script lang="ts">
 	import type {OnboardSend, OnboardState} from '$lib/sketch/onboard/onboard';
 	import MachineControls from '$lib/xstate/MachineControls.svelte';
-	import {onboard_machine} from '$lib/sketch/onboard/onboard';
-	import {get_devmode} from '$lib/ui/devmode';
-	import {arrow_left, arrow_right} from '$lib/ui/icons';
+	import {onboardMachine} from '$lib/sketch/onboard/onboard';
+	import {getDevmode} from '$lib/ui/devmode';
+	import {arrowLeft, arrowRight} from '$lib/ui/icons';
 
 	export let state: OnboardState;
 	export let send: OnboardSend;
 
-	const devmode = get_devmode();
+	const devmode = getDevmode();
 
-	// console.log('onboard_machine', onboard_machine);
-	$: state_ids = Object.keys(onboard_machine.states);
+	// console.log('onboardMachine', onboardMachine);
+	$: stateIds = Object.keys(onboardMachine.states);
 
 	// $: console.log('$state.value', $state.value);
 
-	const select = (state_id: string) => {
-		const state_id_index = state_ids.indexOf(state_id);
-		const old_id_index = state_ids.indexOf($state.value as string);
-		const direction = old_id_index > state_id_index ? -1 : 1;
-		const event_name = direction > 0 ? 'NEXT' : 'PREVIOUS';
-		while ($state.value !== state_id) {
-			send(event_name);
+	const select = (stateId: string) => {
+		const stateIdIndex = stateIds.indexOf(stateId);
+		const oldIdIndex = stateIds.indexOf($state.value as string);
+		const direction = oldIdIndex > stateIdIndex ? -1 : 1;
+		const eventName = direction > 0 ? 'NEXT' : 'PREVIOUS';
+		while ($state.value !== stateId) {
+			send(eventName);
 		}
 	};
 
-	const on_keydown = (e: KeyboardEvent) => {
+	const onKeydown = (e: KeyboardEvent) => {
 		if (e.key === 'ArrowRight') {
 			send('NEXT');
 		} else if (e.key === 'ArrowLeft') {
@@ -35,32 +35,32 @@
 </script>
 
 <!-- TODO make this compose -->
-<svelte:window on:keydown={$devmode ? on_keydown : undefined} />
+<svelte:window on:keydown={$devmode ? onKeydown : undefined} />
 
 <div>
 	{#if $devmode}
 		<nav class="buttons">
 			<MachineControls
-				machine={onboard_machine}
+				machine={onboardMachine}
 				{state}
 				{send}
-				let:event_name
+				let:eventName
 				events={['PREVIOUS', 'NEXT']}
 			>
-				{event_name === 'PREVIOUS' ? arrow_left : ''}
-				{event_name}
-				{event_name === 'NEXT' ? arrow_right : ''}
+				{eventName === 'PREVIOUS' ? arrowLeft : ''}
+				{eventName}
+				{eventName === 'NEXT' ? arrowRight : ''}
 			</MachineControls>
 		</nav>
 	{/if}
 	<nav>
-		{#each state_ids as state_id (state_id)}
+		{#each stateIds as stateId (stateId)}
 			<button
-				disabled={!$devmode && state_id !== $state.value}
-				class:selected={state_id === $state.value}
-				on:click={$devmode ? () => select(state_id) : undefined}
+				disabled={!$devmode && stateId !== $state.value}
+				class:selected={stateId === $state.value}
+				on:click={$devmode ? () => select(stateId) : undefined}
 			>
-				{state_id}
+				{stateId}
 			</button>
 		{/each}
 	</nav>

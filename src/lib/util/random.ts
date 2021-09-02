@@ -1,8 +1,8 @@
-export const random_float = (min: number, max: number): number => Math.random() * (max - min) + min;
+export const randomFloat = (min: number, max: number): number => Math.random() * (max - min) + min;
 
-export const random_int = (min: number, max: number): number =>
+export const randomInt = (min: number, max: number): number =>
 	Math.floor(Math.random() * (max - min + 1)) + min;
 
-export const random_bool = (): boolean => Math.random() > 0.5;
+export const randomBool = (): boolean => Math.random() > 0.5;
 
-export const random_item = <T>(arr: T[]): T => arr[random_int(0, arr.length - 1)];
+export const randomItem = <T>(arr: T[]): T => arr[randomInt(0, arr.length - 1)];

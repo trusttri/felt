@@ -1,21 +1,21 @@
 import {extname, basename, dirname} from 'path';
 
-export const strip_trailing_slash = (p: string): string =>
+export const stripTrailingSlash = (p: string): string =>
 	p[p.length - 1] === '/' ? p.substring(0, p.length - 1) : p;
 
-// Note this treats `foo.d.ts` as `.ts` - compound extensions should use `strip_end`
-export const replace_extension = (path: string, newExtension: string): string => {
+// Note this treats `foo.d.ts` as `.ts` - compound extensions should use `stripEnd`
+export const replaceExtension = (path: string, newExtension: string): string => {
 	const {length} = extname(path);
 	return (length === 0 ? path : path.substring(0, path.length - length)) + newExtension;
 };
 
 // Gets the stem of a path, the "b" of "/a/b.c".
-export const to_path_stem = (path: string): string => replace_extension(basename(path), '');
+export const toPathStem = (path: string): string => replaceExtension(basename(path), '');
 
 // Note that this operates on file paths, not directories.
 // It will strip the basename of any directories, which seems surprising.
 // The algorithm will be really slow for any big large array sizes. Don't do that.
-export const to_common_base_dir = (filePaths: string[]): string => {
+export const toCommonBaseDir = (filePaths: string[]): string => {
 	const dirs = filePaths.map((p) => dirname(p));
 	if (dirs.length === 1) return dirs[0];
 	const longest = [dirs[0]];

@@ -2,7 +2,7 @@
 	import type {OnboardSend} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Credits from '$lib/sketch/onboard/Credits.svelte';
-	import {arrow_right} from '$lib/ui/icons';
+	import {arrowRight} from '$lib/ui/icons';
 
 	export let send: OnboardSend;
 </script>
@@ -25,7 +25,7 @@
 	</p>
 	<button on:click={() => send('NEXT')}>
 		<Markup>
-			click here to start {arrow_right}
+			click here to start {arrowRight}
 		</Markup>
 	</button>
 	<Credits />

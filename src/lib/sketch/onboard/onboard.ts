@@ -1,4 +1,4 @@
-import {createMachine as create_machine} from 'xstate';
+import {createMachine as createMachine} from 'xstate';
 import {useMachine} from '@xstate/svelte'; // TODO should be a type import
 import type {SvelteComponent} from 'svelte';
 
@@ -25,13 +25,12 @@ export type OnboardTypestate = any;
 
 export type OnboardState = ReturnType<UseOnboardMachine>['state'];
 export type OnboardSend = ReturnType<UseOnboardMachine>['send'];
-type UseOnboardMachine = typeof to_use_onboard_machine; // TODO this is a hack to get generics working
-const to_use_onboard_machine = () =>
-	useMachine<OnboardContext, OnboardEvent, OnboardTypestate>(null!);
+type UseOnboardMachine = typeof toUseOnboardMachine; // TODO this is a hack to get generics working
+const toUseOnboardMachine = () => useMachine<OnboardContext, OnboardEvent, OnboardTypestate>(null!);
 
 const INITIAL_VALUE = 'begin';
 
-export const onboard_machine = create_machine<object>({
+export const onboardMachine = createMachine<object>({
 	id: 'onboard',
 	initial: INITIAL_VALUE,
 	states: {
@@ -59,7 +58,7 @@ export const onboard_machine = create_machine<object>({
 	},
 });
 
-// console.log('onboard_machine', onboard_machine);
+// console.log('onboardMachine', onboardMachine);
 
 // TODO derive?
 export type OnboardStateName =
@@ -76,7 +75,7 @@ export interface OnboardData {
 }
 
 // TODO does this belong in the machine context?
-export const onboard_data: Record<ConsentType, Record<OnboardStateName, OnboardData>> = {
+export const onboardData: Record<ConsentType, Record<OnboardStateName, OnboardData>> = {
 	consentful: {
 		begin: {
 			id: 'begin',

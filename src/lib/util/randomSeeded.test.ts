@@ -33,40 +33,40 @@ THE SOFTWARE.
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {to_random_seeded} from '$lib/util/random_seeded.js';
+import {toRandomSeeded} from '$lib/util/randomSeeded.js';
 
-/* test__to_random_seeded */
-const test__to_random_seeded = suite('to_random_seeded');
+/* test__toRandomSeeded */
+const test__toRandomSeeded = suite('toRandomSeeded');
 
-test__to_random_seeded('Math.random() replacement', () => {
+test__toRandomSeeded('Math.random() replacement', () => {
 	// From http://baagoe.com/en/RandomMusings/javascript/
 	// via https://github.com/nquinlan/better-random-numbers-for-javascript-mirror
-	const random = to_random_seeded('my', 3, 'seeds');
+	const random = toRandomSeeded('my', 3, 'seeds');
 	t.is(random(), 0.30802189325913787);
 	t.is(random(), 0.5190450621303171);
 	t.is(random(), 0.43635262292809784);
 });
 
-test__to_random_seeded('another seed', () => {
-	const random2 = to_random_seeded(1277182878230);
+test__toRandomSeeded('another seed', () => {
+	const random2 = toRandomSeeded(1277182878230);
 	t.is(random2(), 0.6198398587293923);
 	t.is(random2(), 0.8385338634252548);
 	t.is(random2(), 0.3644848605617881);
 });
 
-test__to_random_seeded('seeded random uint32', () => {
-	const random_uint32 = to_random_seeded('').uint32;
-	t.is(random_uint32(), 715789690);
-	t.is(random_uint32(), 2091287642);
-	t.is(random_uint32(), 486307);
+test__toRandomSeeded('seeded random uint32', () => {
+	const randomUint32 = toRandomSeeded('').uint32;
+	t.is(randomUint32(), 715789690);
+	t.is(randomUint32(), 2091287642);
+	t.is(randomUint32(), 486307);
 });
 
-test__to_random_seeded('seeded random fract53', () => {
-	const random_fract53 = to_random_seeded('').fract53;
-	t.is(random_fract53(), 0.16665777435687268);
-	t.is(random_fract53(), 0.00011322738143160205);
-	t.is(random_fract53(), 0.17695781631176488);
+test__toRandomSeeded('seeded random fract53', () => {
+	const randomFract53 = toRandomSeeded('').fract53;
+	t.is(randomFract53(), 0.16665777435687268);
+	t.is(randomFract53(), 0.00011322738143160205);
+	t.is(randomFract53(), 0.17695781631176488);
 });
 
-test__to_random_seeded.run();
-/* test__to_random_seeded */
+test__toRandomSeeded.run();
+/* test__toRandomSeeded */

@@ -1,10 +1,10 @@
 <script>
 	import '$lib/ui/style.css';
-	import {set_devmode} from '$lib/ui/devmode';
+	import {setDevmode} from '$lib/ui/devmode';
 	import Devmode from '$lib/ui/Devmode.svelte';
 	import Nav from '$lib/ui/Nav.svelte';
 
-	const devmode = set_devmode(false);
+	const devmode = setDevmode(false);
 </script>
 
 <svelte:head>

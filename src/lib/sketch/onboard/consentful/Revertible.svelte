@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type {OnboardData} from '$lib/sketch/onboard/onboard';
 	import Markup from '$lib/ui/Markup.svelte';
-	import {arrow_left, arrow_right} from '$lib/ui/icons';
+	import {arrowLeft, arrowRight} from '$lib/ui/icons';
 
 	export let data: OnboardData;
 	export let done: () => void;
@@ -15,10 +15,10 @@
 
 <Markup>
 	<p>Before we create your (fake) account, are you sure you understand the deal?</p>
-	<button on:click={() => back()}> <Markup>{arrow_left} go back and learn</Markup> </button>
+	<button on:click={() => back()}> <Markup>{arrowLeft} go back and learn</Markup> </button>
 	<blockquote>🌈✨ if you don't know the deal, it's not consentful</blockquote>
 	<button on:click={() => (understood = true)} disabled={understood}>
-		<Markup>yes I understand {arrow_right}</Markup>
+		<Markup>yes I understand {arrowRight}</Markup>
 	</button>
 	{#if understood}
 		<p>
@@ -34,6 +34,6 @@
 				>account settings</a
 			>.
 		</p>
-		<button on:click={() => done()}> create my account {arrow_right} </button>
+		<button on:click={() => done()}> create my account {arrowRight} </button>
 	{/if}
 </Markup>

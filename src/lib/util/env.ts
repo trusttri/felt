@@ -8,7 +8,7 @@ interface ToEnvString {
 	(key: string, fallback: string | Lazy<string>): string;
 }
 
-export const to_env_string: ToEnvString = (key: string, fallback?: string | Lazy<string>) => {
+export const toEnvString: ToEnvString = (key: string, fallback?: string | Lazy<string>) => {
 	const value = process.env[key];
 	return typeof value === 'string' ? value : lazy(fallback)!;
 };
@@ -18,7 +18,7 @@ interface ToEnvNumber {
 	(key: string, fallback: number | Lazy<number>): number;
 }
 
-export const to_env_number: ToEnvNumber = (key: string, fallback?: number | Lazy<number>) => {
+export const toEnvNumber: ToEnvNumber = (key: string, fallback?: number | Lazy<number>) => {
 	const value = parseInt(process.env[key] || '', 10);
 	return Number.isNaN(value) ? lazy(fallback)! : value;
 };

@@ -14,7 +14,7 @@ export type ConsentPrincipleType =
 	| 'specific'
 	| 'unburdensome';
 
-export const consent_principle_types: ConsentPrincipleType[] = [
+export const consentPrincipleTypes: ConsentPrincipleType[] = [
 	'voluntary',
 	'informed',
 	'revertible',
@@ -27,7 +27,7 @@ export interface ConsentPrinciple {
 	summary: string;
 }
 
-export const consent_principles_data: ConsentPrinciple[] = [
+export const consentPrinciplesData: ConsentPrinciple[] = [
 	{
 		type: 'voluntary',
 		summary: 'Consent is an agreement that is 1) freely given and 2) enthusiastic.',
@@ -53,9 +53,9 @@ export const consent_principles_data: ConsentPrinciple[] = [
 	},
 ];
 
-const [voluntary, informed, revertible, specific, unburdensome] = consent_principles_data;
+const [voluntary, informed, revertible, specific, unburdensome] = consentPrinciplesData;
 
-export const consent_principles: Record<ConsentPrincipleType, ConsentPrinciple> = {
+export const consentPrinciples: Record<ConsentPrincipleType, ConsentPrinciple> = {
 	voluntary,
 	informed,
 	revertible,

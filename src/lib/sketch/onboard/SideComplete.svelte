@@ -1,5 +1,5 @@
 <script lang="ts">
-	import {arrow_left, arrow_right} from '$lib/ui/icons';
+	import {arrowLeft, arrowRight} from '$lib/ui/icons';
 
 	export let left: boolean;
 </script>
@@ -7,7 +7,7 @@
 <div class="side">
 	<div>now do this side</div>
 	<div class="icon">
-		{#if left}{arrow_right}{:else}{arrow_left}{/if}
+		{#if left}{arrowRight}{:else}{arrowLeft}{/if}
 	</div>
 </div>
 

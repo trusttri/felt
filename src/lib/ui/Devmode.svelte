@@ -1,13 +1,13 @@
 <script lang="ts">
 	import type {Writable} from 'svelte/store';
 
-	import {is_editable} from '$lib/util/dom';
+	import {isEditable} from '$lib/util/dom';
 
 	export let devmode: Writable<boolean>;
 	export let auto: boolean = true; // pass `false` to manually toggle
 
-	const on_window_keydown = (e: KeyboardEvent) => {
-		if (!(e.target instanceof HTMLElement && is_editable(e.target))) {
+	const onWindowKeydown = (e: KeyboardEvent) => {
+		if (!(e.target instanceof HTMLElement && isEditable(e.target))) {
 			if (e.key === '`') {
 				$devmode = !$devmode;
 			}
@@ -15,7 +15,7 @@
 	};
 </script>
 
-<svelte:window on:keydown={auto ? on_window_keydown : undefined} />
+<svelte:window on:keydown={auto ? onWindowKeydown : undefined} />
 
 {#if $devmode}
 	<button on:click={() => ($devmode = !$devmode)} />

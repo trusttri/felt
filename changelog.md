@@ -1,7 +1,9 @@
 # changelog
 
-## 0.8.1
+## 0.9.0
 
+- **break**: rename to `camelCase` from `snake_case`
+  ([#131](https://github.com/feltcoop/gro/pull/131))
 - add and publish `ui/Modal.svelte` and `ui/Portal.svelte`
   ([#127](https://github.com/feltcoop/gro/pull/127))
 - add and publish `ui/PendingButton.svelte`
@@ -27,7 +29,7 @@
   ([#108](https://github.com/feltcoop/felt/pull/108))
 - **break**: add peer deps `svelte` and `@sveltejs/kit`
   ([#112](https://github.com/feltcoop/felt/pull/112))
-- update `ui/Pending_Animation.svelte` with slot content and `paused` prop
+- update `ui/PendingAnimation.svelte` with slot content and `paused` prop
   ([#108](https://github.com/feltcoop/felt/pull/108))
 - replace `ui/Message.svelte` prop `text` with a slot
   ([#108](https://github.com/feltcoop/felt/pull/108))
@@ -41,12 +43,12 @@
 
 ## 0.5.4
 
-- publish `util/random_seeded.ts`
+- publish `util/randomSeeded.ts`
   ([#106](https://github.com/feltcoop/felt/pull/106))
 
 ## 0.5.3
 
-- add `util/random_seeded.ts` using
+- add `util/randomSeeded.ts` using
   [code from Johannes Baagøe'](https://github.com/nquinlan/better-random-numbers-for-javascript-mirror)
   ([#103](https://github.com/feltcoop/felt/pull/103))
 
@@ -90,12 +92,12 @@
 
 ## 0.4.2
 
-- publish component `ui/Pending_Animation.svelte`
+- publish component `ui/PendingAnimation.svelte`
   ([#91](https://github.com/feltcoop/felt/pull/91))
 
 ## 0.4.1
 
-- export `Async_Status` and `wait` from root
+- export `AsyncStatus` and `wait` from root
   ([#89](https://github.com/feltcoop/felt/pull/89))
 
 ## 0.4.0
@@ -104,18 +106,18 @@
   ([#88](https://github.com/feltcoop/felt/pull/88))
 - **break**: rename `avocado` from `avacado` 🥑
   ([#88](https://github.com/feltcoop/felt/pull/88))
-- add `random_bool` to `util/random.ts`
+- add `randomBool` to `util/random.ts`
   ([#88](https://github.com/feltcoop/felt/pull/88))
-- change `random_item` return type to exclude `undefined`
+- change `randomItem` return type to exclude `undefined`
   ([#88](https://github.com/feltcoop/felt/pull/88))
 - upgrade Gro to 0.28.2
   ([#87](https://github.com/feltcoop/felt/pull/87))
 
 ## 0.3.0
 
-- **break**: swap the names of `spawn` and `spawn_process`
+- **break**: swap the names of `spawn` and `spawnProcess`
   ([#63](https://github.com/feltcoop/felt/pull/63))
-- **break**: rename `spawn_restartable_process` from `create_restartable_process`
+- **break**: rename `spawnRestartableProcess` from `createRestartableProcess`
   and remove its `delay` arg
   ([#63](https://github.com/feltcoop/felt/pull/63))
 - **break**: rename `util/timings.ts` from `util/time.ts`

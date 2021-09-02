@@ -19,7 +19,7 @@
 		id: string;
 		selected: boolean;
 	}
-	const email_contacts: Contact[] = [
+	const emailContacts: Contact[] = [
 		{id: 'mom', selected: true},
 		{id: 'your ex', selected: true},
 		{id: 'your dentist', selected: true},
@@ -42,15 +42,15 @@
 		{id: 'are you serious ?', selected: true},
 	];
 
-	let selected_contacts = email_contacts.filter((c) => c.selected);
-	$: selected_count = selected_contacts.length;
+	let selectedContacts = emailContacts.filter((c) => c.selected);
+	$: selectedCount = selectedContacts.length;
 
-	const toggle_selected = (selected: boolean, email_contact: Contact) => {
-		email_contact.selected = selected;
-		selected_contacts = email_contacts.filter((c) => c.selected);
+	const toggleSelected = (selected: boolean, emailContact: Contact) => {
+		emailContact.selected = selected;
+		selectedContacts = emailContacts.filter((c) => c.selected);
 	};
 
-	const blast_emails = () => {
+	const blastEmails = () => {
 		done();
 	};
 </script>
@@ -62,7 +62,7 @@
 	<Checkbox
 		bind:checked={consenting}
 		content="☻"
-		content_empty="☹"
+		contentEmpty="☹"
 		--overflow="hidden"
 		--font_size="var(--font_size_xl2)"
 	>
@@ -72,9 +72,9 @@
 		</Markup>
 	</Checkbox>
 
-	<button on:click={() => blast_emails()}>
+	<button on:click={() => blastEmails()}>
 		<Markup>
-			email blast {#if consenting}everyone you've ever emailed{:else}{selected_count}
+			email blast {#if consenting}everyone you've ever emailed{:else}{selectedCount}
 				contacts{/if}!
 		</Markup>
 	</button>
@@ -87,14 +87,14 @@
 
 	{#if !consenting}
 		<div class="emails">
-			{#each email_contacts as email_contact (email_contact.id)}
+			{#each emailContacts as emailContact (emailContact.id)}
 				<Checkbox
-					checked={email_contact.selected}
-					on_change={(checked) => toggle_selected(checked, email_contact)}
+					checked={emailContact.selected}
+					onChange={(checked) => toggleSelected(checked, emailContact)}
 					content="☻"
-					content_empty="☹"
+					contentEmpty="☹"
 				>
-					{email_contact.id}
+					{emailContact.id}
 				</Checkbox>
 			{/each}
 		</div>

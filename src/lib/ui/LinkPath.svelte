@@ -1,8 +1,8 @@
 <script lang="ts">
-	import {to_path_segments} from '$lib/util/path_parsing';
+	import {toPathSegments} from '$lib/util/pathParsing';
 
 	export let path: string;
-	export let selected_path: string | null = null;
+	export let selectedPath: string | null = null;
 
 	// TODO extract elsewhere
 	type Segment =
@@ -15,33 +15,33 @@
 				type: 'separator';
 				path: string;
 		  };
-	const to_segments = (raw_path: string): Segment[] => {
+	const toSegments = (rawPath: string): Segment[] => {
 		let segments: Segment[] = [];
-		const path_segments = to_path_segments(raw_path);
-		if (path_segments.length) {
+		const pathSegments = toPathSegments(rawPath);
+		if (pathSegments.length) {
 			segments.push({type: 'separator', path: '/'});
 		}
 		let path = '';
-		for (let i = 0; i < path_segments.length; i++) {
-			const path_segment = path_segments[i];
+		for (let i = 0; i < pathSegments.length; i++) {
+			const pathSegment = pathSegments[i];
 			path += '/';
-			path += path_segment;
-			segments.push({type: 'space', name: path_segment, path});
-			if (i !== path_segments.length - 1) {
+			path += pathSegment;
+			segments.push({type: 'space', name: pathSegment, path});
+			if (i !== pathSegments.length - 1) {
 				segments.push({type: 'separator', path});
 			}
 		}
 		return segments;
 	};
 
-	$: segments = to_segments(path);
+	$: segments = toSegments(path);
 </script>
 
 <div class="link-path">
 	<slot />
 	{#each segments as segment}
 		{#if segment.type === 'space'}
-			<a href={segment.path} class:selected={segment.path === selected_path}>{segment.name}</a>
+			<a href={segment.path} class:selected={segment.path === selectedPath}>{segment.name}</a>
 		{:else}
 			<span class="separator">/</span>
 		{/if}

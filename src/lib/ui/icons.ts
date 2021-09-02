@@ -96,25 +96,25 @@ export const ship = '🚢';
 export const rocket = '🚀';
 export const sparkle = '✨';
 
-export const arrow_left = '←';
-export const arrow_right = '→';
-export const bullet_point = '•';
+export const arrowLeft = '←';
+export const arrowRight = '→';
+export const bulletPoint = '•';
 export const checkmark = '✓';
-export const ballot_mark = '✗';
+export const ballotMark = '✗';
 
-export const hand_point_left = '👈';
-export const hand_point_right = '👉';
-export const hand_point_up = '👆';
-export const hand_point_down = '👇';
-export const hand_thumbs_up = '👍';
-export const hand_thumbs_down = '👎';
-export const hand_facing_forward = '✋';
-export const hand_ok = '👌';
+export const handPointLeft = '👈';
+export const handPointRight = '👉';
+export const handPointUp = '👆';
+export const handPointDown = '👇';
+export const handThumbsUp = '👍';
+export const handThumbsDown = '👎';
+export const handFacingForward = '✋';
+export const handOk = '👌';
 
-export const face_blush = '😊';
-export const face_think = '🤔';
-export const face_wink = '😉';
-export const face_expressionless = '😑';
+export const faceBlush = '😊';
+export const faceThink = '🤔';
+export const faceWink = '😉';
+export const faceExpressionless = '😑';
 
-export const item_key = '🔑';
-export const item_avocado = '🥑';
+export const itemKey = '🔑';
+export const itemAvocado = '🥑';

@@ -15,9 +15,9 @@
 	// TODO can't find a better good way to silence these warnings
 	back;
 
-	let create_error_message: string | null = null;
-	let signup_error_message: string | null = null;
-	let signup_helper_message: string | null = null;
+	let createErrorMessage: string | null = null;
+	let signupErrorMessage: string | null = null;
+	let signupHelperMessage: string | null = null;
 
 	// TODO extract to `src/providers` or `src/services` or something?
 	type ServiceProvider = 'SocialCo' | 'TrackerCo' | 'TrustedCo';
@@ -29,70 +29,70 @@
 		TrackerCo: {name: 'TrackerCo'},
 		TrustedCo: {name: 'TrustedCo'},
 	};
-	const provider_list = Object.values(providers);
-	let selected_provider: ServiceProviderData | null = null;
+	const providerList = Object.values(providers);
+	let selectedProvider: ServiceProviderData | null = null;
 
 	const create = (_username: string, _password: string): void => {
-		selected_provider = null;
-		create_error_message = `Oopsies — our robots can be so clumsy! Please click the buttons below :-)`;
+		selectedProvider = null;
+		createErrorMessage = `Oopsies — our robots can be so clumsy! Please click the buttons below :-)`;
 	};
-	const signup_with = async (provider: ServiceProviderData): Promise<void> => {
-		console.log('signup_with name', provider, data);
-		let should_focus = false;
+	const signupWith = async (provider: ServiceProviderData): Promise<void> => {
+		console.log('signupWith name', provider, data);
+		let shouldFocus = false;
 		switch (provider.name) {
 			case 'TrackerCo': {
-				selected_provider = providers.TrackerCo;
-				signup_error_message = '';
-				signup_helper_message = `Great! Let's get you social with ${selected_provider.name}`;
-				should_focus = true;
+				selectedProvider = providers.TrackerCo;
+				signupErrorMessage = '';
+				signupHelperMessage = `Great! Let's get you social with ${selectedProvider.name}`;
+				shouldFocus = true;
 				break;
 			}
 			case 'SocialCo': {
-				selected_provider = providers.SocialCo;
-				signup_error_message = '';
-				signup_helper_message = `Great! Let's get you tracked with ${selected_provider.name}`;
-				should_focus = true;
+				selectedProvider = providers.SocialCo;
+				signupErrorMessage = '';
+				signupHelperMessage = `Great! Let's get you tracked with ${selectedProvider.name}`;
+				shouldFocus = true;
 				break;
 			}
 			case 'TrustedCo': {
-				selected_provider = providers.TrustedCo;
-				signup_error_message = '404 not found :-)';
+				selectedProvider = providers.TrustedCo;
+				signupErrorMessage = '404 not found :-)';
 				break;
 			}
 			default:
 				throw new UnreachableError(provider.name);
 		}
-		if (should_focus) {
+		if (shouldFocus) {
 			await tick();
-			if (!focus_next_input()) {
-				signup_button_el.focus();
+			if (!focusNextInput()) {
+				signupButtonEl.focus();
 			}
 		}
 	};
 
-	const focus_next_input = (): HTMLInputElement | null => {
-		if (!phone_number) {
-			phone_number_el.focus();
-			return phone_number_el;
+	const focusNextInput = (): HTMLInputElement | null => {
+		if (!phoneNumber) {
+			phoneNumberEl.focus();
+			return phoneNumberEl;
 		}
-		if (!home_address) {
-			home_address_el.focus();
-			return home_address_el;
+		if (!homeAddress) {
+			homeAddressEl.focus();
+			return homeAddressEl;
 		}
-		if (!anything_else) {
-			anything_else_el.focus();
-			return anything_else_el;
+		if (!anythingElse) {
+			anythingElseEl.focus();
+			return anythingElseEl;
 		}
 		return null;
 	};
 
 	const signup = (provider: ServiceProviderData | null): void => {
 		console.log('signup data, provider', data, provider);
-		if (focus_next_input()) return;
+		if (focusNextInput()) return;
 		if (provider) done();
 	};
 
-	const handle_keydown_create = (e: KeyboardEvent) => {
+	const handleKeydownCreate = (e: KeyboardEvent) => {
 		if (e.key === 'Enter') {
 			create(username, password);
 		}
@@ -100,15 +100,15 @@
 
 	let username = '';
 	let password = '';
-	let phone_number = '';
-	let phone_number_el: HTMLInputElement;
-	let home_address = '';
-	let home_address_el: HTMLInputElement;
-	let anything_else = '';
-	let anything_else_el: HTMLInputElement;
-	let signup_button_el: HTMLButtonElement;
+	let phoneNumber = '';
+	let phoneNumberEl: HTMLInputElement;
+	let homeAddress = '';
+	let homeAddressEl: HTMLInputElement;
+	let anythingElse = '';
+	let anythingElseEl: HTMLInputElement;
+	let signupButtonEl: HTMLButtonElement;
 
-	$: enable_create_button = !create_error_message;
+	$: enableCreateButton = !createErrorMessage;
 </script>
 
 <Markup>
@@ -117,40 +117,40 @@
 		<input
 			bind:value={username}
 			placeholder="username"
-			on:keydown={handle_keydown_create}
-			disabled={!enable_create_button}
+			on:keydown={handleKeydownCreate}
+			disabled={!enableCreateButton}
 		/>
 		<input
 			type="password"
 			bind:value={password}
 			placeholder="password"
-			on:keydown={handle_keydown_create}
-			disabled={!enable_create_button}
+			on:keydown={handleKeydownCreate}
+			disabled={!enableCreateButton}
 		/>
 		<button
 			type="button"
 			on:click={() => create(username, password)}
-			disabled={!enable_create_button}
+			disabled={!enableCreateButton}
 		>
 			create account
 		</button>
 
-		{#if create_error_message}
+		{#if createErrorMessage}
 			<div class="message" style="--message_min_height: 10rem;">
-				{#if !selected_provider}
-					<Message status="error">{create_error_message}</Message>
+				{#if !selectedProvider}
+					<Message status="error">{createErrorMessage}</Message>
 				{:else}
 					<Message>:-)</Message>
 				{/if}
 			</div>
 		{/if}
 
-		{#if create_error_message}
-			{#each provider_list as provider (provider.name)}
+		{#if createErrorMessage}
+			{#each providerList as provider (provider.name)}
 				<button
 					type="button"
-					on:click={() => signup_with(provider)}
-					class:selected={!!selected_provider && selected_provider === provider}
+					on:click={() => signupWith(provider)}
+					class:selected={!!selectedProvider && selectedProvider === provider}
 				>
 					{#if provider.name === 'TrustedCo'}
 						signup with {provider.name}
@@ -162,46 +162,46 @@
 				</button>
 			{/each}
 
-			{#if selected_provider === providers.SocialCo || selected_provider === providers.TrackerCo}
-				{#if selected_provider && selected_provider !== providers.TrustedCo}
-					<Message status="help">{signup_helper_message}</Message>
+			{#if selectedProvider === providers.SocialCo || selectedProvider === providers.TrackerCo}
+				{#if selectedProvider && selectedProvider !== providers.TrustedCo}
+					<Message status="help">{signupHelperMessage}</Message>
 					<input
-						bind:value={phone_number}
-						bind:this={phone_number_el}
+						bind:value={phoneNumber}
+						bind:this={phoneNumberEl}
 						placeholder="your phone number"
 						on:keydown={(e) => {
-							if (e.key === 'Enter') home_address_el.focus();
+							if (e.key === 'Enter') homeAddressEl.focus();
 						}}
 					/>
 					<input
-						bind:value={home_address}
-						bind:this={home_address_el}
+						bind:value={homeAddress}
+						bind:this={homeAddressEl}
 						placeholder="your home address"
 						on:keydown={(e) => {
-							if (e.key === 'Enter') anything_else_el.focus();
+							if (e.key === 'Enter') anythingElseEl.focus();
 						}}
 					/>
 					<input
-						bind:value={anything_else}
-						bind:this={anything_else_el}
+						bind:value={anythingElse}
+						bind:this={anythingElseEl}
 						placeholder="anything else to share? :-)"
 						on:keydown={(e) => {
 							if (e.key === 'Enter') {
-								signup(selected_provider);
+								signup(selectedProvider);
 							}
 						}}
 					/>
 					<button
 						type="button"
-						bind:this={signup_button_el}
-						on:click={() => signup(selected_provider)}
+						bind:this={signupButtonEl}
+						on:click={() => signup(selectedProvider)}
 					>
 						call my phone<br />
-						to finish signup<br />with {selected_provider.name}
+						to finish signup<br />with {selectedProvider.name}
 					</button>
 				{/if}
-			{:else if selected_provider}
-				<Message status="error">{signup_error_message}</Message>
+			{:else if selectedProvider}
+				<Message status="error">{signupErrorMessage}</Message>
 			{/if}
 		{/if}
 	</form>

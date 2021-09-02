@@ -1,24 +1,24 @@
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {to_counter} from '$lib/util/counter.js';
+import {toCounter} from '$lib/util/counter.js';
 
-/* test__to_counter */
-const test__to_counter = suite('to_counter');
+/* test__toCounter */
+const test__toCounter = suite('toCounter');
 
-test__to_counter('basic behavior', () => {
-	const counter = to_counter();
+test__toCounter('basic behavior', () => {
+	const counter = toCounter();
 	t.is(counter(), 0);
 	t.is(counter(), 1);
 	t.is(counter(), 2);
 });
 
-test__to_counter('custom count', () => {
-	const counter = to_counter(1);
+test__toCounter('custom count', () => {
+	const counter = toCounter(1);
 	t.is(counter(), 1);
 	t.is(counter(), 2);
 	t.is(counter(), 3);
 });
 
-test__to_counter.run();
-/* test__to_counter */
+test__toCounter.run();
+/* test__toCounter */

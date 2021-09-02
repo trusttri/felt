@@ -1,17 +1,17 @@
 <script lang="ts">
 	import type {MessageStatus} from '$lib/ui/message';
-	import {message_status_options} from '$lib/ui/message';
+	import {messageStatusOptions} from '$lib/ui/message';
 
 	export let status: MessageStatus = 'normal';
 	export let icon: string | null | undefined = undefined; // TODO maybe change to a slot
 	export let color: string | null | undefined = undefined;
 
-	$: final_icon = icon === undefined ? message_status_options[status].icon : icon;
-	$: final_color = color === undefined ? message_status_options[status].color : color;
+	$: finalIcon = icon === undefined ? messageStatusOptions[status].icon : icon;
+	$: finalColor = color === undefined ? messageStatusOptions[status].color : color;
 </script>
 
-<div class="message" style={final_color ? `--color: ${final_color}` : undefined}>
-	<span class="icon">{final_icon}</span>
+<div class="message" style={finalColor ? `--color: ${finalColor}` : undefined}>
+	<span class="icon">{finalIcon}</span>
 	<slot />
 </div>
 

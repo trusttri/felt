@@ -3,7 +3,7 @@
 	import Markup from '$lib/ui/Markup.svelte';
 	import Checkbox from '$lib/ui/Checkbox.svelte';
 	import Tag from '$lib/ui/Tag.svelte';
-	import {arrow_right} from '$lib/ui/icons';
+	import {arrowRight} from '$lib/ui/icons';
 
 	export let data: OnboardData;
 	export let done: () => void;
@@ -42,12 +42,12 @@
 		},
 	];
 
-	let selected_spaces = spaces.filter((c) => c.selected);
-	$: selected_count = selected_spaces.length;
+	let selectedSpaces = spaces.filter((c) => c.selected);
+	$: selectedCount = selectedSpaces.length;
 
-	const toggle_selected = (selected: boolean, space: Space) => {
+	const toggleSelected = (selected: boolean, space: Space) => {
 		space.selected = selected;
-		selected_spaces = spaces.filter((c) => c.selected);
+		selectedSpaces = spaces.filter((c) => c.selected);
 	};
 </script>
 
@@ -56,7 +56,7 @@
 
 	<div>
 		{#each spaces as space (space.name)}
-			<Checkbox checked={space.selected} on_change={(checked) => toggle_selected(checked, space)}>
+			<Checkbox checked={space.selected} onChange={(checked) => toggleSelected(checked, space)}>
 				<div>
 					{space.name}
 				</div>
@@ -73,10 +73,10 @@
 
 	<button on:click={() => done()}>
 		<Markup>
-			{#if selected_count}
-				join these communities {arrow_right}
+			{#if selectedCount}
+				join these communities {arrowRight}
 			{:else}
-				maybe later {arrow_right}
+				maybe later {arrowRight}
 			{/if}
 		</Markup>
 	</button>

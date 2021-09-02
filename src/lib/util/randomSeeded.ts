@@ -38,7 +38,7 @@ export interface Alea {
 	args: any[];
 }
 
-export const to_random_seeded = (...args: any[]): Alea => {
+export const toRandomSeeded = (...args: any[]): Alea => {
 	// Johannes Baagøe <baagoe@baagoe.com>, 2010
 	let s0 = 0;
 	let s1 = 0;
@@ -48,7 +48,7 @@ export const to_random_seeded = (...args: any[]): Alea => {
 	if (args.length == 0) {
 		args = [Date.now()];
 	}
-	let mash: Mash | null = to_mash();
+	let mash: Mash | null = toMash();
 	s0 = mash(' ');
 	s1 = mash(' ');
 	s2 = mash(' ');
@@ -93,7 +93,7 @@ export interface Mash {
 
 // From http://baagoe.com/en/RandomMusings/javascript/
 // Johannes Baagøe <baagoe@baagoe.com>, 2010
-export const to_mash = (): Mash => {
+export const toMash = (): Mash => {
 	let n = 0xefc8249d;
 	const mash: Mash = (data) => {
 		data = data.toString();

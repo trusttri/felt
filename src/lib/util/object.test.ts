@@ -1,24 +1,24 @@
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {map_record, omit, pick_by, omit_undefined, reorder} from '$lib/util/object.js';
+import {mapRecord, omit, pickBy, omitUndefined, reorder} from '$lib/util/object.js';
 
-/* test__map_record */
-const test__map_record = suite('map_record');
+/* test__mapRecord */
+const test__mapRecord = suite('mapRecord');
 
-test__map_record('basic behavior', () => {
+test__mapRecord('basic behavior', () => {
 	t.equal(
-		map_record({a: 1, b: 2}, (v, k) => v + k),
+		mapRecord({a: 1, b: 2}, (v, k) => v + k),
 		{a: '1a', b: '2b'},
 	);
 	t.equal(
-		map_record({}, (v, k) => v + k),
+		mapRecord({}, (v, k) => v + k),
 		{},
 	);
 });
 
-test__map_record.run();
-/* test__map_record */
+test__mapRecord.run();
+/* test__mapRecord */
 
 /* test__omit */
 const test__omit = suite('omit');
@@ -32,44 +32,44 @@ test__omit('basic behavior', () => {
 test__omit.run();
 /* test__omit */
 
-/* test__pick_by */
-const test__pick_by = suite('pick_by');
+/* test__pickBy */
+const test__pickBy = suite('pickBy');
 
-test__pick_by('basic behavior', () => {
+test__pickBy('basic behavior', () => {
 	t.equal(
-		pick_by({a: 1, b: 2}, (v) => v === 1),
+		pickBy({a: 1, b: 2}, (v) => v === 1),
 		{a: 1},
 	);
 	t.equal(
-		pick_by({a: 1, b: 2}, (_v, k) => k === 'a'),
+		pickBy({a: 1, b: 2}, (_v, k) => k === 'a'),
 		{a: 1},
 	);
 	t.equal(
-		pick_by({a: 1, b: 2}, () => false),
+		pickBy({a: 1, b: 2}, () => false),
 		{},
 	);
 	t.equal(
-		pick_by({a: 1, b: 2}, () => true),
+		pickBy({a: 1, b: 2}, () => true),
 		{a: 1, b: 2},
 	);
 });
 
-test__pick_by.run();
-/* test__pick_by */
+test__pickBy.run();
+/* test__pickBy */
 
-/* test__omit_undefined */
-const test__omit_undefined = suite('omit_undefined');
+/* test__omitUndefined */
+const test__omitUndefined = suite('omitUndefined');
 
-test__omit_undefined('basic behavior', () => {
-	t.equal(omit_undefined({a: 1, b: undefined, c: undefined}), {a: 1});
-	t.equal(omit_undefined({a: undefined, b: 2, c: undefined}), {b: 2});
-	t.equal(omit_undefined({a: 1, b: 2}), {a: 1, b: 2});
-	t.equal(omit_undefined({a: undefined, b: undefined}), {} as any);
-	t.equal(omit_undefined({}), {});
+test__omitUndefined('basic behavior', () => {
+	t.equal(omitUndefined({a: 1, b: undefined, c: undefined}), {a: 1});
+	t.equal(omitUndefined({a: undefined, b: 2, c: undefined}), {b: 2});
+	t.equal(omitUndefined({a: 1, b: 2}), {a: 1, b: 2});
+	t.equal(omitUndefined({a: undefined, b: undefined}), {} as any);
+	t.equal(omitUndefined({}), {});
 });
 
-test__omit_undefined.run();
-/* test__omit_undefined */
+test__omitUndefined.run();
+/* test__omitUndefined */
 
 /* test__reorder */
 const test__reorder = suite('reorder');

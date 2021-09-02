@@ -3,7 +3,7 @@ export type Unobtain = () => Promise<void>;
 /*
 
 This is a higher order function that tracks obtained references to a thing
-and calls `teardown_obtainable_value` when all obtainers have let go of their references.
+and calls `teardownObtainableValue` when all obtainers have let go of their references.
 
 It allows decoupled consumers to use things with a lifecycle
 without disrupting each other when they're done with the thing.
@@ -14,29 +14,29 @@ The motivating use case was reusing a database connection across multiple tasks.
 See the tests for usage examples - ./obtainable.test.ts
 
 */
-export const to_obtainable = <T>(
-	to_obtainable_value: () => T,
-	teardown_obtainable_value?: (obtainable: T) => unknown,
+export const toObtainable = <T>(
+	toObtainableValue: () => T,
+	teardownObtainableValue?: (obtainable: T) => unknown,
 ): (() => [T, Unobtain]) => {
 	let obtainable: T | undefined;
-	const obtained_refs = new Set<symbol>();
+	const obtainedRefs = new Set<symbol>();
 	let resolve: () => void;
 	let promise: Promise<void>;
-	const unobtain = async (obtained_ref: symbol): Promise<void> => {
-		if (!obtained_refs.has(obtained_ref)) return promise; // makes unobtaining idempotent per obtainer
-		obtained_refs.delete(obtained_ref);
-		if (obtained_refs.size > 0) return promise; // there are other open obtainers
-		const final_value = obtainable;
+	const unobtain = async (obtainedRef: symbol): Promise<void> => {
+		if (!obtainedRefs.has(obtainedRef)) return promise; // makes unobtaining idempotent per obtainer
+		obtainedRefs.delete(obtainedRef);
+		if (obtainedRefs.size > 0) return promise; // there are other open obtainers
+		const finalValue = obtainable;
 		obtainable = undefined; // reset before unobtaining just in case unobtain re-obtains
-		if (teardown_obtainable_value) await teardown_obtainable_value(final_value!);
+		if (teardownObtainableValue) await teardownObtainableValue(finalValue!);
 		resolve();
 		return promise;
 	};
 	return () => {
-		const obtained_ref = Symbol();
-		obtained_refs.add(obtained_ref);
+		const obtainedRef = Symbol();
+		obtainedRefs.add(obtainedRef);
 		if (obtainable === undefined) {
-			obtainable = to_obtainable_value();
+			obtainable = toObtainableValue();
 			promise = new Promise<void>((r) => (resolve = r));
 			if (obtainable === undefined) {
 				// this prevents `obtain` from being called multiple times,
@@ -44,6 +44,6 @@ export const to_obtainable = <T>(
 				throw Error('Obtainable value cannot be undefined - use null instead.');
 			}
 		}
-		return [obtainable, () => unobtain(obtained_ref)];
+		return [obtainable, () => unobtain(obtainedRef)];
 	};
 };

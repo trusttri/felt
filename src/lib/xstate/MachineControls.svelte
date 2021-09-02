@@ -6,17 +6,17 @@
 	export let send: Send;
 	export let events: string[] | null = null;
 
-	$: state_node = machine.states[$state.value as any];
-	// $: console.log('state_node', state_node);
+	$: stateNode = machine.states[$state.value as any];
+	// $: console.log('stateNode', stateNode);
 
-	let final_events: string[];
-	$: final_events = events || machine.events;
+	let finalEvents: string[];
+	$: finalEvents = events || machine.events;
 </script>
 
-{#each final_events as event_name (event_name)}
-	<button on:click={() => send(event_name)} disabled={!state_node.handles(event_name)}>
-		<slot {event_name}>
-			{event_name}
+{#each finalEvents as eventName (eventName)}
+	<button on:click={() => send(eventName)} disabled={!stateNode.handles(eventName)}>
+		<slot {eventName}>
+			{eventName}
 		</slot>
 	</button>
 {/each}

@@ -1,12 +1,12 @@
 <script lang="ts">
-	import {bullet_point} from '$lib/ui/icons';
+	import {bulletPoint} from '$lib/ui/icons';
 
 	export let paused: boolean = false;
 </script>
 
-<span class:paused style="animation-delay: 0s"><slot>{bullet_point}</slot></span>
-<span class:paused style="animation-delay: 0.09s"><slot>{bullet_point}</slot></span>
-<span class:paused style="animation-delay: 0.3s"><slot>{bullet_point}</slot></span>
+<span class:paused style="animation-delay: 0s"><slot>{bulletPoint}</slot></span>
+<span class:paused style="animation-delay: 0.09s"><slot>{bulletPoint}</slot></span>
+<span class:paused style="animation-delay: 0.3s"><slot>{bulletPoint}</slot></span>
 
 <style>
 	span {

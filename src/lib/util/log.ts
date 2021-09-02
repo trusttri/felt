@@ -1,6 +1,6 @@
-import {red, yellow, gray, black, magenta, yellow_bg, red_bg} from '$lib/util/terminal.js';
-import {EMPTY_ARRAY, to_array} from '$lib/util/array.js';
-import {to_env_number} from '$lib/util/env.js';
+import {red, yellow, gray, black, magenta, yellowBg, redBg} from '$lib/util/terminal.js';
+import {EMPTY_ARRAY, toArray} from '$lib/util/array.js';
+import {toEnvNumber} from '$lib/util/env.js';
 
 // TODO could use some refactoring
 
@@ -15,7 +15,7 @@ export enum LogLevel {
 	Trace = 4,
 }
 
-export const ENV_LOG_LEVEL = to_env_number('GRO_LOG_LEVEL');
+export const ENV_LOG_LEVEL = toEnvNumber('GRO_LOG_LEVEL');
 export const DEFAULT_LOG_LEVEL = ENV_LOG_LEVEL ?? LogLevel.Trace;
 
 /*
@@ -81,8 +81,8 @@ export class DevLogger {
 		suffixes: readonly any[] | unknown,
 		state: LoggerState,
 	) {
-		this.prefixes = to_array(prefixes);
-		this.suffixes = to_array(suffixes);
+		this.prefixes = toArray(prefixes);
+		this.suffixes = toArray(suffixes);
 		this.state = state;
 	}
 
@@ -148,18 +148,18 @@ export class Logger extends DevLogger {
 		super(prefixes, suffixes, state);
 	}
 
-	// These properties can be mutated at runtime (see `configure_log_level`)
+	// These properties can be mutated at runtime (see `configureLogLevel`)
 	// to affect all loggers instantiated with the default `state`.
 	// See the comment on `LoggerState` for more.
 	static level: LogLevel = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
 	static error: LogLevelDefaults = {
-		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
-		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
+		prefixes: [red('➤'), black(redBg(' 🞩 error 🞩 ')), red('\n➤')],
+		suffixes: ['\n ', black(redBg(' 🞩🞩 '))],
 	};
 	static warn: LogLevelDefaults = {
-		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
-		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
+		prefixes: [yellow('➤'), black(yellowBg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
+		suffixes: ['\n ', black(yellowBg(' ⚑ '))],
 	};
 	static info: LogLevelDefaults = {
 		prefixes: [gray('➤')],
@@ -190,18 +190,18 @@ export class SystemLogger extends DevLogger {
 		super(prefixes, suffixes, state);
 	}
 
-	// These properties can be mutated at runtime (see `configure_log_level`)
+	// These properties can be mutated at runtime (see `configureLogLevel`)
 	// to affect all loggers instantiated with the default `state`.
 	// See the comment on `LoggerState` for more.
 	static level: LogLevel = DEFAULT_LOG_LEVEL;
 	static log: Log = console.log.bind(console);
 	static error: LogLevelDefaults = {
-		prefixes: [red('➤'), black(red_bg(' 🞩 error 🞩 ')), red('\n➤')],
-		suffixes: ['\n ', black(red_bg(' 🞩🞩 '))],
+		prefixes: [red('➤'), black(redBg(' 🞩 error 🞩 ')), red('\n➤')],
+		suffixes: ['\n ', black(redBg(' 🞩🞩 '))],
 	};
 	static warn: LogLevelDefaults = {
-		prefixes: [yellow('➤'), black(yellow_bg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
-		suffixes: ['\n ', black(yellow_bg(' ⚑ '))],
+		prefixes: [yellow('➤'), black(yellowBg(' ⚑ warning ⚑ ')), '\n' + yellow('➤')],
+		suffixes: ['\n ', black(yellowBg(' ⚑ '))],
 	};
 	static info: LogLevelDefaults = {
 		prefixes: [gray('➤')],
@@ -213,18 +213,18 @@ export class SystemLogger extends DevLogger {
 	};
 }
 
-export const configure_log_level = (
+export const configureLogLevel = (
 	level: LogLevel,
-	configure_main_logger = true,
-	configure_system_logger = true,
+	configureMainLogger = true,
+	configureSystemLogger = true,
 ): void => {
-	if (configure_main_logger) {
+	if (configureMainLogger) {
 		Logger.level = level;
 	}
-	if (configure_system_logger) {
+	if (configureSystemLogger) {
 		SystemLogger.level = level;
 	}
 };
 
-export const print_log_label = (label: string, color = magenta): string =>
+export const printLogLabel = (label: string, color = magenta): string =>
 	`${gray('[')}${color(label)}${gray(']')}`;

@@ -433,7 +433,7 @@ input[type='checkbox']::before {
 }
 input[type='checkbox']:checked::before {
 	color: var(--active_color);
-	/* TODO set as a var with `✓` or `•` with the source of truth as `bullet_point` in `$lib/ui/icons` */
+	/* TODO set as a var with `✓` or `•` with the source of truth as `bulletPoint` in `$lib/ui/icons` */
 	content: var(--content, '✓');
 }
 

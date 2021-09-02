@@ -1,124 +1,124 @@
 import {suite} from 'uvu';
 import * as t from 'uvu/assert';
 
-import {to_obtainable} from '$lib/util/obtainable.js';
+import {toObtainable} from '$lib/util/obtainable.js';
 
-/* test__to_obtainable */
-const test__to_obtainable = suite('to_obtainable');
+/* test__toObtainable */
+const test__toObtainable = suite('toObtainable');
 
-test__to_obtainable('unobtain out of order', async () => {
+test__toObtainable('unobtain out of order', async () => {
 	let thing: Symbol | undefined;
-	let is_unobtained = false;
-	const obtain_thing = to_obtainable(
+	let isUnobtained = false;
+	const obtainThing = toObtainable(
 		() => {
 			t.is(thing, undefined);
 			thing = Symbol();
 			return thing;
 		},
-		(thing_unobtained) => {
-			is_unobtained = true;
-			t.is(thing_unobtained, thing);
+		(thingUnobtained) => {
+			isUnobtained = true;
+			t.is(thingUnobtained, thing);
 		},
 	);
 
-	const [thing1, unobtain1] = obtain_thing();
+	const [thing1, unobtain1] = obtainThing();
 	t.is(thing1, thing);
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 
-	const [thing2, unobtain2] = obtain_thing();
+	const [thing2, unobtain2] = obtainThing();
 	t.is(thing2, thing);
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 	t.is.not(unobtain1, unobtain2); // unobtain function refs should not be the same
 
-	const [thing3, unobtain3] = obtain_thing();
+	const [thing3, unobtain3] = obtainThing();
 	t.is(thing3, thing);
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 
-	const unobtain_promise2 = unobtain2();
-	t.not.ok(is_unobtained);
-	t.ok(unobtain_promise2 instanceof Promise);
+	const unobtainPromise2 = unobtain2();
+	t.not.ok(isUnobtained);
+	t.ok(unobtainPromise2 instanceof Promise);
 
-	const unobtain_promise3 = unobtain3();
+	const unobtainPromise3 = unobtain3();
 	unobtain3(); // call unobtain additional times to make sure it's idempotent
 	unobtain3();
 	unobtain3();
-	t.not.ok(is_unobtained);
-	t.ok(unobtain_promise3 instanceof Promise);
+	t.not.ok(isUnobtained);
+	t.ok(unobtainPromise3 instanceof Promise);
 
-	const unobtain_promise1 = unobtain1();
-	t.ok(is_unobtained);
-	t.ok(unobtain_promise1 instanceof Promise);
-	await unobtain_promise1; // this will hang if never resolved
+	const unobtainPromise1 = unobtain1();
+	t.ok(isUnobtained);
+	t.ok(unobtainPromise1 instanceof Promise);
+	await unobtainPromise1; // this will hang if never resolved
 
-	const original_thing = thing;
+	const originalThing = thing;
 	thing = undefined;
-	is_unobtained = false;
-	const [thing4, unobtain4] = obtain_thing();
+	isUnobtained = false;
+	const [thing4, unobtain4] = obtainThing();
 	t.ok(thing4);
 	t.is(thing4, thing);
-	t.is.not(thing4, original_thing);
-	t.not.ok(is_unobtained);
-	const unobtain_promise4 = unobtain4();
-	t.ok(is_unobtained);
-	t.ok(unobtain_promise4 instanceof Promise);
-	t.is.not(unobtain_promise4, unobtain_promise1);
-	await unobtain_promise4; // this will hang if never resolved
+	t.is.not(thing4, originalThing);
+	t.not.ok(isUnobtained);
+	const unobtainPromise4 = unobtain4();
+	t.ok(isUnobtained);
+	t.ok(unobtainPromise4 instanceof Promise);
+	t.is.not(unobtainPromise4, unobtainPromise1);
+	await unobtainPromise4; // this will hang if never resolved
 });
 
 // This is a complicated corner case that probably should not happen
 // because it would normally cause a stack overflow in user code,
 // but we're covering it just in case.
-test__to_obtainable('obtain is called during unobtain', () => {
-	let should_obtain_during_unobtain = true;
+test__toObtainable('obtain is called during unobtain', () => {
+	let shouldObtainDuringUnobtain = true;
 	let thing: Symbol | undefined;
-	let is_unobtained = false;
-	const obtain_thing = to_obtainable(
+	let isUnobtained = false;
+	const obtainThing = toObtainable(
 		() => {
 			t.is(thing, undefined);
-			is_unobtained = false;
+			isUnobtained = false;
 			thing = Symbol();
 			return thing;
 		},
-		(thing_unobtained) => {
-			is_unobtained = true;
-			t.is(thing_unobtained, thing);
+		(thingUnobtained) => {
+			isUnobtained = true;
+			t.is(thingUnobtained, thing);
 			thing = undefined;
 
-			if (!should_obtain_during_unobtain) return; // prevent stack overflow
-			should_obtain_during_unobtain = false;
-			const [thing3, unobtain3] = obtain_thing();
+			if (!shouldObtainDuringUnobtain) return; // prevent stack overflow
+			shouldObtainDuringUnobtain = false;
+			const [thing3, unobtain3] = obtainThing();
 			t.ok(thing3);
 			t.is(thing3, thing);
-			t.is.not(thing3, thing_unobtained);
-			t.not.ok(is_unobtained);
+			t.is.not(thing3, thingUnobtained);
+			t.not.ok(isUnobtained);
 			unobtain3();
-			t.ok(is_unobtained);
+			t.ok(isUnobtained);
 			t.is(thing, undefined);
 		},
 	);
 
-	const [thing1, unobtain1] = obtain_thing();
+	const [thing1, unobtain1] = obtainThing();
 	t.is(thing1, thing);
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 
-	const [thing2, unobtain2] = obtain_thing();
+	const [thing2, unobtain2] = obtainThing();
 	t.is(thing2, thing);
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 
 	unobtain2();
-	t.not.ok(is_unobtained);
+	t.not.ok(isUnobtained);
 
 	unobtain1();
-	t.ok(is_unobtained);
+	t.ok(isUnobtained);
 });
 
-test__to_obtainable('cannot obtain undefined', () => {
-	const obtain_thing = to_obtainable(
+test__toObtainable('cannot obtain undefined', () => {
+	const obtainThing = toObtainable(
 		() => undefined,
 		() => {},
 	);
-	t.throws(() => obtain_thing());
+	t.throws(() => obtainThing());
 });
 
-test__to_obtainable.run();
-/* test__to_obtainable */
+test__toObtainable.run();
+/* test__toObtainable */

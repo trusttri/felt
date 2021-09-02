@@ -2,9 +2,9 @@
 	import {grin} from '$lib/ui/icons';
 	import Markup from '$lib/ui/Markup.svelte';
 	import Credits from '$lib/sketch/onboard/Credits.svelte';
-	import {get_devmode} from '$lib/ui/devmode';
+	import {getDevmode} from '$lib/ui/devmode';
 
-	const devmode = get_devmode();
+	const devmode = getDevmode();
 </script>
 
 <Markup>

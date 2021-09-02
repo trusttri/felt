@@ -13,7 +13,7 @@ export {wait} from '$lib/util/async.js';
 // export type {SpawnedProcess, SpawnResult} from '$lib/util/process.js';
 // export type {Lazy} from '$lib/util/function.js';
 // export {UnreachableError} from '$lib/util/error.js';
-// export {last, to_array, EMPTY_ARRAY} from '$lib/util/array.js';
+// export {last, toArray, EMPTY_ARRAY} from '$lib/util/array.js';
 // export type {Log, LoggerState} from '$lib/util/log.js';
 // export {
 // 	LogLevel,
@@ -22,8 +22,8 @@ export {wait} from '$lib/util/async.js';
 // 	DevLogger,
 // 	ENV_LOG_LEVEL,
 // 	DEFAULT_LOG_LEVEL,
-// 	configure_log_level,
-// 	print_log_label,
+// 	configureLogLevel,
+// 	printLogLabel,
 // } from '$lib/util/log.js';
-// export {Timings, create_stopwatch} from '$lib/util/timings.js';
+// export {Timings, createStopwatch} from '$lib/util/timings.js';
 // export type {Stopwatch} from '$lib/util/timings.js';

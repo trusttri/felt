@@ -1,56 +1,56 @@
 <script lang="ts">
 	import {useMachine} from '@xstate/svelte';
 
-	import {consent_principles} from '$lib/sketch/onboard/consent';
+	import {consentPrinciples} from '$lib/sketch/onboard/consent';
 	import type {ConsentType, ConsentPrincipleType} from '$lib/sketch/onboard/consent';
-	import {onboard_machine, onboard_data} from '$lib/sketch/onboard/onboard';
+	import {onboardMachine, onboardData} from '$lib/sketch/onboard/onboard';
 	import type {OnboardStateName} from '$lib/sketch/onboard/onboard';
 	import Nav from '$lib/sketch/onboard/Nav.svelte';
 	import Begin from '$lib/sketch/onboard/Begin.svelte';
 	import End from '$lib/sketch/onboard/End.svelte';
 	import SideComplete from '$lib/sketch/onboard/SideComplete.svelte';
 	import SidesComplete from '$lib/sketch/onboard/SidesComplete.svelte';
-	import {random_bool} from '$lib/util/random';
+	import {randomBool} from '$lib/util/random';
 
-	const onboard = useMachine(onboard_machine);
+	const onboard = useMachine(onboardMachine);
 	const {state, send} = onboard;
 	// $: console.log('$state', $state);
 
 	// TODO types
 	$: principle =
-		($state.value as string) in consent_principles
-			? consent_principles[$state.value as ConsentPrincipleType]
+		($state.value as string) in consentPrinciples
+			? consentPrinciples[$state.value as ConsentPrincipleType]
 			: null;
 
 	// TODO probably move to an xstate machine, somehow
-	let done_with_consentful_side = false;
-	let done_with_unconsentful_side = false;
-	let done_with_both = false;
-	let consentful_on_left_side = random_bool();
+	let doneWithConsentfulSide = false;
+	let doneWithUnconsentfulSide = false;
+	let doneWithBoth = false;
+	let consentfulOnLeftSide = randomBool();
 
-	const reset = (state_value: string) => {
-		done_with_consentful_side = false;
-		done_with_unconsentful_side = false;
-		done_with_both = false;
+	const reset = (stateValue: string) => {
+		doneWithConsentfulSide = false;
+		doneWithUnconsentfulSide = false;
+		doneWithBoth = false;
 		// the consentful side of the 'informed' page explains how things work,
 		// so we always put it on the left in hopes the user reads it first
-		consentful_on_left_side = state_value === 'informed' ? true : random_bool();
+		consentfulOnLeftSide = stateValue === 'informed' ? true : randomBool();
 	};
 
-	const done_with_side = (consentful: ConsentType) => {
+	const doneWithSide = (consentful: ConsentType) => {
 		if (consentful === 'consentful') {
-			done_with_consentful_side = true;
-			if (done_with_unconsentful_side) {
-				done_with_both = true;
+			doneWithConsentfulSide = true;
+			if (doneWithUnconsentfulSide) {
+				doneWithBoth = true;
 			}
 		} else {
-			done_with_unconsentful_side = true;
-			if (done_with_consentful_side) {
-				done_with_both = true;
+			doneWithUnconsentfulSide = true;
+			if (doneWithConsentfulSide) {
+				doneWithBoth = true;
 			}
 		}
 	};
-	const done_with_both_sides = () => {
+	const doneWithBothSides = () => {
 		send('NEXT');
 	};
 	const back = () => {
@@ -59,8 +59,8 @@
 
 	$: reset($state.value as any); // TODO type
 
-	$: consentful_data = onboard_data.consentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
-	$: unconsentful_data = onboard_data.unconsentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
+	$: consentfulData = onboardData.consentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
+	$: unconsentfulData = onboardData.unconsentful[$state.value as OnboardStateName]; // TODO fix type in ../onboard.ts
 </script>
 
 <div class="onboard column">
@@ -74,32 +74,32 @@
 			<section class="column">
 				<End />
 			</section>
-		{:else if unconsentful_data.component && consentful_data.component}
-			<section class="column" class:swapped={consentful_on_left_side}>
+		{:else if unconsentfulData.component && consentfulData.component}
+			<section class="column" class:swapped={consentfulOnLeftSide}>
 				<svelte:component
-					this={unconsentful_data.component}
-					data={unconsentful_data}
-					done={() => done_with_side('unconsentful')}
+					this={unconsentfulData.component}
+					data={unconsentfulData}
+					done={() => doneWithSide('unconsentful')}
 					{back}
 				/>
-				{#if done_with_unconsentful_side && !done_with_both}
-					<SideComplete left={!consentful_on_left_side} />
+				{#if doneWithUnconsentfulSide && !doneWithBoth}
+					<SideComplete left={!consentfulOnLeftSide} />
 				{/if}
 			</section>
 			<section class="column">
 				<svelte:component
-					this={consentful_data.component}
-					data={consentful_data}
-					done={() => done_with_side('consentful')}
+					this={consentfulData.component}
+					data={consentfulData}
+					done={() => doneWithSide('consentful')}
 					{back}
 				/>
-				{#if done_with_consentful_side && !done_with_both}
-					<SideComplete left={consentful_on_left_side} />
+				{#if doneWithConsentfulSide && !doneWithBoth}
+					<SideComplete left={consentfulOnLeftSide} />
 				{/if}
 			</section>
-			{#if done_with_both}
+			{#if doneWithBoth}
 				{#if principle}
-					<SidesComplete {principle} {consentful_on_left_side} done={done_with_both_sides} />
+					<SidesComplete {principle} {consentfulOnLeftSide} done={doneWithBothSides} />
 				{:else}
 					<!-- TODO a cleaner design would make this check unnecessary -->
 					internal error: unprincipled! :(

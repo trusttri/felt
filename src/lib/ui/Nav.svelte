@@ -7,7 +7,7 @@
 <!-- TODO probably change to ul/li once styles are right -->
 
 <nav>
-	<LinkPath path={$page.path} selected_path={$page.path}>
+	<LinkPath path={$page.path} selectedPath={$page.path}>
 		{#if $page.path === '/'}
 			<a href="/" class="selected">Felt.dev</a>
 		{:else}
