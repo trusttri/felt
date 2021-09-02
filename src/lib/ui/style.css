@@ -4,7 +4,7 @@
 	/* color-scheme: light dark; */
 	font-size: 62.5%;
 
-	--faded_1: 81%;
+	--faded_1: 87%;
 	--faded_2: 62%;
 	--faded_3: 38%;
 	--faded_4: 24%;
@@ -343,7 +343,7 @@ li {
 
 h1 {
 	font-size: var(--font_size_xl3);
-	font-weight: var(--font_weight_1);
+	font-weight: var(--font_weight_2);
 }
 h2 {
 	font-size: var(--font_size_xl2);
@@ -662,7 +662,6 @@ label {
 }
 
 nav {
-	min-height: var(--nav_height);
 	width: 100%;
 	display: flex;
 	justify-content: center;

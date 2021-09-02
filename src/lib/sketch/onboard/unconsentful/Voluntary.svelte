@@ -152,13 +152,7 @@
 					on:click={() => signupWith(provider)}
 					class:selected={!!selectedProvider && selectedProvider === provider}
 				>
-					{#if provider.name === 'TrustedCo'}
-						signup with {provider.name}
-					{:else}
-						<Markup>
-							signup with {provider.name}
-						</Markup>
-					{/if}
+					signup with {provider.name}
 				</button>
 			{/each}
 

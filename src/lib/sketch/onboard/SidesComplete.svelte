@@ -62,7 +62,7 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		z-index: 3;
+		z-index: 5;
 		width: 100%;
 		min-height: 100%;
 		background-color: var(--tint_overlay);

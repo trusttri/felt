@@ -28,7 +28,14 @@
 	let doneWithBoth = false;
 	let consentfulOnLeftSide = randomBool();
 
-	const reset = (stateValue: string) => {
+	const scrollToTop = () => {
+		if (document.activeElement && (document.activeElement as any).blur) {
+			(document.activeElement as any).blur(); // prevents mobile from scrolling back down
+		}
+		document.getElementsByTagName('main')[0].scroll(0, 0);
+	};
+
+	const reset = (state_value: string) => {
 		doneWithConsentfulSide = false;
 		doneWithUnconsentfulSide = false;
 		doneWithBoth = false;
@@ -42,11 +49,13 @@
 			doneWithConsentfulSide = true;
 			if (doneWithUnconsentfulSide) {
 				doneWithBoth = true;
+				scrollToTop();
 			}
 		} else {
 			doneWithUnconsentfulSide = true;
 			if (doneWithConsentfulSide) {
 				doneWithBoth = true;
+				scrollToTop();
 			}
 		}
 	};
@@ -129,13 +138,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: stretch;
-		margin-bottom: var(--spacing_xl6);
 		border: var(--border);
 	}
 	.swapped {
 		order: 1;
 	}
 	@media (max-width: 40rem) {
+		section {
+			margin-bottom: var(--spacing_xl6);
+		}
 		.content {
 			flex-direction: column;
 		}

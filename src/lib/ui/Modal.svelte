@@ -77,7 +77,7 @@
 		position: fixed;
 		left: 0;
 		top: 0;
-		z-index: 4;
+		z-index: 7;
 		background-color: var(--overlay_bg);
 		display: flex;
 		flex-direction: column;

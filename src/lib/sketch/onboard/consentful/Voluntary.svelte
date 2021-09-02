@@ -13,13 +13,19 @@
 
 	let username = '';
 	let password = '';
+
+	const onKeydown = (e: KeyboardEvent) => {
+		if (e.key === 'Enter') {
+			done();
+		}
+	};
 </script>
 
 <Markup>
 	<Message status="inform">this is not a real sign-up</Message>
 	<form>
-		<input bind:value={username} placeholder="username" />
-		<input type="password" bind:value={password} placeholder="password" />
+		<input bind:value={username} placeholder="username" on:keydown={onKeydown} />
+		<input type="password" bind:value={password} placeholder="password" on:keydown={onKeydown} />
 		<button type="button" on:click={() => done()}> create account </button>
 	</form>
 </Markup>

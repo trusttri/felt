@@ -5,7 +5,7 @@
 </script>
 
 <div class="side">
-	<div>now do this side</div>
+	<div>now do this one</div>
 	<div class="icon">
 		{#if left}{arrowRight}{:else}{arrowLeft}{/if}
 	</div>
@@ -16,7 +16,7 @@
 		position: absolute;
 		left: 0;
 		top: 0;
-		z-index: 4;
+		z-index: 6;
 		min-height: 100%;
 		width: 100%;
 		background: var(--tint_overlay);
