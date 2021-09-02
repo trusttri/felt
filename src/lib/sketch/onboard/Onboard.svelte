@@ -35,7 +35,7 @@
 		document.getElementsByTagName('main')[0].scroll(0, 0);
 	};
 
-	const reset = (state_value: string) => {
+	const reset = (stateValue: string) => {
 		doneWithConsentfulSide = false;
 		doneWithUnconsentfulSide = false;
 		doneWithBoth = false;
