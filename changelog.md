@@ -6,10 +6,13 @@
   ([#131](https://github.com/feltcoop/gro/pull/131))
 - add and publish `ui/Modal.svelte` and `ui/Portal.svelte`
   ([#127](https://github.com/feltcoop/gro/pull/127))
-- add and publish `ui/PendingButton.svelte`
-  ([#125](https://github.com/feltcoop/felt/pull/125))
 - add and publish `ui/FeltWindowHost.svelte` and `ui/FeltWindowGuest.svelte`
   ([#128](https://github.com/feltcoop/felt/pull/128))
+
+## 0.8.1
+
+- add and publish `ui/PendingButton.svelte`
+  ([#125](https://github.com/feltcoop/felt/pull/125))
 
 ## 0.8.0
 
