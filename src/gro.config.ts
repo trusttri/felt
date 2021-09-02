@@ -9,6 +9,8 @@ const files = [
 	// ui components, styles, etc
 	'lib/ui/Devmode.svelte',
 	'lib/ui/devmode.ts',
+	'lib/ui/FeltWindowGuest.svelte',
+	'lib/ui/FeltWindowHost.svelte',
 	'lib/ui/Markup.svelte',
 	'lib/ui/Message.svelte',
 	'lib/ui/Modal.svelte',
@@ -47,9 +49,9 @@ const files = [
 	'lib/util/types.ts',
 ];
 
-export const config: GroConfigCreator = async () => {
+export const config: GroConfigCreator = async ({dev}) => {
 	const partial: GroConfigPartial = {
-		builds: [{name: 'library', platform: 'node', input: files}],
+		builds: [dev ? null : {name: 'library', platform: 'node', input: files}],
 	};
 	return partial;
 };
